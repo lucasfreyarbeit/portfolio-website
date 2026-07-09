@@ -1,0 +1,12 @@
+# Abhängigkeiten ignorieren
+node_modules/
+.astro/
+dist/
+
+# Lokale Umgebungsvariablen
+.env
+.env.*
+
+# Betriebssystem-Müll
+.DS_Store
+Thumbs.db

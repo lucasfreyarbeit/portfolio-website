@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Frey Portfolio</title>
+    <!-- Hier wird deine Schriftart geladen -->
+    <link rel="stylesheet" href="/css/kalam.css" />
+</head>
+<body>
+
+    <!-- ALWAYS VISIBLE LOGO (OBEN LINKS PINNED MIT KALAM FONT) -->
+    <a href="/" class="pinned-logo">
+        <span class="logo-text">Lucas Frey</span>
+    </a>
+
+    <!-- HAUPTINHALT (SCROLLBAR) -->
+    <div class="scroll-container">
+        
+        <!-- MAIN HERO BEREICH -->
+        <main class="hero-section">
+            <h1 class="font-kalam">Lucas Frey</h1>
+            <p class="font-sub">Diese Website befindet sich momentan in der Entwicklung.</p>
+            <div class="scroll-indicator">↓ Scroll für mehr Infos</div>
+        </main>
+
+        <!-- DEIN TALENT-PROFILE BEREICH -->
+        <section class="content-section">
+            <div class="layout-grid">
+                <div class="grid-card">
+                    <h2>UI/UX & Branding</h2>
+                    <p>Ich lege großen Wert darauf, dass Interfaces absolut bombe aussehen. Visuelle Ästhetik, saubere Typografie und intuitive Benutzeroberflächen ohne Schnörkel.</p>
+                </div>
+
+                <div class="grid-card">
+                    <h2>System-Optimierung</h2>
+                    <p>Strukturiertes Denken. Ich schätze performante, lokale Anwendungen, cleane Software-Umgebungen und optimierte digitale Abläufe.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STINKNORMALER COMPLIANCE FOOTER -->
+        <footer class="main-footer">
+            <div class="footer-links">
+                <a href="/impressum" class="footer-btn">Impressum</a>
+                <a href="/datenschutz" class="footer-btn">Datenschutz</a>
+            </div>
+            <p class="footer-copy">© 2026 | Made with Love by Lucas Frey</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
+
+<style>
+    /* --- SYSTEM RESET --- */
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #0f0f0f; /* Tiefes, edles Dunkelgrau */
+        color: #f3f4f6;
+        font-family: 'Varela-Round', system-ui, sans-serif;
+    }
+
+    /* --- PINNED LOGO (OBEN LINKS VERANKERT) --- */
+    .pinned-logo {
+        position: fixed; 
+        top: 30px;
+        left: 30px;
+        z-index: 100; 
+        background-color: #212121; /* Leicht transparent */
+        backdrop-filter: blur(8px);
+        border: 0px solid #353535;
+        padding: 10px 24px; /* Breiter für den ganzen Namen */
+        border-radius: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        text-decoration: none;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .pinned-logo:hover {
+        transform: translateY(-2px);
+        border-color: #393939;
+    }
+
+    .logo-text {
+        font-family: 'Varela-Round', sans-serif; /* Nutzt deine Kalam Schrift */
+        font-size: 1.5rem;
+        color: #a1a1a1;
+        margin: 0;
+        line-height: 1;
+    }
+
+    /* --- SCROLL CONTAINER & LAYOUT --- */
+    .scroll-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .hero-section {
+       height: 100vh;
+       width: 100%;
+       max-width: 850px;
+        padding: 20px;
+      
+      /* Zentrierung für den Container selbst */
+       margin-left: auto;
+      margin-right: auto;
+    
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Vertikale Zentrierung des Inhalts */
+      align-items: flex-start; /* Behält die linksbündige Ausrichtung des Textes bei */
+      position: relative;
+    }
+
+    .font-kalam {
+        font-family: 'Kalam-Bold', sans-serif;
+        font-size: 5.5rem;
+        margin: 0 0 15px 0;
+        line-height: 1;
+        letter-spacing: -1px;
+    }
+
+    .font-sub {
+        font-family: 'Varela-Round', sans-serif;
+        font-size: 1.25rem;
+        color: #8e8e93;
+        margin: 20px;
+        font-weight: 400;
+        max-width: 600px;
+    }
+
+    .scroll-indicator {
+        position: absolute;
+        bottom: 40px;
+        left: 20px;
+        font-family: 'Varela-Round', sans-serif;
+        color: #adadad;
+        font-size: 0.9rem;
+    }
+
+    .content-section {
+        width: 100%;
+        max-width: 850px;
+        padding: 100px 20px;
+    }
+
+    .layout-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 24px; 
+    }
+
+    .grid-card {
+        background-color: #212121; 
+        border: 0px solid #353535; 
+        padding: 40px;
+        border-radius: 25px;
+    }
+
+    .grid-card h2 {
+        margin: 0 0 12px 0;
+        font-family: 'Varela-Round', sans-serif;
+        font-size: 1.6rem;
+        font-weight: 600;
+    }
+
+    .grid-card p {
+        color: #9ca3af;
+        margin: 0;
+        font-family: 'Varela-Round', sans-serif;
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    /* --- STANDARD COMPLIANCE FOOTER --- */
+    .main-footer {
+        background-color: #212121; 
+        border: 0px solid #23242a; 
+        border-radius: 25px 25px 0 0;
+        width: 100%;
+        max-width: 850px;
+        padding: 60px 20px;
+        border-top: 1px solid #1a1b21;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 20px;
+    }
+
+    .footer-btn {
+        color: #8e8e93;
+        text-decoration: none;
+        font-family: 'Varela-Round', sans-serif;
+        font-size: 0.95rem;
+        transition: color 0.2s ease;
+    }
+
+    .footer-btn:hover {
+        color: #d7d7d7;
+    }
+
+    .footer-copy {
+        color: #5b5b5b;
+        margin: 0;
+        font-size: 1rem;
+        font-family: 'Varela-Round', sans-serif;
+    }
+
+    @media (max-width: 680px) {
+        .layout-grid {
+            grid-template-columns: 1fr;
+        }
+        .main-footer {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+        .font-kalam {
+            font-size: 4rem;
+        }
+    }
+
+---
+// Your frontmatter / JavaScript goes here (if any)
+---
+
+
+
+<style is:global>
+  /* Versteckt den Scrollbalken für die gesamte Seite */
+  html, body {
+    /* Für Chrome, Safari und Opera */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    
+    /* Für IE, Edge und Firefox */
+    -ms-overflow-style: none;  /* IE/Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+</style>
