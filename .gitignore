@@ -1,0 +1,37 @@
+# --- OS / System-Müll ---
+.DS_Store
+Thumbs.db
+*.log
+
+# --- Node.js / Paketmanager ---
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+
+# --- Astro Spezifisch ---
+.astro/
+dist/
+
+# --- Build- & Cache-Ordner ---
+.cache/
+.parcel-cache/
+.turbo/
+out/
+
+# --- Umgebungsvariablen / Sensible Daten ---
+.env
+.env.local
+.env.production
+.env.development
+.env.*.local
+
+# --- IDEs / Editoren (VS Code & Co.) ---
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
