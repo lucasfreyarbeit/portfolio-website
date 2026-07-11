@@ -3,8 +3,7 @@ import svelte from "@astrojs/svelte";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: "https://lucasfreyarbeit.github.io",
-  base: "/portfolio-webseite/",
+  site: "https://lucasfrey.de",
 
   integrations: [svelte()],
 
