@@ -1,0 +1,221 @@
+---
+const pageTitle = "Impressum Lucas Frey";
+---
+
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{pageTitle}</title>
+
+    <link rel="stylesheet" href="/css/kalam.css">
+    <link rel="stylesheet" href="/css/varela-round.css">
+</head>
+<body>
+
+    <!-- Zurück-Pille (Pinned oben links) -->
+    <header class="legal-header">
+        <a href="/" class="back-pill" aria-label="Zurück zur Startseite">
+            <span class="back-pill-text">← Zurück</span>
+        </a>
+    </header>
+
+    <main class="legal-main">
+        <div class="legal-container">
+        
+            
+            <h1>Impressum</h1>
+            <h2>Anschrift</h2>
+            <p>
+                Lucas Emanuel Frey<br />
+                Biberacher Str. 61<br />
+                88416 Ochsenhausen
+            </p>
+
+            <h2>Kontakt</h2>
+            <p>
+                Telefon: 0176 55408173<br />
+                E-Mail: kontakt@lucasfrey.de
+            </p>
+
+            <p class="source-credit">Quelle: <a href="https://www.e-recht24.de" target="_blank" rel="noopener noreferrer">e-recht24.de</a></p>
+        </div>
+    </main>
+
+</body>
+</html>
+
+<style>
+    :root {
+        --page-bg: #0f0f0f;
+        --surface: #212121;
+        --surface-raised: #303030;
+        --border: #2a2a2a;
+        --text-primary: #f3f4f6;
+        --text-muted: #8e8e93;
+        --text-dim: #5b5b5b;
+        --content-width: 850px;
+        --transition-fast: 0.2s ease;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--page-bg);
+        color: var(--text-primary);
+        font-family: 'Varela-Round', system-ui, sans-serif;
+        /* Verhindert jegliches horizontales Ausbrechen der gesamten Seite */
+        overflow-x: hidden; 
+        width: 100%;
+    }
+
+    /* Header & Pinned Position */
+    .legal-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        /* Nutzt padding statt margin für die Breite, damit nichts rausgedrückt wird */
+        width: 100%;
+        max-width: var(--content-width);
+        margin: 0 auto;
+        padding: 40px 20px 0 20px;
+        pointer-events: none;
+    }
+
+    .back-pill {
+        pointer-events: auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 56px;
+        padding: 0 24px;
+        background-color: var(--surface-raised);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: background-color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .back-pill-text {
+        color: inherit;
+        font-size: 1rem;
+        transition: color var(--transition-fast);
+    }
+
+    .back-pill:hover {
+        background-color: #363636;
+        border-color: #3d3d3d;
+    }
+
+    .back-pill:hover .back-pill-text {
+        color: var(--text-primary);
+    }
+
+    .back-pill:focus-visible {
+        outline: 2px solid var(--text-primary);
+        outline-offset: 4px;
+    }
+
+    /* Content Layout */
+    .legal-main {
+        width: 100%;
+        max-width: var(--content-width);
+        margin: 60px auto 80px auto;
+        padding: 0 20px; /* Sicherer Abstand zum Bildschirmrand */
+    }
+
+    .legal-container {
+        width: 100%;
+    }
+
+    .legal-container h1 {
+        font-family: 'Kalam-Bold', sans-serif;
+        font-size: clamp(2.3rem, 5vw, 4rem);
+        margin: 0 0 40px 0;
+        line-height: 1.1;
+        word-wrap: break-word; /* Bricht extrem lange Wörter auf Mobilgeräten um */
+    }
+
+    .legal-container h2 {
+        font-size: clamp(1.3rem, 4vw, 1.6rem);
+        margin: 40px 0 20px 0;
+        color: var(--text-primary);
+    }
+
+    .legal-container h3 {
+        font-size: clamp(1.05rem, 3vw, 1.15rem);
+        margin: 24px 0 12px 0;
+        color: var(--text-primary);
+    }
+
+    .legal-container p {
+        color: var(--text-muted);
+        line-height: 1.6;
+        font-size: 1rem;
+        margin: 0 0 16px 0;
+        word-wrap: break-word;
+    }
+
+    .legal-container strong {
+        color: var(--text-primary);
+    }
+
+    .legal-container a {
+        color: var(--text-muted);
+        transition: color var(--transition-fast);
+        word-break: break-all; /* Verhindert, dass lange Links (wie e-recht24) den Screen sprengen */
+    }
+
+    .legal-container a:hover {
+        color: var(--text-primary);
+    }
+
+
+    ul {
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin: 0 0 20px 0;
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
+
+    .section-divider {
+        height: 1px;
+        background-color: var(--border);
+        margin: 40px 0;
+    }
+
+    .source-credit {
+        margin-top: 40px;
+        font-size: 0.9rem;
+        color: var(--text-dim);
+    }
+
+    /* Mobil-Optimierungen exakt abgestimmt auf dein Grid */
+    @media (max-width: 760px) {
+        .legal-header {
+            padding-top: 20px;
+        }
+        
+        .back-pill {
+            min-height: 48px; /* Etwas kompakter auf dem Handy */
+            padding: 0 20px;
+        }
+        
+        .back-pill-text {
+            font-size: 0.9rem;
+        }
+
+        .legal-main {
+            margin: 30px auto 60px auto;
+        }
+    }
+</style>

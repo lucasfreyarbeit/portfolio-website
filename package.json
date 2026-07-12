@@ -1,0 +1,29 @@
+{
+  "name": "portfolio-webseite",
+  "type": "module",
+  "version": "1.1.0",
+  "description": "Meine eigene quelloffene Portfolio Website.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasfreyarbeit/portfolio-webseite.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/lucasfreyarbeit/portfolio-webseite/issues"
+  },
+  "homepage": "https://github.com/lucasfreyarbeit/portfolio-webseite#readme",
+  "dependencies": {
+    "@astrojs/svelte": "^9.0.1",
+    "@tailwindcss/vite": "^4.3.2",
+    "astro": "^7.0.7",
+    "svelte": "^5.56.4",
+    "tailwindcss": "^4.3.2",
+    "typescript": "^6.0.3"
+  }
+}
