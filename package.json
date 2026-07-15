@@ -1,7 +1,7 @@
 {
   "name": "portfolio-webseite",
   "type": "module",
-  "version": "1.1.0",
+  "version": "0.1.0",
   "description": "Meine eigene quelloffene Portfolio Website.",
   "main": "index.js",
   "scripts": {

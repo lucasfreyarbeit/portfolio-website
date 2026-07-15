@@ -1,0 +1,80 @@
+---
+import Logo from "../ui/Logo.astro";
+import Button from "../ui/Button.astro";
+import Accessibility from "../ui/Accessibility.astro";
+---
+
+<header class="header">
+
+    <nav class="nav">
+
+        <div class="nav-left">
+            <Logo />
+        </div>
+
+        <div class="nav-center">
+            <Button href="#projekte" variant="red">
+                PROJEKTE
+            </Button>
+
+            <Button href="#kontakt" variant="blue">
+                KONTAKT
+            </Button>
+        </div>
+
+        <div class="nav-right">
+            <Accessibility />
+        </div>
+
+    </nav>
+
+    <img
+        src="/vector/divider.svg"
+        alt=""
+        aria-hidden="true"
+        class="divider"
+    />
+
+</header>
+
+<style>
+.header {
+    width: 100%;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    padding: .5rem 1rem;
+}
+
+.nav-left,
+.nav-right {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+}
+
+.nav-right {
+    justify-content: flex-end;
+}
+
+.nav-center {
+    flex: 2;
+
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.divider {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+</style>
