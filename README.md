@@ -2,7 +2,7 @@
 
 Quellcode meiner persönlichen Portfolio-Webseite.
 
-Die Website dient als zentrale Anlaufstelle für meine Projekte, Fallstudien und meinen Designprozess. Gleichzeitig nutze ich sie, um moderne Webentwicklung mit Astro, Svelte und Tailwind CSS zu lernen.
+Die Website dient als zentrale Anlaufstelle für meine Projekte, Fallstudien und meinen Designprozess. Gleichzeitig nutze ich sie, um moderne Webentwicklung mit Astro und Svelte zu lernen
 
 ## Technologien
 
