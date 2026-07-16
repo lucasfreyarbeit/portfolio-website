@@ -1,0 +1,22 @@
+---
+interface Props {
+    class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<img
+    src="/vector/divider-dashed.svg"
+    alt=""
+    aria-hidden="true"
+    class={`divider-dashed ${className}`}
+/>
+
+<style>
+.divider-dashed {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+</style>

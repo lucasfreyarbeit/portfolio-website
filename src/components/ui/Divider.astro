@@ -1,0 +1,22 @@
+---
+interface Props {
+    class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<img
+    src="/vector/divider.svg"
+    alt=""
+    aria-hidden="true"
+    class={`divider ${className}`}
+/>
+
+<style>
+.divider{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+</style>

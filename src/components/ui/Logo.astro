@@ -1,0 +1,42 @@
+---
+interface Props {
+    href?: string;
+    variant?: "black" | "white";
+}
+
+const {
+    href = "#hero",
+    variant = "black",
+} = Astro.props;
+---
+
+<a
+    href={href}
+    class={`logo logo--${variant}`}
+>
+    <slot>LUCAS FREY</slot>
+</a>
+
+<style>
+.logo {
+    display: inline-block;
+
+    font-family: "Roboto Mono", monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.logo--black {
+    color: #282828;
+}
+
+.logo--white {
+    color: #ffffff;
+}
+
+.logo:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+</style>

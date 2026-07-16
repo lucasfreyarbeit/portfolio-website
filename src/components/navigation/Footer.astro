@@ -1,0 +1,227 @@
+---
+import Logo from "../ui/Logo.astro";
+import Button from "../ui/Button.astro";
+import Divider from "../ui/Divider.astro";
+---
+
+<footer class="footer">
+    <div class="footer-container">
+        
+        <div class="footer-top">
+            
+            <section class="footer-brand">
+                <div class="footer-logo-wrapper">
+                    <Logo variant="white" />
+                </div>
+                <div class="footer-button-wrapper">
+                    <Button
+                        variant="blue"
+                        theme="dark"
+                        href="https://github.com/lucasfreyarbeit/portfolio-webseite"
+                    >
+                        Website Quellcode
+                    </Button>
+                </div>
+            </section>
+
+            <section class="footer-links">
+                
+                <nav class="link-column">
+                    <span class="column-title">Projekte</span>
+                    <a href="https://github.com/lucasfreyarbeit">GitHub</a>
+                    <a href="https://lucasfreyarbeit.itch.io/">Itch.io</a>
+                </nav>
+
+                <nav class="link-column">
+                    <span class="column-title">Socials</span>
+                    <a href="#">LinkedIn</a>
+                    <a href="https://dev.to/lucasfrey">dev.to</a>
+                </nav>
+
+            </section>
+
+        </div>
+
+        <div class="footer-divider-wrapper">
+            <Divider />
+        </div>
+
+        <div class="footer-bottom">
+            
+            <p class="copyright">© 2026 Lucas Frey</p>
+            
+            <a href="#hero" class="back-to-top">
+                Nach oben springen <span class="arrow">↑</span>
+            </a>
+
+            <nav class="footer-bottom-right">
+                <a href="/info/impressum">Impressum</a>
+                <a href="/info/datenschutz">Datenschutz</a>
+                <a href="/info/barrierefreiheit">Barrierefreiheit</a>
+            </nav>
+
+        </div>
+
+    </div>
+</footer>
+
+<style>
+.footer {
+    width: 100%;
+    margin-top: auto;
+    padding: 2rem 1.5rem 0.75rem 1.5rem;
+    background: #292929;
+    color: #e3e3e3;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    max-width: 320px;
+}
+
+.footer-logo-wrapper {
+    transform: scale(1.25);
+    transform-origin: left center;
+}
+
+.footer-button-wrapper {
+    display: inline-block;
+}
+
+.footer-links {
+    display: flex;
+    gap: 5rem;
+}
+
+.link-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.column-title {
+    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.4;
+}
+
+.footer a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.footer a:hover {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.footer-divider-wrapper {
+    filter: invert(28%) sepia(0%) saturate(1389%) hue-rotate(163deg) brightness(99%) contrast(85%);
+}
+
+.footer-bottom {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 2.5rem;
+    padding: 0.5rem 0 0 0;
+    font-size: 0.85rem;
+}
+
+.copyright {
+    margin: 0;
+    color: #a3a3a3;
+}
+
+.back-to-top {
+    position: absolute;
+    left: 50%;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #ffffff !important;
+    font-weight: bold;
+    transform: translateX(-50%);
+}
+
+.back-to-top:hover {
+    color: #ff9a55 !important;
+    font-weight: bolder;
+}
+
+.arrow {
+    display: inline-block;
+    transition: transform 0.15s ease;
+}
+
+.back-to-top:hover .arrow {
+    transform: translateY(-2px);
+}
+
+.footer-bottom-right {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-bottom-right a {
+    color: #a3a3a3;
+}
+
+.footer-bottom-right a:hover {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 2.5rem 1rem 0.75rem 1rem;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .footer-links {
+        gap: 3rem;
+    }
+
+    .footer-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding-top: 0.5rem;
+    }
+
+    .back-to-top {
+        position: static;
+        transform: none;
+    }
+}
+</style>

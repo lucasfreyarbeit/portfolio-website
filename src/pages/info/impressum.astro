@@ -1,0 +1,66 @@
+---
+import InfoLayout from "../../layouts/InfoLayout.astro";
+
+const pageTitle = "Impressum Lucas Frey";
+---
+
+<InfoLayout title={pageTitle}>
+
+    <h1>IMPRESSUM</h1>
+
+    <h2>Anschrift</h2>
+
+    <p>
+        Lucas Emanuel Frey<br />
+        Biberacher Str. 61<br />
+        88416 Ochsenhausen
+    </p>
+
+    <h2>Kontakt</h2>
+
+    <p>
+        Telefon: 0176 55408173<br />
+        E-Mail:
+        <a href="mailto:kontakt@lucasfrey.de">
+            kontakt@lucasfrey.de
+        </a>
+    </p>
+
+    <p>
+        Quelle:
+        <a
+            href="https://www.e-recht24.de"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            e-recht24.de
+        </a>
+    </p>
+
+</InfoLayout>
+
+
+<style>
+    h1 {
+        font-family: "Roboto Mono", monospace;
+        font-weight: 700;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-family: "Roboto Mono", monospace;
+        font-weight: 500;
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-style: italic;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+</style>

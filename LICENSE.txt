@@ -1,15 +1,27 @@
-Urheberrecht (c) 2026 Lucas Frey. Alle Rechte vorbehalten.
+Lucas Frey Portfolio Source License v1.0
 
-Diese Software und alle zugehörigen Dateien (einschließlich Quellcode, Designs, Texte und visueller Assets) sind gemäß § 2 und § 69a des deutschen Urheberrechtsgesetzes (UrhG) urheberrechtlich geschützt.
+Copyright (c) 2026 Lucas Frey.
+Alle Rechte vorbehalten.
 
-Dieser Quellcode ist öffentlich einsehbar, um potenziellen Arbeitgebern, Ausbildern und Betrieben Einblicke in meine Arbeitsweise und technischen Fähigkeiten zu gewähren.
+Dieses Repository sowie sämtliche enthaltenen Inhalte (einschließlich Quellcode, Designs, Grafiken, Texte, Animationen, Icons und sonstiger Assets) sind urheberrechtlich geschützt.
+
+Dieses Repository wird ausschließlich veröffentlicht, um Interessierten – insbesondere potenziellen Arbeitgebern, Ausbildern und Unternehmen – einen Einblick in meine Arbeitsweise, meinen Entwicklungsprozess und meine technischen Fähigkeiten zu ermöglichen.
 
 Erlaubt ist:
-- Das Einsehen, Analysieren und Nutzen des Quellcodes zu reinen Bildungs-, Forschungs- und Evaluierungszwecken (z. B. im Rahmen von Bewerbungsverfahren).
-- Das Forken dieses Repositories innerhalb von GitHub zur persönlichen Ansicht und Überprüfung der Code-Struktur.
 
-Strengstens untersagt ist:
-- Das Kopieren, Vervielfältigen, Modifizieren oder Verbreiten des Codes oder der Assets für eigene kommerzielle oder nicht-kommerzielle Veröffentlichungen.
-- Das Hosten oder Live-Schalten dieser Website (oder wesentlicher Teile davon) unter eigenem Namen, einer anderen Domain oder auf anderen Plattformen.
+- Das Einsehen und Analysieren des Quellcodes.
+- Die Nutzung des Quellcodes zu persönlichen Lern-, Forschungs- und Evaluierungszwecken.
+- Die Bewertung des Projekts im Rahmen von Bewerbungs-, Ausbildungs- oder Einstellungsverfahren.
 
-Jede Nutzung, die über das reine Einsehen, Lernen und Evaluieren im Rahmen von Bewerbungsprozessen hinausgeht, bedarf der ausdrücklichen, schriftlichen Zustimmung des Urhebers.
+Nicht gestattet ist insbesondere:
+
+- Das Kopieren oder Übernehmen des Quellcodes oder wesentlicher Teile davon.
+- Die Verwendung des Quellcodes oder einzelner Komponenten als Grundlage, Vorlage oder Ausgangspunkt für eigene Projekte.
+- Das Kopieren, Verändern oder Weiterverwenden von Designs, Animationen, Grafiken, Icons, Texten oder sonstigen Assets.
+- Das Veröffentlichen, Weiterverbreiten oder Bereitstellen dieses Repositories oder davon abgeleiteter Werke.
+- Das Hosten oder Bereitstellen dieser Website oder wesentlicher Bestandteile unter einer eigenen Domain oder auf anderen Plattformen.
+- Jede kommerzielle oder nicht-kommerzielle Nutzung, die über die ausdrücklich erlaubten Zwecke hinausgeht.
+
+Die öffentliche Verfügbarkeit dieses Repositories stellt keine Einräumung von Nutzungsrechten oder Lizenzen am Quellcode oder den enthaltenen Assets dar.
+
+Jede Nutzung, die nicht ausdrücklich durch diese Lizenz gestattet wird, bedarf der vorherigen schriftlichen Zustimmung des Urhebers.
