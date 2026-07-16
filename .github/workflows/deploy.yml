@@ -2,7 +2,14 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+  
+    branches: 
+      - main
+      - dev
+      - 'dev/**' 
+  release:
+    types: [published]
+  
   workflow_dispatch:
 
 permissions:
@@ -24,16 +31,21 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: 'npm'
 
       - run: npm ci
 
       - run: npm run build
 
-      - uses: actions/upload-pages-artifact@v3
+   
+      - if: github.ref == 'refs/heads/main' || github.event_name == 'release'
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
   deploy:
+   
+    if: github.ref == 'refs/heads/main' || github.event_name == 'release'
     needs: build
 
     runs-on: ubuntu-latest
