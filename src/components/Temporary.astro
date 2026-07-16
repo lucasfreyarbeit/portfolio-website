@@ -1,0 +1,42 @@
+<div class="temp-container">
+    <h1 class="temp-title">Willkommen •ᴗ•</h1>
+    <p class="temp-text">
+        Diese Website befindet sich derzeit noch in der Entwicklung.
+        Bitte noch um etwas Geduld.
+    </p>
+</div>
+
+<style>
+.temp-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 3rem;
+    text-align: center;
+    
+    /* Hover-Effekt: sanftes Anheben */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.temp-container:hover {
+    transform: translateY(-10px);
+}
+
+.temp-title {
+    font-family: "Roboto Mono", monospace;
+    font-size: 3.5rem; /* Größerer Header */
+    margin-bottom: 1.5rem;
+    color: #282828;
+    letter-spacing: -0.02em;
+}
+
+.temp-text {
+    font-family: "Inter", sans-serif;
+    font-size: 1.4rem; /* Größerer Text */
+    line-height: 1.8;
+    color: #515151;
+    max-width: 600px;
+}
+</style>

@@ -17,15 +17,55 @@ const { title = "Portfolio Lucas Frey" } = Astro.props;
     <title>{title}</title>
 </head>
 
-<body class="bg-white text-neutral-900 antialiased">
+<body>
 
-    <main class="mx-auto max-w-4xl px-6 py-10">
+    <main class="info-page-container">
+        
 
-        <BackButton href="/" />
+        <div class="info-content">
+            <BackButton href="/" />
 
-        <slot />
+            <div class="info-slot-wrapper">
+                <slot />
+            </div>
+        </div>
 
     </main>
 
 </body>
 </html>
+
+<style>
+.info-page-container {
+    display: flex;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.info-content {
+    flex-grow: 1;
+    padding: 2.5rem 2rem;
+}
+
+.info-slot-wrapper {
+    margin-top: 2rem;
+}
+
+.info-slot-wrapper :global(h1),
+.info-slot-wrapper :global(h2),
+.info-slot-wrapper :global(h3) {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.info-slot-wrapper :global(p) {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .info-content {
+        padding: 2.5rem 1rem;
+    }
+}
+</style>

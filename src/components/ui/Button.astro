@@ -2,7 +2,7 @@
 interface Props {
     href: string;
     variant?: "default" | "red" | "orange" | "blue";
-    theme?: "light" | "dark"; // "light" = dunkler Rahmen (Standard), "dark" = heller Rahmen für dunkle Backgrounds
+    theme?: "light" | "dark";
 }
 
 const {
@@ -20,75 +20,59 @@ const {
 </a>
 
 <style>
-/* --- 1. GEMEINSAME BASIS-STYLES --- */
 .button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: .20rem .70rem;
-
+    padding: 0.22em 0.75em;
     font-family: "Roboto Mono", monospace;
-    font-size: .95rem;
+    font-size: 0.95em;
     text-decoration: none;
-    border: 2px solid; /* Breite steht fest, Farbe kommt über das Theme */
-
+    border: 0.13em solid;
+    filter: drop-shadow(0.2em 0.2em 0 var(--shadow-color));
     transition:
-        background-color .15s ease,
-        color .15s ease,
-        border-color .15s ease,
-        transform .08s ease,
-        filter .08s ease;
+        background-color 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.08s ease,
+        filter 0.08s ease;
 }
 
-/* Hover- & Klick-Animationen (gelten für beide Themes) */
 .button:hover {
-    transform: translate(-1.5px, -1.5px);
+    transform: translate(-0.1em, -0.1em);
+    filter: drop-shadow(0.3em 0.3em 0 var(--shadow-color));
     cursor: pointer;
 }
 
 .button:active {
-    transform: translate(1.5px, 1.5px);
-    filter: none !important; /* Entfernt den Schatten beim Klicken */
+    transform: translate(0.1em, 0.1em);
+    filter: none !important;
 }
 
-
-/* --- 2. THEME "LIGHT" (Für helle Seiten-Hintergründe) --- */
 .button--theme-light {
+    --shadow-color: #282828;
     background: #ffffff;
     color: #282828;
     border-color: #282828;
-    filter: drop-shadow(3px 3px 0 #282828);
-}
-
-.button--theme-light:hover {
-    filter: drop-shadow(5px 5px 0 #282828);
 }
 
 .button--theme-light:focus-visible {
-    outline: 2px solid #282828;
-    outline-offset: 4px;
+    outline: 0.13em solid #282828;
+    outline-offset: 0.25em;
 }
 
-
-/* --- 3. THEME "DARK" (Für dunkle Hintergründe wie deinen Footer) --- */
 .button--theme-dark {
+    --shadow-color: #000000;
     background: #ffffff;
     color: #282828;
-    border-color: #ffffff; /* Heller Rahmen, damit man ihn sieht */
-    filter: drop-shadow(3px 3px 0 #000000); /* Knallharter, pechschwarzer Schatten */
-}
-
-.button--theme-dark:hover {
-    filter: drop-shadow(5px 5px 0 #000000); /* Tieferer pechschwarzer Schatten */
+    border-color: #ffffff;
 }
 
 .button--theme-dark:focus-visible {
-    outline: 2px solid #ffffff;
-    outline-offset: 4px;
+    outline: 0.13em solid #ffffff;
+    outline-offset: 0.25em;
 }
 
-
-/* --- 4. FARB-VARIANTE-HOVER (Unabhängig vom Theme) --- */
 .button--default:hover {
     background: #515151;
     color: #ffffff;
