@@ -8,8 +8,6 @@ Die Website dient als zentrale Anlaufstelle für meine Projekte, Fallstudien und
 
 - Astro
 - Svelte
-- Tailwind CSS
-
 ## Status
 
 Die Website befindet sich aktuell in Entwicklung.
