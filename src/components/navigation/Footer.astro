@@ -16,7 +16,6 @@ import Divider from "../ui/Divider.astro";
                 <div class="footer-button-wrapper">
                     <Button
                         variant="blue"
-                        theme="dark"
                         href="https://github.com/lucasfreyarbeit/portfolio-webseite"
                     >
                         WEBSITE QUELLCODE
@@ -43,7 +42,7 @@ import Divider from "../ui/Divider.astro";
         </div>
 
         <div class="footer-divider-wrapper">
-            <Divider />
+        <Divider variant="footer" />
         </div>
 
         <div class="footer-bottom">
@@ -66,12 +65,15 @@ import Divider from "../ui/Divider.astro";
 </footer>
 
 <style>
+/* Footer erzwingt Farben, erbt nicht von globalen Themen */
 .footer {
     width: 100%;
     margin-top: auto;
     padding: 2rem 1.5rem 0.75rem 1.5rem;
     background: #292929;
     color: #e3e3e3;
+    /* Damit er sich nicht invertiert, falls mal das ganze body-Tag getauscht wird */
+    filter: none !important;
 }
 
 .footer-container {
@@ -121,7 +123,7 @@ import Divider from "../ui/Divider.astro";
 
 .column-title {
     margin-bottom: 0.25rem;
-    font-family:'JetBrains Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.85rem;
     font-weight: bold;
     letter-spacing: 0.05em;
@@ -140,9 +142,6 @@ import Divider from "../ui/Divider.astro";
     font-weight: 600;
 }
 
-.footer-divider-wrapper {
-    filter: invert(28%) sepia(0%) saturate(1389%) hue-rotate(163deg) brightness(99%) contrast(85%);
-}
 
 .footer-bottom {
     position: relative;

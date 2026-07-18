@@ -1,22 +1,30 @@
 ---
 interface Props {
     class?: string;
+    variant?: "default" | "footer";
 }
 
-const { class: className = "" } = Astro.props;
+const { class: className = "", variant = "default" } = Astro.props;
 ---
 
-<img
-    src="/vector/divider.svg"
-    alt=""
-    aria-hidden="true"
-    class={`divider ${className}`}
-/>
+<div class={`divider divider--${variant} ${className}`} />
 
 <style>
-.divider{
+.divider {
     display: block;
-    width: 100%;
-    height: auto;
+    width: calc(100% - 2rem);
+    max-width: 95%;
+    height: 2px;
+}
+
+.divider--default {
+    background-color: var(--divider-color);
+    margin: 3rem auto;
+}
+
+.divider--footer {
+    background-color: var(--divider-footer-color);
+    margin-top: 1rem auto;
+    margin-bottom: 0rem auto;
 }
 </style>

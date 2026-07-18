@@ -1,13 +1,28 @@
 :root {
+    /* Akzentfarben */
+    --accent-1: #db5d5d; /* Red */
+    --accent-2: #5d8bff; /* Blue */
+    
+    /* Basis-Farben */
+    --bg-color: #ffffff;
+    --bg2-color: #292929; /* Für Footer, ProjectShowcase etc. */
+    --text-color: #171717;
+    --title-color: #000000;
+    --shadow-color: #282828;
+    --outline-color: #282828;
+    --divider-color: #909090;
+    --divider-footer-color: #454545;
+    --border-color: #282828;
+    
+    
+    /* Schriftfamilien */
+    --font-heading: "JetBrains Mono", monospace;
+    --font-ui: "Inter", sans-serif;
+    --font-editorial: "Source Serif 4", serif;
 
-    --font-heading:
-    --font-body:
-
-    --color-bg:
-    --color-text:
-
-    --color-accent:
-
-    --header-height:
-
+    /* Fluid Typography: clamp(MIN, RESPONSIV, MAX) */
+    --step-hero-title: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+    --step-heading: clamp(1.75rem, 3vw + 1rem, 2.5rem);
+    --step-body: clamp(1rem, 0.5vw + 0.9rem, 1.125rem);
+    --step-small: clamp(0.85rem, 0.2vw + 0.8rem, 0.95rem);
 }

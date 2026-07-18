@@ -1,3 +1,4 @@
+@import "./variables.css";
 @import "./fonts.css";
 
 *, *::before, *::after {
@@ -11,9 +12,10 @@ html, body {
 }
 
 body {
-    background-color: #ffffff;
-    color: #171717;
-    font-family: "Inter", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-ui);
+    font-size: var(--step-body);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 }
@@ -28,13 +30,19 @@ body {
     flex-grow: 1;
 }
 
+/* Überschriften immer JetBrains Mono und All-Caps */
 h1, h2, h3, h4, h5, h6, .font-mono-title {
-    font-family: "JetBrains Mono", monospace;
-    color: #000000;
+    font-family: var(--font-heading);
+    color: var(--title-color);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
 }
 
-body, p, span, li, a {
-    font-family: "Inter", sans-serif;
+h1 { font-size: var(--step-heading); }
+
+p, span, li {
+    font-family: var(--font-ui);
+    line-height: 1.6;
 }
 
 a {
@@ -42,18 +50,22 @@ a {
     text-decoration: none;
 }
 
+/* Kontext-Klassen für flexible Nutzung */
+.text-editorial-italic {
+    font-family: var(--font-editorial);
+    font-style: italic;
+}
 
-/* Für Chrome, Safari und Edge */
-::-webkit-scrollbar {
+.text-accent-1 { color: var(--accent-1); }
+.text-accent-2 { color: var(--accent-2); }
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
     display: none;
 }
 
-/* Für Firefox */
-html {
-    scrollbar-width: none;
-}
-
-/* Für IE und Edge Legacy */
-html {
+html,
+body {
     -ms-overflow-style: none;
+    scrollbar-width: none;
 }

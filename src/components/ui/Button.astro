@@ -1,21 +1,18 @@
 ---
 interface Props {
     href: string;
-    variant?: "default" | "red" | "orange" | "blue";
-    theme?: "light" | "dark";
+    variant?: "default" | "red" | "blue";
+    download?: boolean | string;
 }
 
 const {
     href,
     variant = "default",
-    theme = "light",
-}: Props = Astro.props;
+    download,
+} = Astro.props;
 ---
 
-<a
-    href={href}
-    class={`button button--${variant} button--theme-${theme}`}
->
+<a href={href} download={download} class={`button button--${variant}`}>
     <slot />
 </a>
 
@@ -25,18 +22,19 @@ const {
     align-items: center;
     justify-content: center;
     padding: 0.22em 0.75em;
-    font-family: "JetBrains Mono", monospace;
+    
+    font-family: var(--font-heading);
     font-weight: 500;
     font-size: 0.95em;
+    text-transform: uppercase;
     text-decoration: none;
-    border: 0.13em solid;
+    
+    background-color: var(--bg-color);
+    color: var(--title-color);
+    border: 0.13em solid var(--outline-color);
     filter: drop-shadow(0.2em 0.2em 0 var(--shadow-color));
-    transition:
-        background-color 0.15s ease,
-        color 0.15s ease,
-        border-color 0.15s ease,
-        transform 0.08s ease,
-        filter 0.08s ease;
+    
+    transition: transform 0.08s ease, filter 0.08s ease, background-color 0.15s ease, color 0.15s ease;
 }
 
 .button:hover {
@@ -50,47 +48,23 @@ const {
     filter: none !important;
 }
 
-.button--theme-light {
-    --shadow-color: #282828;
-    background: #ffffff;
-    color: #282828;
-    border-color: #282828;
-}
-
-.button--theme-light:focus-visible {
-    outline: 0.13em solid #282828;
-    outline-offset: 0.25em;
-}
-
-.button--theme-dark {
-    --shadow-color: #000000;
-    background: #ffffff;
-    color: #282828;
-    border-color: #ffffff;
-}
-
-.button--theme-dark:focus-visible {
-    outline: 0.13em solid #ffffff;
+.button:focus-visible {
+    outline: 0.13em solid var(--outline-color);
     outline-offset: 0.25em;
 }
 
 .button--default:hover {
-    background: #515151;
-    color: #ffffff;
+    background-color: var(--text-color);
+    color: var(--bg-color);
 }
 
 .button--red:hover {
-    background: #db5d5d;
-    color: #ffffff;
-}
-
-.button--orange:hover {
-    background: #ff9a55;
+    background-color: var(--accent-1);
     color: #ffffff;
 }
 
 .button--blue:hover {
-    background: #5d8bff;
+    background-color: var(--accent-2);
     color: #ffffff;
 }
 </style>
