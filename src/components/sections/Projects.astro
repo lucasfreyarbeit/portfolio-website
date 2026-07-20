@@ -6,23 +6,23 @@ import FadeIn from "../animations/FadeIn.svelte";
 
 <section id="projekte">
 
-    <!-- Projekt 1 -->
+     <!-- Projekt 1 -->
     <div class="row">
 
-        <div class="col-image border-left-solid border-right-dashed">
+        <div class="col-image border-top-solid border-left-solid border-right-dashed">
             <FadeIn client:visible delay={0}>
                 <ImageBox
-                    src="/images/projects/Placeholder.png"
-                    alt="Projekt 1 Vorschau"
+                src="/images/projects/Placeholder.png"
+                alt="Projekt 1 Vorschau"
                 />
             </FadeIn>
-        </div>
+     </div>
 
-        <div class="col-text border-right-solid">
+    <div class="col-text border-top-solid border-right-solid">
 
-            <FadeIn client:visible delay={100}>
-                <h1 class="title">PROJEKT 1</h1>
-            </FadeIn>
+        <FadeIn client:visible delay={100}>
+            <h1 class="title">PROJEKT 1</h1>
+        </FadeIn>
 
             <FadeIn client:visible delay={200}>
                 <h2>BESCHREIBUNG</h2>
@@ -131,6 +131,10 @@ import FadeIn from "../animations/FadeIn.svelte";
     }
 
     /* Rasterlinien */
+    .border-top-solid {
+        border-top: 3px solid var(--border-color);  
+    }   
+        
     .border-left-solid {
         border-left: 3px solid var(--border-color);
     }

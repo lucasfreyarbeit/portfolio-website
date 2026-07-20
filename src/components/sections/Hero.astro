@@ -3,116 +3,128 @@ import Button from "../navigation/Button.astro";
 import ImageBox from "../ui/ImageBox.astro";
 import Logo from "../ui/Logo.astro";
 import FadeIn from "../animations/FadeIn.svelte";
+import DownloadIcon from "../../assets/icons/download.svg";
 ---
 
 <section id="hero">
 
     <div class="row">
 
-        <!-- Portrait -->
+        <!-- Links: Portrait & Meta -->
         <div class="column-left border-left-solid border-right-dashed">
-            <FadeIn client:load delay={0}>
-                <div class="portrait-wrapper">
+            
+            <div class="portrait-wrapper">
+                <FadeIn client:load delay={0} immediate>
                     <ImageBox
                         src="/images/portraits/Downscaled.jpg"
                         alt="Portrait von Lucas"
                     />
+                </FadeIn>
+            </div>
+
+            <FadeIn client:load delay={0} immediate>
+                <div class="status-indicator">
+                    <span class="dot"></span>
+                    <span class="status-text">OFFEN FÜR ANFRAGEN</span>
                 </div>
             </FadeIn>
+
+            <div class="meta-section">
+                <FadeIn client:load delay={150} immediate>
+                    <div class="meta-details">
+                        <div class="meta-item">
+                            <span class="meta-label">Fokus:</span>
+                            <span class="meta-value">Game Dev, UI/UX Design, Produktdesign</span>
+                        </div>
+
+                        <div class="meta-item">
+                            <span class="meta-label">Standort:</span>
+                            <span class="meta-value">Biberach / Ochsenhausen</span>
+                        </div>
+
+                        <div class="meta-item">
+                            <span class="meta-label">Arbeitsort:</span>
+                            <span class="meta-value">Vor Ort & Remote</span>
+                        </div>
+
+                        <div class="meta-item">
+                            <span class="meta-label">Verfügbar:</span>
+                            <span class="meta-value">Ab sofort</span>
+                        </div>
+                    </div>
+                </FadeIn>
+            </div>
+
         </div>
 
-        <!-- Inhalt -->
+        <!-- Rechts: Inhalt & Navigation -->
         <div class="column-right border-right-solid">
 
-            <!-- Branding -->
-            <FadeIn client:load delay={100}>
-                <div class="logo-wrapper">
-                    <Logo variant="black" />
-                </div>
-            </FadeIn>
-
-            <FadeIn client:load delay={200}>
-                <h2 class="subheading">
-                    <span class="text-designer">
-                        DESIGNER.
-                    </span>
-
-                    <span class="text-developer">
-                        DEVELOPER.
-                    </span>
-                </h2>
-            </FadeIn>
-
-            <!-- Über mich -->
-            <FadeIn client:load delay={300}>
-                <section class="content-section">
-
-                    <h3 class="section-title">
-                        ÜBER MICH
-                    </h3>
-
-                    <p>
-                        Ich verbinde Development, Design und Business.
-                        Als technischer Generalist löse ich Probleme
-                        auf jeder Ebene eines Projekts: Ich entwickle
-                        das Produkt, gestalte das gesamte Branding samt
-                        Design und kümmere mich um das Publishing sowie
-                        das strategische Skalieren.
-                    </p>
-
-                </section>
-            </FadeIn>
-
-            <!-- Toolstack -->
-            <FadeIn client:load delay={400}>
-                <section class="content-section">
-
-                    <h3 class="section-title">
-                        TOOLSTACK
-                    </h3>
-
-                    <div class="stack-grid">
-                        <span class="tech-tag">Astro</span>
-                        <span class="tech-tag">HTML / CSS</span>
-                        <span class="tech-tag">VS Code</span>
-                        <span class="tech-tag">Git / GitHub</span>
-                        <span class="tech-tag">Godot Engine</span>
+            <!-- Branding / Top Section -->
+            <div class="branding-block">
+                <FadeIn client:load delay={100} immediate>
+                    <div class="logo-wrapper">
+                        <Logo variant="black" />
                     </div>
+                </FadeIn>
 
-                </section>
-            </FadeIn>
+                <FadeIn client:load delay={200} immediate>
+                    <h2 class="subheading">
+                        <span class="text-designer">DESIGNER.</span>
+                        <span class="text-developer">DEVELOPER.</span>
+                    </h2>
+                </FadeIn>
+            </div>
 
-            <!-- Navigation -->
+            <!-- Inhaltsbereich (Über mich & Toolstack) -->
+            <div class="main-content">
+                <FadeIn client:load delay={300} immediate>
+                    <section class="content-section">
+                        <h3 class="section-title">ÜBER MICH</h3>
+                        <p>
+                            Ich verbinde Development, Design und Business.
+                            Als technischer Generalist löse ich Probleme
+                            auf jeder Ebene eines Projekts: Ich entwickle
+                            das Produkt, gestalte das gesamte Branding samt
+                            Design und kümmere mich um das Publishing sowie
+                            das strategische Skalieren.
+                        </p>
+                    </section>
+                </FadeIn>
+
+                <FadeIn client:load delay={400} immediate>
+                    <section class="content-section toolstack-section">
+                        <h3 class="section-title">TOOLSTACK</h3>
+                        <div class="stack-grid">
+                            <span class="tech-tag">Astro</span>
+                            <span class="tech-tag">HTML / CSS</span>
+                            <span class="tech-tag">VS Code</span>
+                            <span class="tech-tag">Git / GitHub</span>
+                            <span class="tech-tag">Godot Engine</span>
+                        </div>
+                    </section>
+                </FadeIn>
+            </div>
+
+            <!-- Action Buttons -->
             <nav class="action-area">
-
-                <FadeIn client:load delay={500}>
-                    <Button
-                        href="#projekte"
-                        variant="red"
-                    >
-                        PROJEKTE
-                    </Button>
+                <FadeIn client:load delay={500} immediate>
+                    <Button href="#projekte" variant="red">PROJEKTE</Button>
                 </FadeIn>
 
-                <FadeIn client:load delay={600}>
-                    <Button
-                        href="#kontakt"
-                        variant="blue"
-                    >
-                        KONTAKT
-                    </Button>
+                <FadeIn client:load delay={600} immediate>
+                    <Button href="#kontakt" variant="blue">KONTAKT</Button>
                 </FadeIn>
 
-                <FadeIn client:load delay={700}>
+                <FadeIn client:load delay={700} immediate>
                     <Button
                         href="/documents/Lebenslauf-Lucas-Frey.pdf"
                         download
                         variant="red"
                     >
-                        LEBENSLAUF.PDF
+                        <DownloadIcon /> LEBENSLAUF.PDF
                     </Button>
                 </FadeIn>
-
             </nav>
 
         </div>
@@ -126,31 +138,29 @@ import FadeIn from "../animations/FadeIn.svelte";
         box-sizing: border-box;
     }
 
-    /* Hero-Bereich */
     #hero {
         width: 100%;
         padding-top: 1rem;
+        min-height: 100dvh;
+        display: flex;
     }
 
-    /* Zeilenlayout */
     .row {
         display: flex;
         align-items: stretch;
-
         width: 100%;
         margin: 0 auto;
         padding: 0 1rem;
     }
 
-    /* Spaltenlayout */
     .column-left,
     .column-right {
         padding: 2rem;
-
         border-top: 3px solid var(--border-color);
-        border-bottom: 3px solid var(--border-color);
+        border-bottom: 0px;
     }
 
+    /* LEFT COLUMN */
     .column-left {
         display: flex;
         flex: 0.5;
@@ -158,10 +168,161 @@ import FadeIn from "../animations/FadeIn.svelte";
         justify-content: flex-start;
     }
 
+    .portrait-wrapper {
+        width: 100%;
+    }
+
+    .meta-section {
+        margin-top: 1.25rem;
+        padding-top: 1.25rem;
+        border-top: 2px dashed var(--border-color);
+    }
+
+    .meta-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .meta-item {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 0.4rem;
+    }
+
+    .meta-label {
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-color);
+        text-transform: uppercase;
+    }
+
+    .meta-value {
+        font-size: 1rem;
+        font-style: italic;
+        line-height: 1.4;
+    }
+
+    .status-indicator {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1.25rem;
+        margin-bottom: -1rem;
+    }
+
+    .dot {
+        width: 15px;
+        height: 15px;
+        background-color: #00ff66;
+        border: 2px solid var(--border-color);
+        border-radius: 50%;
+        filter: drop-shadow(0.1em 0.1em 0 var(--shadow-color));
+    }
+
+    .status-text {
+        font-family: var(--font-heading);
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+    }
+
+    /* RIGHT COLUMN */
     .column-right {
         display: flex;
         flex: 1;
         flex-direction: column;
+    }
+
+    /* Branding Block */
+    .branding-block {
+        padding-bottom: 1.25rem;
+        border-bottom: 2px dashed var(--border-color);
+    }
+
+    .logo-wrapper {
+        margin: 1.2rem 0 2rem -0.4rem;
+        transform: scale(3);
+        transform-origin: left center;
+    }
+
+    .subheading {
+        margin: 0;
+        font-family: var(--font-heading);
+        font-size: 160%;
+        font-weight: 700;
+    }
+
+    .text-designer {
+        margin-right: 1rem;
+        color: var(--accent-2);
+    }
+
+    .text-developer {
+        color: var(--accent-1);
+    }
+
+    /* Inhaltsbereich */
+    .main-content {
+        padding-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .content-section {
+        margin-bottom: 2rem;
+    }
+
+    .toolstack-section {
+        margin-top: auto;
+        margin-bottom: 0;
+    }
+
+    .section-title {
+        margin: 0 0 0.75rem;
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    .content-section p {
+        margin: 0;
+        font-size: var(--step-body);
+        font-style: italic;
+        line-height: 1.6;
+    }
+
+    .stack-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .tech-tag {
+        padding: 0.4rem 0.8rem;
+        font-family: var(--font-heading);
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--text-color);
+        background: transparent;
+        border: 2px solid var(--border-color);
+    }
+
+    /* Action Buttons Area */
+    .action-area {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: 100%;
+        margin-top: auto;
+        padding-top: 1.5rem;
+        border-top: 2px dashed var(--border-color);
     }
 
     /* Rasterlinien */
@@ -177,99 +338,7 @@ import FadeIn from "../animations/FadeIn.svelte";
         border-right: 2px dashed var(--border-color);
     }
 
-    /* Portrait */
-    .portrait-wrapper {
-        width: 100%;
-        height: auto;
-    }
-
-    /* Branding */
-    .logo-wrapper {
-        margin: 1.2rem 0 2rem -0.4rem;
-
-        transform: scale(3);
-        transform-origin: left center;
-    }
-
-    .subheading {
-        margin: 0 0 2rem;
-        padding-bottom: 0.5rem;
-
-        font-size: 160%;
-        font-weight: 700;
-
-        border-bottom: 2px dashed var(--border-color);
-    }
-
-    .text-designer {
-        margin-right: 1rem;
-        color: var(--accent-2);
-    }
-
-    .text-developer {
-        color: var(--accent-1);
-    }
-
-    /* Inhaltsbereiche */
-    .content-section {
-        margin-bottom: 2.5rem;
-    }
-
-    .content-section:last-of-type {
-        margin-bottom: 0;
-    }
-
-    .section-title {
-        margin: 0 0 0.75rem;
-
-        font-family: var(--font-heading);
-        font-size: 1.1rem;
-        font-weight: 700;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-    }
-
-    .content-section p {
-        margin: 0;
-
-        font-size: var(--step-body);
-        line-height: 1.6;
-    }
-
-    /* Toolstack */
-    .stack-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-
-    .tech-tag {
-        padding: 0.4rem 0.8rem;
-
-        font-family: var(--font-heading);
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-transform: uppercase;
-
-        color: var(--text-color);
-        background: transparent;
-        border: 2px solid var(--border-color);
-    }
-
-    /* Navigation */
-    .action-area {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-
-        width: 100%;
-        margin-top: auto;
-        padding-top: 1.5rem;
-
-        border-top: 2px dashed var(--border-color);
-    }
-
-        /* Responsives Layout */
+    /* Responsives Layout */
     @media (max-width: 992px) {
         .action-area {
             flex-direction: column;
@@ -278,6 +347,7 @@ import FadeIn from "../animations/FadeIn.svelte";
 
     @media (max-width: 768px) {
         #hero {
+            height: auto;
             padding-top: 2rem;
         }
 
@@ -287,7 +357,6 @@ import FadeIn from "../animations/FadeIn.svelte";
 
         .column-left {
             padding-bottom: 1rem;
-
             border-right: 3px solid var(--border-color);
             border-bottom: none;
         }
@@ -302,6 +371,7 @@ import FadeIn from "../animations/FadeIn.svelte";
 
         .action-area {
             flex-direction: row;
+            margin-top: 2rem;
         }
     }
 

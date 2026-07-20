@@ -2,25 +2,32 @@
     import { onMount } from "svelte";
 
     export let delay = 0;
+    export let immediate = false; 
 
     let isVisible = false;
     let container;
 
     onMount(() => {
+        // Fall 1: Hero-Elemente direkt beim Laden animieren
+        if (immediate) {
+            const timer = setTimeout(() => {
+                isVisible = true;
+            }, delay);
+
+            return () => clearTimeout(timer);
+        }
+
+        // Fall 2: Normale Elemente beim Scrollen animieren
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     isVisible = true;
-
-                    /* Beobachtung nach der ersten Animation beenden */
                     observer.unobserve(entry.target);
                 }
             });
         }, {
             root: null,
-
-            /* Animation kurz vor dem vollständigen Eintritt starten */
-            rootMargin: "0px 0px -10% 0px",
+            rootMargin: "0px 0px -5% 0px",
             threshold: 0
         });
 
@@ -40,7 +47,7 @@
     bind:this={container}
     class="scroll-reveal"
     class:is-active={isVisible}
-    style={`transition-delay: ${delay}ms;`}
+    style={`transition-delay: ${immediate ? '0ms' : `${delay}ms`};`}
 >
     <slot />
 </div>
@@ -48,9 +55,8 @@
 <style>
     .scroll-reveal {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(30px);
 
-        /* Einblendanimation */
         transition:
             opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
             transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
