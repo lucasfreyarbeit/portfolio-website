@@ -1,7 +1,10 @@
 :root {
     /* Akzentfarben */
-    --accent-1: #db5d5d; /* Red */
-    --accent-2: #5d8bff; /* Blue */
+    --accent-red-highlight: #db5d5d; /* Red Highlight */
+    --accent-blue-highlight: #5d8bff; /* Blue Highlight */
+
+    --accent-red-vibrant: #e44949; /* Red Normal */
+    --accent-blue-vibrant: #396ef6; /* Blue Normal */
     
     /* Basis-Farben */
     --bg-color: #ffffff;
