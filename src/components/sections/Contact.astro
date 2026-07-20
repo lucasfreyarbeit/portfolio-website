@@ -10,9 +10,9 @@ import FadeIn from "../animations/FadeIn.svelte";
             <!-- Einleitung -->
             <FadeIn client:load>
                 <h1 class="title1">KONTAKT</h1>
-                <h2>LASS UNS WAS STARTEN</h2>
+                <h2>ICH FREUE MICH AUF DICH!</h2>
 
-                <p>
+                <p class="description">
                     Du hast eine offene Stelle, einen Ausbildungsplatz oder möchtest
                     mich für ein Vorstellungsgespräch einladen? Schreib mir direkt –
                     ich melde mich umgehend.
@@ -114,6 +114,10 @@ import FadeIn from "../animations/FadeIn.svelte";
         font-weight: 700;
     }
 
+    .description {
+        font-style: italic;
+    }
+
     /* Formularlayout */
     .contact-form {
         display: flex;
@@ -187,6 +191,6 @@ import FadeIn from "../animations/FadeIn.svelte";
         justify-content: flex-start;
 
         width: 100%;
-        margin-top: 1rem;
+        margin-top: 0rem;
     }
 </style>

@@ -3,6 +3,8 @@
 
     export let delay = 0;
     export let immediate = false; 
+    let className = "";
+    export { className as class };
 
     let isVisible = false;
     let container;
@@ -45,7 +47,7 @@
 
 <div
     bind:this={container}
-    class="scroll-reveal"
+    class={`scroll-reveal ${className}`}
     class:is-active={isVisible}
     style={`transition-delay: ${immediate ? '0ms' : `${delay}ms`};`}
 >

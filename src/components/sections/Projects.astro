@@ -6,23 +6,23 @@ import FadeIn from "../animations/FadeIn.svelte";
 
 <section id="projekte">
 
-     <!-- Projekt 1 -->
+    <!-- Projektkarte 01 -->
     <div class="row">
 
         <div class="col-image border-top-solid border-left-solid border-right-dashed">
             <FadeIn client:visible delay={0}>
                 <ImageBox
-                src="/images/projects/Placeholder.png"
-                alt="Projekt 1 Vorschau"
+                    src="/images/projects/Placeholder.png"
+                    alt="Projekt 1 Vorschau"
                 />
             </FadeIn>
-     </div>
+        </div>
 
-    <div class="col-text border-top-solid border-right-solid">
+        <div class="col-text border-top-solid border-right-solid">
 
-        <FadeIn client:visible delay={100}>
-            <h1 class="title">PROJEKT 1</h1>
-        </FadeIn>
+            <FadeIn client:visible delay={100}>
+                <h1 class="title">PROJEKT 1</h1>
+            </FadeIn>
 
             <FadeIn client:visible delay={200}>
                 <h2>BESCHREIBUNG</h2>
@@ -36,22 +36,45 @@ import FadeIn from "../animations/FadeIn.svelte";
                 </p>
             </FadeIn>
 
-            <div class="buttons">
-                <FadeIn client:visible delay={400}>
-                    <Button
-                        href="/projekte/projekt-1"
-                        variant="red"
-                    >
-                        PROJEKT GENAUER ANSEHEN
-                    </Button>
-                </FadeIn>
+            <FadeIn client:visible delay={350}>
+                <div class="tech-stack">
+                    <h2>VERWENDETE TECHNOLOGIEN</h2>
+                    <div class="tags">
+                        <span class="tag">ASTRO</span>
+                        <span class="tag">SVELTE</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                </div>
+            </FadeIn>
+
+            <div class="button-wrapper">
+                <div class="buttons">
+                    <!-- Sequenzielles Einblenden der Aktions-Buttons -->
+                    <FadeIn client:visible delay={400}>
+                        <Button
+                            href="/projekte/projekt-1"
+                            variant="red"
+                        >
+                            PROJEKT GENAUER ANSEHEN
+                        </Button>
+                    </FadeIn>
+
+                    <FadeIn client:visible delay={500}>
+                        <Button
+                            href="#"
+                            variant="blue"
+                        >
+                            LIVE DEMO
+                        </Button>
+                    </FadeIn>
+                </div>
             </div>
 
         </div>
 
     </div>
 
-    <!-- Projekt 2 -->
+    <!-- Projektkarte 02 -->
     <div class="row">
 
         <div class="col-text border-left-solid border-right-dashed">
@@ -66,21 +89,44 @@ import FadeIn from "../animations/FadeIn.svelte";
 
             <FadeIn client:visible delay={200}>
                 <p>
-                    Hier steht der Text für das zweite Projekt.<br />
-                    Alles sauber gespiegelt durch HTML-Anordnung.<br />
-                    Borders fluchten perfekt mit Projekt 1.
+                    was soll ich hier nur reinschreiben ugh<br />
+                    noch mehr geblubber<br />
+                    naja egal
                 </p>
             </FadeIn>
 
-            <div class="buttons">
-                <FadeIn client:visible delay={300}>
-                    <Button
-                        href="/projekte/projekt-2"
-                        variant="red"
-                    >
-                        PROJEKT GENAUER ANSEHEN
-                    </Button>
-                </FadeIn>
+            <FadeIn client:visible delay={250}>
+                <div class="tech-stack">
+                    <h2>VERWENDETE TECHNOLOGIEN</h2>
+                    <div class="tags">
+                        <span class="tag">GODOT</span>
+                        <span class="tag">GDSCRIPT</span>
+                        <span class="tag">BLENDER</span>
+                    </div>
+                </div>
+            </FadeIn>
+
+            <div class="button-wrapper">
+                <div class="buttons">
+                    <!-- Sequenzielles Einblenden der Aktions-Buttons -->
+                    <FadeIn client:visible delay={300}>
+                        <Button
+                            href="/projekte/projekt-2"
+                            variant="red"
+                        >
+                            PROJEKT GENAUER ANSEHEN
+                        </Button>
+                    </FadeIn>
+
+                    <FadeIn client:visible delay={400}>
+                        <Button
+                            href="#"
+                            variant="blue"
+                        >
+                            LIVE DEMO
+                        </Button>
+                    </FadeIn>
+                </div>
             </div>
 
         </div>
@@ -103,7 +149,7 @@ import FadeIn from "../animations/FadeIn.svelte";
         box-sizing: border-box;
     }
 
-    /* Zeilenlayout */
+    /* Haupt-Grid-Struktur */
     .row {
         display: flex;
         align-items: stretch;
@@ -113,7 +159,7 @@ import FadeIn from "../animations/FadeIn.svelte";
         padding: 0 1rem;
     }
 
-    /* Spaltenlayout */
+    /* Spalten-Layouts & Gemeinsame Rahmen */
     .col-image,
     .col-text {
         padding: 1.5rem;
@@ -130,7 +176,11 @@ import FadeIn from "../animations/FadeIn.svelte";
         flex-direction: column;
     }
 
-    /* Rasterlinien */
+    .col-text p {
+        font-style: italic;
+    }
+
+    /* Varianten für Grid-Linien */
     .border-top-solid {
         border-top: 3px solid var(--border-color);  
     }   
@@ -147,7 +197,7 @@ import FadeIn from "../animations/FadeIn.svelte";
         border-right: 2px dashed var(--border-color);
     }
 
-    /* Projekttitel */
+    /* Typografie */
     .title {
         margin: 0;
 
@@ -155,13 +205,48 @@ import FadeIn from "../animations/FadeIn.svelte";
         font-weight: 700;
     }
 
-    /* Buttonbereich */
-    .buttons {
-        display: flex;
-        justify-content: center;
+    /* Tech-Stack Badges */
+    .tech-stack {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
 
+    .tech-stack h2 {
+        margin-bottom: 0.5rem;
+        font-size: 100%;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .tag {
+        padding: 0.4rem 0.8rem;
+
+        border: 2px solid var(--border-color);
+        background-color: transparent;
+
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    /* Button-Container & Fixierung am unteren Rand */
+    .button-wrapper {
         width: 100%;
         margin-top: auto;
-        padding-top: 2rem;
+    }
+
+    .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: flex-start;
+
+        width: 100%;
+        padding-top: 1.5rem;
+        border-top: 2px dashed var(--border-color);
     }
 </style>
