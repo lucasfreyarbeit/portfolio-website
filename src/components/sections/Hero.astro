@@ -1,16 +1,61 @@
 ---
+// Import-Anweisungen
 import Button from "../navigation/Button.astro";
 import ImageBox from "../ui/ImageBox.astro";
 import Logo from "../ui/Logo.astro";
 import FadeIn from "../animations/FadeIn.svelte";
 import DownloadIcon from "../../assets/icons/download.svg";
+
+// Typdefinitionen
+interface ToolItem {
+    name: string;
+    breakAfter?: boolean;
+}
+
+interface ToolCategory {
+    category: string;
+    items: ToolItem[];
+}
+
+// Datenstruktur für den Toolstack
+const toolCategories: ToolCategory[] = [
+    {
+        category: "ENTWICKLUNG",
+        items: [
+            { name: "VS Code" },
+            { name: "Git & GitHub" },
+            { name: "Godot Engine" },
+            { name: "Roblox Studio" },
+            { name: "Android Studio" }
+        ]
+    },
+    {
+        category: "DESIGN & 3D",
+        items: [
+            { name: "Affinity Studio" },
+            { name: "Penpot" },
+            { name: "Blender" },
+            { name: "Blockbench" },
+            { name: "MagicaVoxel" },
+            { name: "Material Maker" }
+        ]
+    },
+    {
+        category: "WORKFLOW & ORGA",
+        items: [
+            { name: "Notion" },
+            { name: "Obsidian" },
+            { name: "Google Workspace", breakAfter: true },
+            { name: "Fedora Linux" }
+        ]
+    }
+];
 ---
 
 <section id="hero">
-
     <div class="row">
 
-        <!-- Links: Portrait & Meta -->
+        <!-- Linke Spalte: Portrait- und Metadaten-Sektion -->
         <div class="column-left border-left-solid border-right-dashed">
             
             <div class="portrait-wrapper">
@@ -24,7 +69,7 @@ import DownloadIcon from "../../assets/icons/download.svg";
 
             <FadeIn client:load delay={0} immediate>
                 <div class="status-indicator">
-                    <span class="dot"></span>
+                    <span class="dot" aria-hidden="true"></span>
                     <span class="status-text">OFFEN FÜR ANFRAGEN</span>
                 </div>
             </FadeIn>
@@ -32,26 +77,22 @@ import DownloadIcon from "../../assets/icons/download.svg";
             <div class="meta-section">
                 <FadeIn client:load delay={150} immediate>
                     <div class="meta-details">
-                     <div class="meta-item">
+                        <div class="meta-item">
                             <span class="meta-label">Suche nach:</span>
                             <span class="meta-value">Ausbildung oder Quereinstieg</span>
                         </div>
-
                         <div class="meta-item">
                             <span class="meta-label">Fokus:</span>
                             <span class="meta-value">Web-Entwicklung, Produktdesign, UI + UX</span>
                         </div>
-
                         <div class="meta-item">
                             <span class="meta-label">Verfügbar:</span>
                             <span class="meta-value">Ab sofort</span>
                         </div>
-
                         <div class="meta-item">
                             <span class="meta-label">Standort:</span>
                             <span class="meta-value">Ochsenhausen</span>
                         </div>
-
                         <div class="meta-item">
                             <span class="meta-label">Arbeitsort:</span>
                             <span class="meta-value">Vor Ort und Remote</span>
@@ -59,13 +100,12 @@ import DownloadIcon from "../../assets/icons/download.svg";
                     </div>
                 </FadeIn>
             </div>
-
         </div>
 
-        <!-- Rechts: Inhalt & Navigation -->
+        <!-- Rechte Spalte: Inhalts- und Navigationsbereich -->
         <div class="column-right border-right-solid">
 
-            <!-- Branding / Top Section -->
+            <!-- Branding-Bereich -->
             <div class="branding-block">
                 <FadeIn client:load delay={100} immediate>
                     <div class="logo-wrapper">
@@ -81,7 +121,7 @@ import DownloadIcon from "../../assets/icons/download.svg";
                 </FadeIn>
             </div>
 
-            <!-- Inhaltsbereich (Über mich & Toolstack) -->
+            <!-- Hauptinhalt -->
             <div class="main-content">
                 <FadeIn client:load delay={300} immediate>
                     <section class="content-section">
@@ -97,49 +137,64 @@ import DownloadIcon from "../../assets/icons/download.svg";
                     </section>
                 </FadeIn>
 
-                <FadeIn client:load delay={400} immediate>
-                    <section class="content-section toolstack-section">
-                        <h3 class="section-title">TOOLSTACK</h3>
-                        <div class="stack-grid">
-                            <span class="tech-tag">Astro</span>
-                            <span class="tech-tag">HTML / CSS</span>
-                            <span class="tech-tag">VS Code</span>
-                            <span class="tech-tag">Git / GitHub</span>
-                            <span class="tech-tag">Godot Engine</span>
+                <!-- Toolstack-Sektion -->
+                <section class="content-section toolstack-section">
+                    <FadeIn client:load delay={400} immediate>
+                        <h3 class="section-title">TOOLSTACK & SOFTWARE</h3>
+                        
+                        <div class="tools-grid">
+                            {toolCategories.map((group: ToolCategory) => (
+                                <div class="tool-group">
+                                    <h4 class="group-title">{group.category}</h4>
+                                    <div class="stack-grid">
+                                        {group.items.map((item: ToolItem) => (
+                                            <span class={`tech-tag ${item.breakAfter ? "break-after" : ""}`}>
+                                                {item.name}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                    </section>
-                </FadeIn>
+                    </FadeIn>
+                </section>
+
+                <!-- Hinweis zur Software-Auswahl -->
+                <div class="toolstack-note-container">
+                    <FadeIn client:load delay={450} immediate>
+                        <p class="toolstack-note">
+                            *Auszug der primär genutzten Software. Detaillierte Stacks & Frameworks sind in den jeweiligen Projekten aufgeführt.
+                        </p>
+                    </FadeIn>
+                </div>
+
+                <!-- Aktions-Schaltflächen -->
+                <nav class="action-area" aria-label="Aktionsmenü">
+                    <FadeIn client:load delay={500} immediate>
+                        <Button href="#projekte" variant="red">PROJEKTE</Button>
+                    </FadeIn>
+
+                    <FadeIn client:load delay={600} immediate>
+                        <Button href="#kontakt" variant="blue">KONTAKT</Button>
+                    </FadeIn>
+
+                    <FadeIn client:load delay={700} immediate>
+                        <Button
+                            href="/documents/Lebenslauf-Lucas-Frey.pdf"
+                            download
+                            variant="red"
+                        >
+                            <DownloadIcon aria-hidden="true" /> LEBENSLAUF.PDF
+                        </Button>
+                    </FadeIn>
+                </nav>
             </div>
-
-            <!-- Action Buttons -->
-            <nav class="action-area">
-                <FadeIn client:load delay={500} immediate>
-                    <Button href="#projekte" variant="red">PROJEKTE</Button>
-                </FadeIn>
-
-                <FadeIn client:load delay={600} immediate>
-                    <Button href="#kontakt" variant="blue">KONTAKT</Button>
-                </FadeIn>
-
-                <FadeIn client:load delay={700} immediate>
-                    <Button
-                        href="/documents/Lebenslauf-Lucas-Frey.pdf"
-                        download
-                        variant="red"
-                    >
-                        <DownloadIcon /> LEBENSLAUF.PDF
-                    </Button>
-                    
-                </FadeIn>
-            </nav>
-
         </div>
-
     </div>
-
 </section>
 
 <style>
+    /* Globale Reset- und Layout-Styles */
     * {
         box-sizing: border-box;
     }
@@ -166,7 +221,7 @@ import DownloadIcon from "../../assets/icons/download.svg";
         border-bottom: 0px;
     }
 
-    /* LEFT COLUMN */
+    /* Linke Spalte */
     .column-left {
         display: flex;
         flex: 0.5;
@@ -235,14 +290,14 @@ import DownloadIcon from "../../assets/icons/download.svg";
         letter-spacing: 0.05em;
     }
 
-    /* RIGHT COLUMN */
+    /* Rechte Spalte */
     .column-right {
         display: flex;
         flex: 1;
         flex-direction: column;
     }
 
-    /* Branding Block */
+    /* Branding-Block */
     .branding-block {
         padding-bottom: 1.25rem;
         border-bottom: 2px dashed var(--border-color);
@@ -279,16 +334,16 @@ import DownloadIcon from "../../assets/icons/download.svg";
     }
 
     .content-section {
-        margin-bottom: 2rem;
+        margin-bottom: 2.25rem;
     }
 
     .toolstack-section {
         margin-top: auto;
-        margin-bottom: 1rem;
+        margin-bottom: 0;
     }
 
     .section-title {
-        margin: 0 0 0.75rem;
+        margin: 0 0 0.9rem;
         font-family: var(--font-heading);
         font-size: 1.1rem;
         font-weight: 700;
@@ -303,24 +358,67 @@ import DownloadIcon from "../../assets/icons/download.svg";
         line-height: 1.6;
     }
 
-    .stack-grid {
+    /* Toolstack Raster */
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .tool-group {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         gap: 0.5rem;
     }
 
-    .tech-tag {
-        padding: 0.4rem 0.8rem;
+    .group-title {
+        margin: 0;
         font-family: var(--font-heading);
-        font-size: 0.85rem;
+        font-size: var(--step-small);
+        font-weight: 700;
+        color: var(--text-color);
+        text-transform: uppercase;
+        opacity: 0.8;
+    }
+
+    .stack-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .tech-tag {
+        padding: 0.35rem 0.65rem;
+        font-family: var(--font-heading);
+        font-size: 0.8rem;
         font-weight: 600;
         text-transform: uppercase;
         color: var(--text-color);
         background: transparent;
+        /* KORREKTUR: Standardwert für durchgehenden Rahmen gesetzt */
         border: 2px solid var(--border-color);
+        white-space: nowrap;
+        width: fit-content;
     }
 
-    /* Action Buttons Area */
+    .tech-tag.break-after {
+        margin-right: 100%;
+    }
+
+    .toolstack-note-container {
+        margin-top: auto;
+    }
+
+    .toolstack-note {
+        margin-top: 8rem;
+        margin-bottom: 0rem;
+        font-size: var(--step-small);
+        font-style: italic;
+        line-height: 1.4;
+        opacity: 0.75;
+    }
+
+    /* Aktions-Schaltflächen */
     .action-area {
         display: flex;
         flex-wrap: wrap;
@@ -331,18 +429,10 @@ import DownloadIcon from "../../assets/icons/download.svg";
         border-top: 2px dashed var(--border-color);
     }
 
-    /* Rasterlinien */
-    .border-left-solid {
-        border-left: 3px solid var(--border-color);
-    }
-
-    .border-right-solid {
-        border-right: 3px solid var(--border-color);
-    }
-
-    .border-right-dashed {
-        border-right: 2px dashed var(--border-color);
-    }
+    /* Hilfsklassen für Rasterlinien */
+    .border-left-solid { border-left: 3px solid var(--border-color); }
+    .border-right-solid { border-right: 3px solid var(--border-color); }
+    .border-right-dashed { border-right: 2px dashed var(--border-color); }
 
     /* Responsives Layout */
     @media (max-width: 992px) {

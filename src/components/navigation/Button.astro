@@ -1,20 +1,31 @@
 ---
+// Schnittstellendefinition für polymorphe Button-/Link-Komponente
 interface Props {
-    href: string;
+    href?: string;
     variant?: "default" | "red" | "blue";
     download?: boolean | string;
+    type?: "button" | "submit" | "reset";
 }
 
 const {
     href,
     variant = "default",
     download,
+    type = "button",
 } = Astro.props;
 ---
 
-<a href={href} download={download} class={`button button--${variant}`}>
-    <slot />
-</a>
+{
+    href ? (
+        <a href={href} download={download} class={`button button--${variant}`}>
+            <slot />
+        </a>
+    ) : (
+        <button type={type} class={`button button--${variant}`}>
+            <slot />
+        </button>
+    )
+}
 
 <style>
     .button {
@@ -30,6 +41,13 @@ const {
         background: var(--bg-color);
         border: 2px solid var(--outline-color);
         filter: drop-shadow(3px 3px 0 var(--shadow-color));
+        
+        /* Zurücksetzen herstellerspezifischer Button-Styles für visuelle Parität mit <a> Tags */
+        margin: 0;
+        line-height: normal;
+        appearance: none;
+        -webkit-appearance: none;
+
         transition:
             transform .08s,
             filter .08s,

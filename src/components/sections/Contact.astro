@@ -10,7 +10,7 @@ import FadeIn from "../animations/FadeIn.svelte";
             <!-- Einleitung -->
             <FadeIn client:load>
                 <h1 class="title1">KONTAKT</h1>
-                <h2>ICH FREUE MICH AUF DICH!</h2>
+                <h2>ICH FREUE MICH AUF DICH \^o^/</h2>
 
                 <p class="description">
                     Du hast eine offene Stelle, einen Ausbildungsplatz oder möchtest
@@ -19,51 +19,91 @@ import FadeIn from "../animations/FadeIn.svelte";
                 </p>
             </FadeIn>
 
-            <!-- Formular -->
-            <form class="contact-form">
+            <!-- Formular mit un-static Formular-Endpunkt -->
+            <form 
+                action="https://forms.un-static.com/forms/66b73be1aeef46d682b54448400032603252fdd4" 
+                method="POST" 
+                class="contact-form"
+                novalidate
+            >
 
+                <!-- Unternehmen / Studio (Optional) -->
                 <FadeIn client:load delay={100}>
                     <div class="form-group">
-                        <label for="name">UNTERNEHMEN / NAME</label>
+                        <label for="company">UNTERNEHMEN / STUDIO <span class="optional-badge">(OPTIONAL)</span></label>
+                        <input
+                            type="text"
+                            id="company"
+                            name="company"
+                            placeholder="Name der Firma, Agentur oder des Studios"
+                        />
+                    </div>
+                </FadeIn>
+
+                <!-- Name / Ansprechperson (Pflichtfeld) -->
+                <FadeIn client:load delay={150}>
+                    <div class="form-group">
+                        <label for="name">
+                            NAME / ANSPRECHPERSON <span class="required-asterisk">*</span>
+                        </label>
                         <input
                             type="text"
                             id="name"
                             name="name"
                             required
-                            placeholder="Name des Unternehmens, der Agentur oder Studios"
+                            placeholder="Max Mustermann"
+                            aria-describedby="name-hint"
                         />
+                        <span id="name-hint" class="field-hint">
+                            Diese Information wird für eine direkte Rückmeldung benötigt.
+                        </span>
                     </div>
                 </FadeIn>
 
+                <!-- E-Mail-Adresse (Pflichtfeld) -->
                 <FadeIn client:load delay={200}>
                     <div class="form-group">
-                        <label for="email">EMAIL</label>
+                        <label for="email">
+                            EMAIL <span class="required-asterisk">*</span>
+                        </label>
                         <input
                             type="email"
                             id="email"
                             name="email"
                             required
                             placeholder="deine.email@firma.de"
+                            aria-describedby="email-hint"
                         />
+                        <span id="email-hint" class="field-hint">
+                            Eine gültige E-Mail-Adresse ist erforderlich.
+                        </span>
                     </div>
                 </FadeIn>
 
+                <!-- Nachricht (Pflichtfeld) -->
                 <FadeIn client:load delay={300}>
                     <div class="form-group">
-                        <label for="message">NACHRICHT</label>
+                        <label for="message">
+                            NACHRICHT <span class="required-asterisk">*</span>
+                        </label>
                         <textarea
                             id="message"
                             name="message"
                             rows="5"
                             required
                             placeholder="Hi Lucas, wir würden dich gerne zu einem Gespräch einladen..."
+                            aria-describedby="message-hint"
                         ></textarea>
+                        <span id="message-hint" class="field-hint">
+                            Bitte gib hier eine kurze Nachricht ein.
+                        </span>
                     </div>
                 </FadeIn>
 
+                <!-- Absende-Button -->
                 <FadeIn client:load delay={400}>
                     <div class="buttons">
-                        <Button href="#" variant="blue">
+                        <Button type="submit" variant="blue">
                             ANFRAGE SENDEN
                         </Button>
                     </div>
@@ -74,6 +114,32 @@ import FadeIn from "../animations/FadeIn.svelte";
         </div>
     </div>
 </section>
+
+<!-- Skript zur Steuerung der HTML5-Validierungsanzeige und Wiggle-Animation -->
+<script>
+    const form = document.querySelector('.contact-form') as HTMLFormElement | null;
+
+    if (form) {
+        form.addEventListener('submit', (event) => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                
+                // Markiert alle ungültigen Formulargruppen für visuelles Feedback
+                const invalidInputs = form.querySelectorAll(':invalid');
+                invalidInputs.forEach((input) => {
+                    const group = input.closest('.form-group');
+                    if (group) {
+                        group.classList.add('is-invalid');
+                        // Entfernt die Klasse nach der Animation für erneutes Triggern
+                        setTimeout(() => {
+                            group.classList.remove('is-invalid');
+                        }, 400);
+                    }
+                });
+            }
+        });
+    }
+</script>
 
 <style>
     * {
@@ -132,6 +198,7 @@ import FadeIn from "../animations/FadeIn.svelte";
 
     /* Eingabebereich */
     .form-group {
+        position: relative;
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
@@ -143,10 +210,33 @@ import FadeIn from "../animations/FadeIn.svelte";
 
         transition:
             border-color 0.2s ease,
-            box-shadow 0.2s ease;
+            box-shadow 0.2s ease,
+            background-color 0.2s ease;
     }
 
-    /* Fokuszustand */
+    /* Kennzeichnungen für Pflichtfelder und optionale Felder */
+    .required-asterisk {
+        color: var(--accent-red-highlight, #ff3333);
+        font-weight: 700;
+    }
+
+    .optional-badge {
+        font-size: 0.85rem;
+        font-weight: 400;
+        opacity: 0.7;
+    }
+
+    /* Hinweise bei fehlerhaften Eingaben */
+    .field-hint {
+        display: none;
+        font-family: var(--font-heading);
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--accent-red-highlight, #ff3333);
+        margin-top: 0.25rem;
+    }
+
+    /* Fokus-Zustand (Standard/Gültig) */
     .form-group:focus-within {
         border-color: var(--accent-blue-highlight, #0055ff);
         box-shadow: 4px 4px 0 var(--accent-blue-highlight, #0055ff);
@@ -162,7 +252,28 @@ import FadeIn from "../animations/FadeIn.svelte";
     }
 
     .form-group:focus-within label {
-        color: var(--accent-color2, #0055ff);
+        color: var(--accent-blue-highlight, #0055ff);
+    }
+
+    /* Fehlerzustand: Farbwechsel zu Rot, Anzeige des Hinweises und Rüttel-Animation */
+    .form-group.is-invalid,
+    .form-group:has(input:user-invalid),
+    .form-group:has(textarea:user-invalid) {
+        border-color: var(--accent-red-highlight, #ff3333);
+        box-shadow: 4px 4px 0 var(--accent-red-highlight, #ff3333);
+        animation: Wiggle 0.35s ease-in-out;
+    }
+
+    .form-group.is-invalid label,
+    .form-group:has(input:user-invalid) label,
+    .form-group:has(textarea:user-invalid) label {
+        color: var(--accent-red-highlight, #ff3333);
+    }
+
+    .form-group.is-invalid .field-hint,
+    .form-group:has(input:user-invalid) .field-hint,
+    .form-group:has(textarea:user-invalid) .field-hint {
+        display: block;
     }
 
     /* Texteingaben */
@@ -185,6 +296,13 @@ import FadeIn from "../animations/FadeIn.svelte";
         border-bottom-color: var(--accent-blue-highlight, #0055ff);
     }
 
+    .form-group.is-invalid input:focus,
+    .form-group.is-invalid textarea:focus,
+    .form-group:has(input:user-invalid) input:focus,
+    .form-group:has(textarea:user-invalid) textarea:focus {
+        border-bottom-color: var(--accent-red-highlight, #ff3333);
+    }
+
     /* Button-Ausrichtung */
     .buttons {
         display: flex;
@@ -192,5 +310,24 @@ import FadeIn from "../animations/FadeIn.svelte";
 
         width: 100%;
         margin-top: 0rem;
+    }
+
+    /* Keyframe-Animation für Rütteln bei Validierungsfehlern */
+    @keyframes Wiggle {
+        0%, 100% {
+            transform: translateX(0);
+        }
+        20% {
+            transform: translateX(-6px) rotate(-0.8deg);
+        }
+        40% {
+            transform: translateX(6px) rotate(0.8deg);
+        }
+        60% {
+            transform: translateX(-4px) rotate(-0.4deg);
+        }
+        80% {
+            transform: translateX(4px) rotate(0.4deg);
+        }
     }
 </style>

@@ -1,0 +1,126 @@
+---
+import InfoLayout from "../../layouts/InfoLayout.astro";
+
+// Seitentitel für den Head-Bereich
+const pageTitle = "Bestätigung – Lucas Frey";
+---
+
+<InfoLayout title={pageTitle}>
+    <section class="confirmation-wrapper">
+        <div class="confirmation-card">
+            <h1 class="title">BESTÄTIGUNG</h1>
+            
+            <!-- Textgruppe zur Entkopplung vom Flex-Gap des Hauptcontainers -->
+            <div class="description-group">
+                <p class="description1">Ich habe deine Anfrage erhalten!</p>
+                <p class="description2">Ich melde mich so schnell wie möglich bei dir.</p>
+            </div>
+
+            <!-- ASCII-Art Visualisierung -->
+            <pre class="ascii-art" aria-hidden="true"><code>⠀⠀⠀⠀⠀⠀⣀⣠⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣴⡿⠋⠉⠉⠻⢿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠹⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠈⣿⡄⠀⠀⠀⠀⠀⠀⢸⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠸⣷⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⢀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢻⣇⠀⠀⠀⠀⠀⢸⣿⣿⡿⠿⠿⠟⠛⠛⠻⢿⣿⣶⣄⠀⠀⠀
+⠀⠀⠀⠀⠀⢈⣿⠆⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣤⣤⣤⠀⠈⠻⣿⣇⠀⠀
+⠀⠀⠀⠀⢀⣾⡏⠀⠀⠀⠀⠀⠀⠀⣴⡿⠋⠉⠀⠀⠀⠀⠀⠀⠀⢹⡿⠀⠀
+⠀⠀⣀⣤⣼⣿⠀⠀⠀⠀⠀⠀⠀⢸⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⣷⣄⠀
+⢠⣾⠟⠋⠉⠋⠀⠀⠀⠀⠀⠀⠀⠈⣿⣦⣀⣀⣀⣤⣤⣶⣶⠿⠋⠁⢹⣿⡇
+⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡟⢉⣿⠋⠉⠉⠉⠁⠀⠀⠀⠀⢸⣿⠀
+⢸⣿⠀⠀⠀⠀⠀⢀⣀⣀⣤⣴⠿⠋⠀⠘⣷⡀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠏⠀
+⢸⣿⡄⠀⠀⠀⠀⠈⠉⠉⠁⠀⠀⠀⠀⠀⣸⣿⢶⣤⣤⣴⡶⠿⠛⠙⣿⣆⠀
+⠈⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⣽⣿⠀
+⠀⠘⣿⣆⠀⠀⠀⠀⣠⣤⡀⠀⠀⠀⠀⠈⠻⣧⣀⡀⠀⠀⠀⣀⣠⣴⡿⠇⠀
+⠀⠀⠘⢿⣿⣦⣤⣴⡿⠻⠿⣷⣦⣤⣤⣤⣴⣾⣿⡿⠿⠿⠿⠟⠛⠉⠀⠀⠀
+⠀⠀⠀⠀⠉⢉⣉⠉⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+        </div>
+    </section>
+</InfoLayout>
+
+<style>
+    /* Haupt-Layoutzentrierung zur Vermeidung von freistehendem Weißraum */
+    .confirmation-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        min-height: 55vh;
+        padding: 4rem 1rem;
+
+        text-align: center;
+    }
+
+    /* Container für Ausrichtung und Abstände zwischen den Hauptblöcken */
+    .confirmation-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+
+        max-width: 900px;
+        width: 100%;
+    }
+
+    /* Fluid-Typografie für die Hauptüberschrift */
+    .title {
+        font-family: var(--font-heading, "Roboto Mono", monospace);
+        font-weight: 700;
+        font-size: clamp(2rem, 7vw, 5rem);
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+
+        margin: 0;
+    }
+
+    /* Text-Gruppe zur exakten Steuerung des Zeilenabstands */
+    .description-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.35rem;
+    }
+
+    .description1 {
+        font-family: var(--font-body, "Inter", sans-serif);
+        font-weight: 600;
+        font-style: italic;
+        font-size: clamp(0.85rem, 2vw, 2rem);
+        line-height: 1.2;
+
+        margin: 0;
+        opacity: 0.9;
+    }
+
+    .description2 {
+        font-family: var(--font-body, "Inter", sans-serif);
+        font-weight: 500;
+        font-style: italic;
+        font-size: clamp(0.85rem, 2vw, 2rem);
+        line-height: 1.2;
+
+        margin: 0;
+        opacity: 0.9;
+    }
+
+    /* Skalierung und Formatierung der Braille-ASCII-Grafik */
+    .ascii-art {
+        margin: 0;
+
+        font-family: monospace;
+        font-size: clamp(0.4rem, 1.1vw, 0.85rem);
+        font-weight: 700;
+        line-height: 1.1;
+        color: var(--text-color);
+
+        white-space: pre;
+        user-select: none;
+        opacity: 0.5;
+    }
+
+    .ascii-art code {
+        font-family: inherit;
+    }
+</style>
