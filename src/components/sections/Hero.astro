@@ -26,8 +26,8 @@ const toolCategories: ToolCategory[] = [
             { name: "Git & GitHub" },
             { name: "Godot Engine" },
             { name: "Roblox Studio" },
-            { name: "Android Studio" }
-        ]
+            { name: "Android Studio" },
+        ],
     },
     {
         category: "DESIGN & 3D",
@@ -37,8 +37,8 @@ const toolCategories: ToolCategory[] = [
             { name: "Blender" },
             { name: "Blockbench" },
             { name: "MagicaVoxel" },
-            { name: "Material Maker" }
-        ]
+            { name: "Material Maker" },
+        ],
     },
     {
         category: "WORKFLOW & ORGA",
@@ -46,18 +46,16 @@ const toolCategories: ToolCategory[] = [
             { name: "Notion" },
             { name: "Obsidian" },
             { name: "Google Workspace", breakAfter: true },
-            { name: "Fedora Linux" }
-        ]
-    }
+            { name: "Fedora Linux <3" },
+        ],
+    },
 ];
 ---
 
 <section id="hero">
     <div class="row">
-
         <!-- Linke Spalte: Portrait- und Metadaten-Sektion -->
         <div class="column-left border-left-solid border-right-dashed">
-            
             <div class="portrait-wrapper">
                 <FadeIn client:load delay={0} immediate>
                     <ImageBox
@@ -98,12 +96,10 @@ const toolCategories: ToolCategory[] = [
                     </dl>
                 </FadeIn>
             </div>
-            
         </div>
 
         <!-- Rechte Spalte: Inhalts- und Navigationsbereich -->
         <div class="column-right border-right-solid">
-
             <!-- Branding-Bereich -->
             <div class="branding-block">
                 <FadeIn client:load delay={100} immediate>
@@ -119,19 +115,17 @@ const toolCategories: ToolCategory[] = [
                     </h2>
                 </FadeIn>
             </div>
-
-            <!-- Hauptinhalt -->
             <div class="main-content">
                 <FadeIn client:load delay={300} immediate>
                     <section class="content-section">
                         <h3 class="section-title">ÜBER MICH</h3>
                         <p>
-                            Ich verbinde Development, Design und Business.
-                            Als technischer Generalist löse ich Probleme
-                            auf jeder Ebene eines Projekts: Ich entwickle
-                            das Produkt, gestalte das gesamte Branding samt
-                            Design und kümmere mich um das Publishing sowie
-                            das strategische Skalieren.
+                            Ich verbinde Development, Design und Business. Als
+                            technischer Generalist löse ich Probleme auf jeder
+                            Ebene eines Projekts: Ich entwickle das Produkt,
+                            gestalte das gesamte Branding samt Design und
+                            kümmere mich um das Publishing sowie das
+                            strategische Skalieren.
                         </p>
                     </section>
                 </FadeIn>
@@ -140,20 +134,28 @@ const toolCategories: ToolCategory[] = [
                 <section class="content-section toolstack-section">
                     <FadeIn client:load delay={400} immediate>
                         <h3 class="section-title">TOOLSTACK & SOFTWARE</h3>
-                        
+
                         <div class="tools-grid">
-                            {toolCategories.map((group: ToolCategory) => (
-                                <div class="tool-group">
-                                    <h4 class="group-title">{group.category}</h4>
-                                    <div class="stack-grid">
-                                        {group.items.map((item: ToolItem) => (
-                                            <span class={`tech-tag ${item.breakAfter ? "break-after" : ""}`}>
-                                                {item.name}
-                                            </span>
-                                        ))}
+                            {
+                                toolCategories.map((group: ToolCategory) => (
+                                    <div class="tool-group">
+                                        <h4 class="group-title">
+                                            {group.category}
+                                        </h4>
+                                        <div class="stack-grid">
+                                            {group.items.map(
+                                                (item: ToolItem) => (
+                                                    <span
+                                                        class={`tech-tag ${item.breakAfter ? "break-after" : ""}`}
+                                                    >
+                                                        {item.name}
+                                                    </span>
+                                                ),
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))
+                            }
                         </div>
                     </FadeIn>
                 </section>
@@ -162,11 +164,12 @@ const toolCategories: ToolCategory[] = [
                 <div class="toolstack-note-container">
                     <FadeIn client:load delay={450} immediate>
                         <p class="toolstack-note">
-                            *Auszug der primär genutzten Software. Detaillierte Stacks & Frameworks sind in den jeweiligen Projekten aufgeführt.
+                            *Auszug der primär genutzten Software. Detaillierte
+                            Stacks & Frameworks sind in den jeweiligen Projekten
+                            aufgeführt.
                         </p>
                     </FadeIn>
                 </div>
-
                 <!-- Aktions-Schaltflächen -->
                 <nav class="action-area" aria-label="Aktionsmenü">
                     <FadeIn client:load delay={500} immediate>
@@ -412,8 +415,8 @@ const toolCategories: ToolCategory[] = [
     }
 
     .toolstack-note {
-        margin-top: 8rem;
-        margin-bottom: 0rem;
+        margin-top: 25%;
+        margin-bottom: auto;
         font-size: var(--step-small);
         font-style: italic;
         line-height: 1.4;
@@ -432,9 +435,15 @@ const toolCategories: ToolCategory[] = [
     }
 
     /* Hilfsklassen für Rasterlinien */
-    .border-left-solid { border-left: 3px solid var(--border-color); }
-    .border-right-solid { border-right: 3px solid var(--border-color); }
-    .border-right-dashed { border-right: 2px dashed var(--border-color); }
+    .border-left-solid {
+        border-left: 3px solid var(--border-color);
+    }
+    .border-right-solid {
+        border-right: 3px solid var(--border-color);
+    }
+    .border-right-dashed {
+        border-right: 2px dashed var(--border-color);
+    }
 
     /* Responsives Layout */
     @media (max-width: 992px) {
