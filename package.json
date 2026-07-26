@@ -1,7 +1,7 @@
 {
   "name": "portfolio-webseite",
   "type": "module",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Meine eigene quelloffene Portfolio Website.",
   "main": "index.js",
   "scripts": {
@@ -25,5 +25,8 @@
     "svelte": "^5.56.4",
     "tailwindcss": "^4.3.2",
     "typescript": "^6.0.3"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true
   }
 }

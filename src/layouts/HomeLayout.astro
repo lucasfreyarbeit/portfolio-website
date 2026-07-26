@@ -1,0 +1,27 @@
+---
+import "../styles/global.css";
+
+interface Props {
+    title?: string;
+}
+
+const { title = "LUCAS FREY" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="de" data-theme="light" data-font="default">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+</head>
+<body>
+
+    <div class="site-wrapper">
+        <main class="main-content">
+            <slot />
+        </main>
+    </div>
+
+</body>
+</html>

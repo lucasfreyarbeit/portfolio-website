@@ -1,11 +1,16 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import HomeLayout from "../layouts/HomeLayout.astro";
 import Hero from "../components/sections/Hero.astro";
-import ProjectShowcase from "../components/sections/ProjectShowcase.astro";
+import Projects from "../components/sections/Projects.astro";
 import Contact from "../components/sections/Contact.astro";
-import Temporary from "../components/Temporary.astro";
+import HoverButtons from "../components/navigation/HoverButtons.astro";
+import Footer from "../components/navigation/Footer.astro";
 ---
 
-<BaseLayout title="Portfolio Lucas Frey">
-  <Temporary />
-</BaseLayout>
+<HomeLayout title="LUCAS FREY">
+  <Hero />
+  <Projects />
+  <Contact />
+  <HoverButtons backHref="#hero" configHref="#config" />
+  <Footer />
+</HomeLayout>

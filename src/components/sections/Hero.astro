@@ -1,21 +1,490 @@
+---
+// Import-Anweisungen
+import Button from "../navigation/Button.astro";
+import ImageBox from "../ui/ImageBox.astro";
+import Logo from "../ui/Logo.astro";
+import FadeIn from "../animations/FadeIn.svelte";
+import DownloadIcon from "../../assets/icons/download.svg";
+
+// Typdefinitionen
+interface ToolItem {
+    name: string;
+    breakAfter?: boolean;
+}
+
+interface ToolCategory {
+    category: string;
+    items: ToolItem[];
+}
+
+// Fokussierte Datenstruktur für den Toolstack
+const toolCategories: readonly ToolCategory[] = [
+    {
+        category: "ENTWICKLUNG",
+        items: [
+            { name: "Astro" },
+            { name: "Svelte" },
+            { name: "Tailwind CSS" },
+            { name: "TypeScript" },
+            { name: "Godot Engine" },
+            { name: "Git und GitHub" },
+        ],
+    },
+    {
+        category: "DESIGN UND 3D",
+        items: [
+            { name: "Figma" },
+            { name: "Affinity Studio" },
+            { name: "Blender" },
+            { name: "Blockbench" },
+        ],
+    },
+    {
+        category: "WORKFLOW UND ORGA",
+        items: [
+            { name: "Linear" },
+            { name: "Notion" },
+            { name: "Obsidian" },
+            { name: "Fedora Linux <3" },
+        ],
+    },
+];
+
+---
+
 <section id="hero">
-  <div>
-    <p>Hallo, ich bin</p>
+    <div class="row">
+        <!-- Linke Spalte: Portrait- und Metadaten-Sektion -->
+        <div class="column-left border-left-solid border-right-dashed">
+            <div class="portrait-wrapper">
+                <FadeIn client:load delay={0} immediate>
+                    <ImageBox
+                        src="/images/portraits/Downscaled.jpg"
+                        alt="Portrait von Lucas"
+                    />
+                </FadeIn>
+            </div>
 
-    <h1>Lucas Frey</h1>
+            <div class="status-box">
+                <FadeIn client:load delay={0} immediate>
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        <span class="status-title">OFFEN FÜR ANFRAGEN</span>
+                    </div>
+                </FadeIn>
 
-    <p>
-      Softwareentwickler & Mediengestalter.
-    </p>
+                <FadeIn client:load delay={100} immediate>
+                    <!-- Trennlinie oberhalb der Liste -->
+                    <div class="divider-dashed"></div>
 
-    <div>
-      
+                    <!-- Rasterstruktur für Schlüssel-Wert-Paare -->
+                    <dl class="info-grid">
+                        <dt>SUCHE NACH:</dt>
+                        <dd>Ausbildung oder Quereinstieg</dd>
+
+                        <dt>FOKUS:</dt>
+                        <dd>Web-Entwicklung, Produktdesign, UI + UX</dd>
+
+                        <dt>VERFÜGBAR:</dt>
+                        <dd>Ab sofort</dd>
+
+                        <dt>STANDORT:</dt>
+                        <dd>Ochsenhausen</dd>
+
+                        <dt>ARBEITSORT:</dt>
+                        <dd>Vor Ort und Remote</dd>
+                    </dl>
+                </FadeIn>
+            </div>
+        </div>
+
+        <!-- Rechte Spalte: Inhalts- und Navigationsbereich -->
+        <div class="column-right border-right-solid">
+            <!-- Branding-Bereich -->
+            <div class="branding-block">
+                <FadeIn client:load delay={100} immediate>
+                    <div class="logo-wrapper">
+                        <Logo variant="black" />
+                    </div>
+                </FadeIn>
+
+                <FadeIn client:load delay={200} immediate>
+                    <h2 class="subheading">
+                        <span class="text-designer">DESIGNER.</span>
+                        <span class="text-developer">DEVELOPER.</span>
+                    </h2>
+                </FadeIn>
+            </div>
+            <div class="main-content">
+                <FadeIn client:load delay={300} immediate>
+                    <section class="content-section">
+                        <h3 class="section-title">ÜBER MICH</h3>
+                        <p>
+                            Ich verbinde Development, Design und Business. Als
+                            technischer Generalist löse ich Probleme auf jeder
+                            Ebene eines Projekts: Ich entwickle das Produkt,
+                            gestalte das gesamte Branding samt Design und
+                            kümmere mich um das Publishing sowie das
+                            strategische Skalieren.
+                        </p>
+                    </section>
+                </FadeIn>
+
+                <!-- Toolstack-Sektion -->
+                <section class="content-section toolstack-section">
+                    <FadeIn client:load delay={400} immediate>
+                        <h3 class="section-title">TOOLSTACK UND SOFTWARE</h3>
+
+                        <div class="tools-grid">
+                            {
+                                toolCategories.map((group: ToolCategory) => (
+                                    <div class="tool-group">
+                                        <h4 class="group-title">
+                                            {group.category}
+                                        </h4>
+                                        <div class="stack-grid">
+                                            {group.items.map(
+                                                (item: ToolItem) => (
+                                                    <span
+                                                        class={`tech-tag ${item.breakAfter ? "break-after" : ""}`}
+                                                    >
+                                                        {item.name}
+                                                    </span>
+                                                ),
+                                            )}
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </FadeIn>
+                </section>
+
+                <!-- Hinweis zur Software-Auswahl -->
+                <div class="toolstack-note-container">
+                    <FadeIn client:load delay={450} immediate>
+                        <p class="toolstack-note">
+                            *Auszug der primär genutzten Software. Detaillierte
+                            Stacks & Frameworks sind in den jeweiligen Projekten
+                            aufgeführt.
+                        </p>
+                    </FadeIn>
+                </div>
+                <!-- Aktions-Schaltflächen -->
+                <nav class="action-area" aria-label="Aktionsmenü">
+                    <FadeIn client:load delay={500} immediate>
+                        <Button href="#projekte" variant="red">PROJEKTE</Button>
+                    </FadeIn>
+
+                    <FadeIn client:load delay={600} immediate>
+                        <Button href="#kontakt" variant="blue">KONTAKT</Button>
+                    </FadeIn>
+
+                    <FadeIn client:load delay={700} immediate>
+                        <Button
+                            href="/documents/Lebenslauf-Lucas-Frey.pdf"
+                            download
+                            variant="red"
+                        >
+                            <DownloadIcon aria-hidden="true" /> LEBENSLAUF.PDF
+                        </Button>
+                    </FadeIn>
+                </nav>
+            </div>
+        </div>
     </div>
-  </div>
-
-  <div>
-    <!-- Hier kommt später dein Bild -->
-  </div>
 </section>
 
+<style>
+    /* Globale Reset- und Layout-Styles */
+    * {
+        box-sizing: border-box;
+    }
 
+    #hero {
+        width: 100%;
+        padding-top: 2.5rem;
+        min-height: 100dvh;
+        display: flex;
+    }
+
+    .row {
+        display: flex;
+        align-items: stretch;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .column-left,
+    .column-right {
+        padding: 2rem;
+        border-top: 3px solid var(--border-color);
+        border-bottom: 0px;
+    }
+
+    /* Linke Spalte */
+    .column-left {
+        display: flex;
+        flex: 0 0 clamp(280px, 25vw, 360px);
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    /* Rechte Spalte */
+    .column-right {
+        display: flex;
+        flex: 1;
+        min-width: 0;
+        flex-direction: column;
+    }
+
+    .portrait-wrapper {
+        width: 100%;
+    }
+
+    /* Container für die linke Sidebar-Information */
+    .status-box {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1.25rem;
+    }
+
+    .status-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: var(--step-body);
+    }
+
+    .status-dot {
+        width: 14px;
+        height: 14px;
+        background-color: #00ff66;
+        border: 2px solid var(--border-color);
+        border-radius: 50%;
+    }
+
+    .divider-dashed {
+        width: 100%;
+        margin: 1rem 0;
+        border-bottom: 2px dashed var(--border-color);
+    }
+
+    /* Tabellarisches Grid für Schlüssel-Wert-Paare */
+    .info-grid {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 1.25rem;
+        row-gap: 0.85rem;
+        align-items: baseline;
+        margin: 0;
+    }
+
+    .info-grid dt {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: var(--step-small);
+        color: var(--title-color);
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .info-grid dd {
+        margin: 0;
+        font-family: var(--font-ui);
+        font-style: italic;
+        font-size: var(--step-small);
+        color: var(--text-color);
+        line-height: 1.4;
+    }
+
+    /* Branding-Block */
+    .branding-block {
+        padding-bottom: 1.25rem;
+        border-bottom: 2px dashed var(--border-color);
+    }
+
+    .logo-wrapper {
+        margin: 1.2rem 0 2rem -0.4rem;
+        transform: scale(3);
+        transform-origin: left center;
+    }
+
+    .subheading {
+        margin: 0;
+        font-family: var(--font-heading);
+        font-size: 160%;
+        font-weight: 700;
+    }
+
+    .text-designer {
+        margin-right: 1rem;
+        color: var(--accent-blue-highlight);
+    }
+
+    .text-developer {
+        color: var(--accent-red-highlight);
+    }
+
+    /* Inhaltsbereich */
+    .main-content {
+        padding-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .content-section {
+        margin-bottom: 2.25rem;
+    }
+
+    .toolstack-section {
+        margin-top: auto;
+        margin-bottom: 0;
+    }
+
+    .section-title {
+        margin: 0 0 0.9rem;
+        font-family: var(--font-heading);
+        font-size: var(--step-subheading);
+        color: var(--text-color);
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    .content-section p {
+        margin: 0;
+        font-size: var(--step-body);
+        font-style: italic;
+        line-height: 1.6;
+    }
+
+    /* Toolstack Raster */
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .tool-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .group-title {
+        margin: 0;
+        font-family: var(--font-heading);
+        font-size: var(--step-small);
+        font-weight: 700;
+        color: var(--text-color);
+        text-transform: uppercase;
+        opacity: 0.8;
+    }
+
+    .stack-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .tech-tag {
+        padding: 0.35rem 0.65rem;
+        font-family: var(--font-heading);
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--text-color);
+        background: transparent;
+        border: 2px solid var(--border-color);
+        white-space: nowrap;
+        width: fit-content;
+    }
+
+    .tech-tag.break-after {
+        margin-right: 100%;
+    }
+
+    .toolstack-note-container {
+        margin-top: auto;
+    }
+
+    .toolstack-note {
+        margin-top: 25%;
+        margin-bottom: -8dvh;
+        font-size: var(--step-small);
+        font-style: italic;
+        line-height: 1.4;
+        opacity: 0.75;
+    }
+
+    /* Aktions-Schaltflächen */
+    .action-area {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: 100%;
+        margin-top: auto;
+        padding-top: 1.5rem;
+        border-top: 2px dashed var(--border-color);
+    }
+
+    /* Hilfsklassen für Rasterlinien */
+    .border-left-solid {
+        border-left: 3px solid var(--border-color);
+    }
+    .border-right-solid {
+        border-right: 3px solid var(--border-color);
+    }
+    .border-right-dashed {
+        border-right: 2px dashed var(--border-color);
+    }
+
+    /* Responsives Layout */
+    @media (max-width: 992px) {
+        .action-area {
+            flex-direction: column;
+        }
+    }
+
+    @media (max-width: 768px) {
+        #hero {
+            height: auto;
+            padding-top: 2rem;
+        }
+
+        .row {
+            flex-direction: column;
+        }
+
+        .column-left {
+            padding-bottom: 1rem;
+            border-right: 3px solid var(--border-color);
+            border-bottom: none;
+        }
+
+        .column-right {
+            border-top: 2px dashed var(--border-color);
+        }
+
+        .logo-wrapper {
+            transform: scale(2);
+        }
+
+        .action-area {
+            flex-direction: row;
+            margin-top: 2rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .action-area {
+            flex-direction: column;
+        }
+    }
+</style>
