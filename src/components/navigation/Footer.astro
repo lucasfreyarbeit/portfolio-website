@@ -1,31 +1,27 @@
 ---
 import Logo from "../ui/Logo.astro";
-import Button from "../ui/Button.astro";
 import Divider from "../ui/Divider.astro";
 ---
 
-<footer class="footer">
+<footer class="footer" id="footer">
     <div class="footer-container">
         
+        <!-- Obere Sektion: Branding und Navigation -->
         <div class="footer-top">
-            
             <section class="footer-brand">
                 <div class="footer-logo-wrapper">
                     <Logo variant="white" />
                 </div>
-                <div class="footer-button-wrapper">
-                    <Button
-                        variant="blue"
-                        theme="dark"
-                        href="https://github.com/lucasfreyarbeit/portfolio-webseite"
-                    >
-                        Website Quellcode
-                    </Button>
+                <!-- Integrierte Open-Source Box perfekt unter dem Logo -->
+                <div class="footer-oss-box">
+                    <p class="oss-text">
+                        Diese Website ist Open Source. <br />
+                        Hier geht's zum <a href="https://github.com/lucasfreyarbeit/portfolio-webseite" class="oss-link">Quellcode</a>.
+                    </p>
                 </div>
             </section>
 
             <section class="footer-links">
-                
                 <nav class="link-column">
                     <span class="column-title">Projekte</span>
                     <a href="https://github.com/lucasfreyarbeit">GitHub</a>
@@ -34,194 +30,208 @@ import Divider from "../ui/Divider.astro";
 
                 <nav class="link-column">
                     <span class="column-title">Socials</span>
-                    <a href="#">LinkedIn</a>
-                    <a href="https://dev.to/lucasfrey">dev.to</a>
+                    <a href="https://discord.com/users/1394404456971374701">Discord</a>
+                    <a href="https://dev.to/lucasfrey">Dev.to</a>
                 </nav>
-
             </section>
-
         </div>
 
-        <div class="footer-divider-wrapper">
-            <Divider />
-        </div>
+        <!-- Direktes Kindelement nimmt die volle Breite von .footer-container ein -->
+        <Divider variant="footer" />
 
+        <!-- Untere Sektion: Meta-Links und Copyright -->
         <div class="footer-bottom">
+            <p class="copyright">© 2026 Lucas Frey. Alle Rechte vorbehalten.</p>
             
-            <p class="copyright">© 2026 Lucas Frey</p>
-            
-            <a href="#hero" class="back-to-top">
-                Nach oben springen <span class="arrow">↑</span>
-            </a>
+            <!-- Anker für Back-To-Top Komponente -->
+            <div id="footer-backup-slot"></div>
 
             <nav class="footer-bottom-right">
                 <a href="/info/impressum">Impressum</a>
                 <a href="/info/datenschutz">Datenschutz</a>
                 <a href="/info/barrierefreiheit">Barrierefreiheit</a>
             </nav>
-
         </div>
 
     </div>
 </footer>
 
 <style>
-.footer {
-    width: 100%;
-    margin-top: auto;
-    padding: 2rem 1.5rem 0.75rem 1.5rem;
-    background: #292929;
-    color: #e3e3e3;
-}
+    * {
+        box-sizing: border-box;
+    }
 
-.footer-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.footer-top {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 2.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.footer-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
-    max-width: 320px;
-}
-
-.footer-logo-wrapper {
-    transform: scale(1.25);
-    transform-origin: left center;
-}
-
-.footer-button-wrapper {
-    display: inline-block;
-}
-
-.footer-links {
-    display: flex;
-    gap: 5rem;
-}
-
-.link-column {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.column-title {
-    margin-bottom: 0.25rem;
-    font-size: 0.85rem;
-    font-weight: bold;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    opacity: 0.4;
-}
-
-.footer a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.15s ease;
-}
-
-.footer a:hover {
-    color: #ffffff;
-    font-weight: 600;
-}
-
-.footer-divider-wrapper {
-    filter: invert(28%) sepia(0%) saturate(1389%) hue-rotate(163deg) brightness(99%) contrast(85%);
-}
-
-.footer-bottom {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 2.5rem;
-    padding: 0.5rem 0 0 0;
-    font-size: 0.85rem;
-}
-
-.copyright {
-    margin: 0;
-    color: #a3a3a3;
-}
-
-.back-to-top {
-    position: absolute;
-    left: 50%;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    color: #ffffff !important;
-    font-weight: bold;
-    transform: translateX(-50%);
-}
-
-.back-to-top:hover {
-    color: #ff9a55 !important;
-    font-weight: bolder;
-}
-
-.arrow {
-    display: inline-block;
-    transition: transform 0.15s ease;
-}
-
-.back-to-top:hover .arrow {
-    transform: translateY(-2px);
-}
-
-.footer-bottom-right {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.footer-bottom-right a {
-    color: #a3a3a3;
-}
-
-.footer-bottom-right a:hover {
-    color: #ffffff;
-    font-weight: 600;
-}
-
-@media (max-width: 768px) {
+    /* Layout & Basiskonfiguration */
     .footer {
-        padding: 2.5rem 1rem 0.75rem 1rem;
+        width: 100vw; 
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        
+        margin-top: auto;
+        padding: 5rem 0rem 0rem 0rem; 
+        background: #292929;
+        color: #e3e3e3;
+        filter: none !important;
+    }
+
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; 
+        width: 100%; 
+        margin: 0 auto; 
+        padding: 0rem 1.5rem; 
     }
 
     .footer-top {
-        flex-direction: column;
-        gap: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 2.5rem;
+        margin-bottom: 0.5rem;
     }
 
+    /* Branding & Logo-Skalierung */
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.75rem; 
+        max-width: 320px;
+    }
+
+    .footer-logo-wrapper {
+        transform: scale(2.5);
+        margin-bottom: 1rem; 
+        transform-origin: left center;
+    }
+
+    /* Styling für die Open-Source Box */
+    .footer-oss-box {
+        width: 100%;
+    }
+
+    .oss-text {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.4;
+        color: #a3a3a3; /* Gleiche Textfarbe wie Copyright/Meta-Links */
+    }
+
+    .oss-link {
+        color: #e7e7e7 !important;
+        font-weight: 600;
+    }
+
+    /* Navigation Spalten */
     .footer-links {
+        text-align: center;
+        display: flex;
         gap: 3rem;
     }
 
-    .footer-bottom {
+    .link-column {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        padding-top: 0.5rem;
+        gap: 0.5rem;
     }
 
-    .back-to-top {
-        position: static;
-        transform: none;
+    .column-title {
+        margin-bottom: 0.25rem;
+        font-family: var(--font-heading, monospace);
+        font-size: 0.85rem;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        opacity: 0.4;
     }
-}
+
+    /* Interaktions-Zustände der Links */
+    .footer a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.15s ease, font-weight 0.15s ease;
+    }
+
+    .footer a:hover {
+        color: var(--accent-blue-highlight) !important;
+        font-weight: 700;
+    }
+
+    /* Footer-Bottom & Absolute Zentrierung des Slots */
+    .footer-bottom {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 2.5rem;
+        padding: 0.5rem 0 0rem 0; 
+        font-size: 0.85rem;
+        margin-bottom: 0;
+    }
+
+    .copyright {
+        margin: 0;
+        padding-bottom: 0.75rem; 
+        color: #a3a3a3;
+    }
+
+    #footer-backup-slot {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-bottom-right {
+        display: flex;
+        gap: 1.5rem;
+        padding-bottom: 0.75rem; 
+    }
+
+    .footer-bottom-right a {
+        color: #a3a3a3;
+    }
+
+    /* Responsive Anpassungen (Mobile Viewport) */
+    @media (max-width: 768px) {
+        .footer {
+            padding: 4rem 0rem 0rem 0rem;
+        }
+        
+        .footer-container {
+            padding: 0 1rem; 
+            gap: 1rem;
+        }
+
+        .footer-top {
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .footer-links {
+            gap: 3rem;
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 0.5rem;
+            padding-bottom: 1rem; 
+        }
+
+        .copyright, .footer-bottom-right {
+            padding-bottom: 0;
+        }
+
+        #footer-backup-slot {
+            position: static;
+            transform: none;
+        }
+    }
 </style>

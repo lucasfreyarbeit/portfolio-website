@@ -1,14 +1,377 @@
+---
+import Button from "../navigation/Button.astro";
+import FadeIn from "../animations/FadeIn.svelte";
+---
+
 <section id="kontakt">
-  <h2>Kontakt</h2>
 
-  <p>
-    Kontakt aufnehmen? Dann schreib mir eine E-Mail an
-    <a href="mailto:kontakt@lucasfrey.de">
-      kontakt@lucasfrey.de
-    </a>.
-  </p>
+    <!-- Sektions-Header -->
+    <div class="row">
+        <div class="col-full border-top-solid border-left-solid border-right-solid bg-subtle">
+            <FadeIn client:visible>
+                <h1 class="title">KONTAKT</h1>
+            </FadeIn>
+        </div>
+    </div>
 
-  <a href="mailto:kontakt@lucasfrey.de">
-    E-Mail senden
-  </a>
+    <!-- Hauptinhalt & Formular -->
+    <div class="row">
+        <div class="col-full border-left-solid border-right-solid">
+
+            <!-- Einleitung -->
+            <FadeIn client:visible delay={50}>
+                <h2 class="title2">ICH FREUE MICH AUF DICH \^o^/</h2>
+
+                <p class="description">
+                    Du hast eine offene Stelle, einen Ausbildungsplatz oder möchtest
+                    mich für ein Vorstellungsgespräch einladen? <br /> Schick mir doch gerne eine Anfrage!
+                    Ich melde mich umgehend.
+                </p>
+            </FadeIn>
+
+            <!-- Formular mit un-static Formular-Endpunkt -->
+            <form 
+                action="https://forms.un-static.com/forms/66b73be1aeef46d682b54448400032603252fdd4" 
+                method="POST" 
+                class="contact-form"
+                novalidate
+            >
+
+                <!-- Zweispaltiges Raster für die ersten beiden Eingabefelder -->
+                <div class="form-row">
+                    <!-- Unternehmen / Studio (Optional) -->
+                    <FadeIn client:visible delay={100}>
+                        <div class="form-group">
+                            <label for="company">UNTERNEHMEN / STUDIO <span class="optional-badge">(OPTIONAL)</span></label>
+                            <input
+                                type="text"
+                                id="company"
+                                name="company"
+                                placeholder="Name der Firma, Agentur oder des Studios"
+                            />
+                        </div>
+                    </FadeIn>
+
+                    <!-- Name / Ansprechperson (Pflichtfeld) -->
+                    <FadeIn client:visible delay={150}>
+                        <div class="form-group">
+                            <label for="name">
+                                NAME / ANSPRECHPERSON <span class="required-asterisk">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                required
+                                placeholder="Max Mustermann"
+                                aria-describedby="name-hint"
+                            />
+                            <span id="name-hint" class="field-hint">
+                                Diese Information wird für eine direkte Rückmeldung benötigt.
+                            </span>
+                        </div>
+                    </FadeIn>
+                </div>
+
+                <!-- E-Mail-Adresse (Pflichtfeld) -->
+                <FadeIn client:visible delay={200}>
+                    <div class="form-group">
+                        <label for="email">
+                            EMAIL <span class="required-asterisk">*</span>
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            placeholder="deine.email@firma.de"
+                            aria-describedby="email-hint"
+                        />
+                        <span id="email-hint" class="field-hint">
+                            Eine gültige E-Mail-Adresse ist erforderlich.
+                        </span>
+                    </div>
+                </FadeIn>
+
+                <!-- Nachricht (Pflichtfeld) -->
+                <FadeIn client:visible delay={300}>
+                    <div class="form-group">
+                        <label for="message">
+                            NACHRICHT <span class="required-asterisk">*</span>
+                        </label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            required
+                            placeholder="Hi Lucas, wir würden dich gerne zu einem Gespräch einladen..."
+                            aria-describedby="message-hint"
+                        ></textarea>
+                        <span id="message-hint" class="field-hint">
+                            Bitte gib hier eine kurze Nachricht ein.
+                        </span>
+                    </div>
+                </FadeIn>
+
+                <!-- Absende-Button -->
+                <FadeIn client:visible delay={400}>
+                    <div class="buttons">
+                        <Button type="submit" variant="blue">
+                            ANFRAGE SENDEN
+                        </Button>
+                    </div>
+                </FadeIn>
+
+            </form>
+
+        </div>
+    </div>
+
 </section>
+
+<!-- Skript zur Steuerung der HTML5-Validierungsanzeige und Wiggle-Animation -->
+<script>
+    const form = document.querySelector('.contact-form') as HTMLFormElement | null;
+
+    if (form) {
+        form.addEventListener('submit', (event) => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                
+                // Markierung ungültiger Formulargruppen für visuelles Feedback
+                const invalidInputs = form.querySelectorAll(':invalid');
+                invalidInputs.forEach((input) => {
+                    const group = input.closest('.form-group');
+                    if (group) {
+                        group.classList.add('is-invalid');
+                        setTimeout(() => {
+                            group.classList.remove('is-invalid');
+                        }, 400);
+                    }
+                });
+            }
+        });
+    }
+</script>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    /* Formularbereich im Seitenraster */
+    .col-full {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+
+        border-bottom: 3px solid var(--border-color);
+    }
+
+    /* Außenkanten des Rasters */
+    .border-top-solid {
+        border-top: 3px solid var(--border-color);
+    }
+
+    .border-left-solid {
+        border-left: 3px solid var(--border-color);
+    }
+
+    .border-right-solid {
+        border-right: 3px solid var(--border-color);
+    }
+
+    /* Subtiler Hintergrund für Sektions-Header */
+    .bg-subtle {
+        background-color: #292929;
+    }
+
+    /* Hauptüberschrift des Sektions-Headers */
+    .title {
+        margin: 0 0 0.5rem 0;
+        font-size: var(--step-hero-title);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: var(--bg-color);
+    }
+
+    .title2 {
+        margin-bottom: 0.5rem;
+        font-size: var(--step-subheading);
+    }
+
+    .description {
+        font-style: italic;
+    }
+
+    /* Formularlayout: Aufheben der Breitenbeschränkung */
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        width: 100%;
+        max-width: 100%;
+
+        margin-top: 1.5rem;
+    }
+
+    /* Zweispaltiges Layout für obere Eingabefelder */
+    .form-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Eingabebereich */
+    .form-group {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        padding: 1rem;
+
+        background: var(--bg-color);
+        border: 3px solid var(--outline-color);
+
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease,
+            background-color 0.2s ease;
+    }
+
+    /* Kennzeichnungen für Pflichtfelder und optionale Felder */
+    .required-asterisk {
+        color: var(--accent-red-highlight, #ff3333);
+        font-weight: 700;
+    }
+
+    .optional-badge {
+        font-size: 0.85rem;
+        font-weight: 400;
+        opacity: 0.7;
+    }
+
+    /* Hinweise bei fehlerhaften Eingaben */
+    .field-hint {
+        display: none;
+        font-family: var(--font-heading);
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--accent-red-highlight, #ff3333);
+        margin-top: 0.25rem;
+    }
+
+    /* Fokus-Zustand (Standard/Gültig) */
+    .form-group:focus-within {
+        border-color: var(--accent-blue-highlight, #0055ff);
+        box-shadow: 4px 4px 0 var(--accent-blue-highlight, #0055ff);
+    }
+
+    .form-group label {
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+
+        transition: color 0.2s ease;
+    }
+
+    .form-group:focus-within label {
+        color: var(--accent-blue-highlight, #0055ff);
+    }
+
+    /* Fehlerzustand: Farbwechsel zu Rot, Anzeige des Hinweises und Rüttel-Animation */
+    .form-group.is-invalid,
+    .form-group:has(input:user-invalid),
+    .form-group:has(textarea:user-invalid) {
+        border-color: var(--accent-red-highlight, #ff3333);
+        box-shadow: 4px 4px 0 var(--accent-red-highlight, #ff3333);
+        animation: Wiggle 0.35s ease-in-out;
+    }
+
+    .form-group.is-invalid label,
+    .form-group:has(input:user-invalid) label,
+    .form-group:has(textarea:user-invalid) label {
+        color: var(--accent-red-highlight, #ff3333);
+    }
+
+    .form-group.is-invalid .field-hint,
+    .form-group:has(input:user-invalid) .field-hint,
+    .form-group:has(textarea:user-invalid) .field-hint {
+        display: block;
+    }
+
+    /* Texteingaben */
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 0.5rem 0;
+
+        font: inherit;
+        color: var(--text-color);
+
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-bottom-color: var(--accent-blue-highlight, #0055ff);
+    }
+
+    .form-group.is-invalid input:focus,
+    .form-group.is-invalid textarea:focus,
+    .form-group:has(input:user-invalid) input:focus,
+    .form-group:has(textarea:user-invalid) textarea:focus {
+        border-bottom-color: var(--accent-red-highlight, #ff3333);
+    }
+
+    /* Button-Ausrichtung */
+    .buttons {
+        display: flex;
+        justify-content: flex-start;
+
+        width: 100%;
+        margin-top: 0rem;
+    }
+
+    /* Keyframe-Animation für Rütteln bei Validierungsfehlern */
+    @keyframes Wiggle {
+        0%, 100% {
+            transform: translateX(0);
+        }
+        20% {
+            transform: translateX(-6px) rotate(-0.8deg);
+        }
+        40% {
+            transform: translateX(6px) rotate(0.8deg);
+        }
+        60% {
+            transform: translateX(-4px) rotate(-0.4deg);
+        }
+        80% {
+            transform: translateX(4px) rotate(0.4deg);
+        }
+    }
+</style>

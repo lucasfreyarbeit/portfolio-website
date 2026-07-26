@@ -14,21 +14,21 @@ const {
     href={href}
     class={`logo logo--${variant}`}
 >
-    <slot>LUCAS FREY</slot>
+    <slot> LUCAS.FREY </slot>
 </a>
 
 <style>
 .logo {
     display: inline-block;
 
-    font-family: "Roboto Mono", monospace;
+    font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 700;
     text-decoration: none;
 }
 
 .logo--black {
-    color: #282828;
+    color: var(--text-color);
 }
 
 .logo--white {

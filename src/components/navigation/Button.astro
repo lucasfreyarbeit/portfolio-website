@@ -1,0 +1,91 @@
+---
+// Schnittstellendefinition für polymorphe Button-/Link-Komponente
+interface Props {
+    href?: string;
+    variant?: "default" | "red" | "blue";
+    download?: boolean | string;
+    type?: "button" | "submit" | "reset";
+}
+
+const {
+    href,
+    variant = "default",
+    download,
+    type = "button",
+} = Astro.props;
+---
+
+{
+    href ? (
+        <a href={href} download={download} class={`button button--${variant}`}>
+            <slot />
+        </a>
+    ) : (
+        <button type={type} class={`button button--${variant}`}>
+            <slot />
+        </button>
+    )
+}
+
+<style>
+    .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.25rem 1rem;
+        text-decoration: none;
+        color: var(--title-color);
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 1.2rem;
+        background: var(--bg-color);
+        border: 2px solid var(--outline-color);
+        filter: drop-shadow(3px 3px 0 var(--shadow-color));
+        
+        /* Zurücksetzen herstellerspezifischer Button-Styles für visuelle Parität mit <a> Tags */
+        margin: 0;
+        line-height: normal;
+        appearance: none;
+        -webkit-appearance: none;
+
+        transition:
+            transform .08s,
+            filter .08s,
+            background-color .15s,
+            color .15s;
+    }
+
+    /* Klick- und Hover-Interaktionen */
+    .button:hover {
+        transform: translate(-0.1em, -0.1em);
+        filter: drop-shadow(0.3em 0.3em 0 var(--shadow-color));
+        cursor: pointer;
+    }
+
+    .button:active {
+        transform: translate(0.1em, 0.1em);
+        filter: none !important;
+    }
+
+    /* Tastatur-Fokus-Ring für Barrierefreiheit */
+    .button:focus-visible {
+        outline: 0.13em solid var(--outline-color);
+        outline-offset: 0.25em;
+    }
+
+    /* Farb-Varianten beim Hovern */
+    .button--default:hover {
+        background-color: var(--text-color);
+        color: var(--bg-color);
+    }
+
+    .button--red:hover {
+        background-color: var(--accent-red-highlight);
+        color: var(--bg-color);
+    }
+
+    .button--blue:hover {
+        background-color: var(--accent-blue-highlight);
+        color: var(--bg-color);
+    }
+</style>
