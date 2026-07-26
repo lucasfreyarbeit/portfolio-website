@@ -17,39 +17,39 @@ interface ToolCategory {
     items: ToolItem[];
 }
 
-// Datenstruktur für den Toolstack
-const toolCategories: ToolCategory[] = [
+// Fokussierte Datenstruktur für den Toolstack
+const toolCategories: readonly ToolCategory[] = [
     {
         category: "ENTWICKLUNG",
         items: [
-            { name: "VS Code" },
-            { name: "Git & GitHub" },
+            { name: "Astro" },
+            { name: "Svelte" },
+            { name: "Tailwind CSS" },
+            { name: "TypeScript" },
             { name: "Godot Engine" },
-            { name: "Roblox Studio" },
-            { name: "Android Studio" },
+            { name: "Git und GitHub" },
         ],
     },
     {
-        category: "DESIGN & 3D",
+        category: "DESIGN UND 3D",
         items: [
+            { name: "Figma" },
             { name: "Affinity Studio" },
-            { name: "Penpot" },
             { name: "Blender" },
             { name: "Blockbench" },
-            { name: "MagicaVoxel" },
-            { name: "Material Maker" },
         ],
     },
     {
-        category: "WORKFLOW & ORGA",
+        category: "WORKFLOW UND ORGA",
         items: [
+            { name: "Linear" },
             { name: "Notion" },
             { name: "Obsidian" },
-            { name: "Google Workspace", breakAfter: true },
             { name: "Fedora Linux <3" },
         ],
     },
 ];
+
 ---
 
 <section id="hero">
@@ -133,7 +133,7 @@ const toolCategories: ToolCategory[] = [
                 <!-- Toolstack-Sektion -->
                 <section class="content-section toolstack-section">
                     <FadeIn client:load delay={400} immediate>
-                        <h3 class="section-title">TOOLSTACK & SOFTWARE</h3>
+                        <h3 class="section-title">TOOLSTACK UND SOFTWARE</h3>
 
                         <div class="tools-grid">
                             {
@@ -416,7 +416,7 @@ const toolCategories: ToolCategory[] = [
 
     .toolstack-note {
         margin-top: 25%;
-        margin-bottom: auto;
+        margin-bottom: -8dvh;
         font-size: var(--step-small);
         font-style: italic;
         line-height: 1.4;
