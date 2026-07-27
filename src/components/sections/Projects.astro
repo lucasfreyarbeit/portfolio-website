@@ -15,7 +15,7 @@ import FadeIn from "../animations/FadeIn.svelte";
         </div>
     </div>
 
-    <!-- Projektkarte 01 (Neues Projekt: Godot Android-App) -->
+    <!-- Projektkarte 01 (Godot Android-App) -->
     <div class="row">
 
         <div class="col-image border-left-solid border-right-dashed">
@@ -81,10 +81,10 @@ import FadeIn from "../animations/FadeIn.svelte";
 
     </div>
 
-    <!-- Projektkarte 02 (Diese Website) -->
+    <!-- Projektkarte 02 (Portfolio Website) - Trennlinie oben über border-top-dashed -->
     <div class="row">
 
-        <div class="col-text border-left-solid border-right-dashed">
+        <div class="col-text border-left-solid border-right-dashed border-top-dashed">
 
             <FadeIn client:visible delay={0}>
                 <h1 class="project-title">PORTFOLIO WEBSITE</h1>
@@ -136,7 +136,7 @@ import FadeIn from "../animations/FadeIn.svelte";
 
         </div>
 
-        <div class="col-image border-right-solid">
+        <div class="col-image border-right-solid border-top-dashed">
             <FadeIn client:visible delay={400}>
                 <ImageBox
                     src="/images/projects/Placeholder.png"
@@ -160,17 +160,10 @@ import FadeIn from "../animations/FadeIn.svelte";
         align-items: stretch;
         width: 100%;
         margin: 0 auto;
-        padding: 0 1rem;
+        padding: 0;
     }
 
     /* Spalten-Layouts */
-    .col-full,
-    .col-image,
-    .col-text {
-        padding: 1.5rem;
-        border-bottom: 3px solid var(--border-color);
-    }
-
     .col-full {
         flex: 1;
     }
@@ -195,13 +188,9 @@ import FadeIn from "../animations/FadeIn.svelte";
     .border-top-solid {
         border-top: 3px solid var(--border-color);  
     }   
-        
-    .border-left-solid {
-        border-left: 3px solid var(--border-color);
-    }
 
-    .border-right-solid {
-        border-right: 3px solid var(--border-color);
+    .border-top-dashed {
+        border-top: 2px dashed var(--border-color);
     }
 
     .border-right-dashed {

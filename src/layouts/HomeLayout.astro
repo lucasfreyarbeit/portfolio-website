@@ -19,8 +19,11 @@ const { title = "LUCAS FREY" } = Astro.props;
 
     <div class="site-wrapper">
         <main class="main-content">
-            <slot />
+            <slot /> <!-- Hier landen Hero, Projects, Contact etc. -->
         </main>
+
+        <!-- Footer sitzt außerhalb von main-content -> Geht von Rand zu Rand! -->
+        <slot name="footer" /> 
     </div>
 
 </body>

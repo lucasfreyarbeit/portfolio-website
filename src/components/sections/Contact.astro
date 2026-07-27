@@ -7,7 +7,7 @@ import FadeIn from "../animations/FadeIn.svelte";
 
     <!-- Sektions-Header -->
     <div class="row">
-        <div class="col-full border-top-solid border-left-solid border-right-solid bg-subtle">
+        <div class="col-full bg-subtle">
             <FadeIn client:visible>
                 <h1 class="title">KONTAKT</h1>
             </FadeIn>
@@ -16,7 +16,7 @@ import FadeIn from "../animations/FadeIn.svelte";
 
     <!-- Hauptinhalt & Formular -->
     <div class="row">
-        <div class="col-full border-left-solid border-right-solid">
+        <div class="col-full">
 
             <!-- Einleitung -->
             <FadeIn client:visible delay={50}>
@@ -114,7 +114,7 @@ import FadeIn from "../animations/FadeIn.svelte";
                 </FadeIn>
 
                 <!-- Absende-Button -->
-                <FadeIn client:visible delay={400}>
+                <FadeIn client:visible delay={300}>
                     <div class="buttons">
                         <Button type="submit" variant="blue">
                             ANFRAGE SENDEN
@@ -173,21 +173,12 @@ import FadeIn from "../animations/FadeIn.svelte";
         display: flex;
         flex-direction: column;
         padding: 1.5rem;
-
-        border-bottom: 3px solid var(--border-color);
+        border-bottom: 3px dashed var(--border-color);
     }
 
     /* Außenkanten des Rasters */
     .border-top-solid {
         border-top: 3px solid var(--border-color);
-    }
-
-    .border-left-solid {
-        border-left: 3px solid var(--border-color);
-    }
-
-    .border-right-solid {
-        border-right: 3px solid var(--border-color);
     }
 
     /* Subtiler Hintergrund für Sektions-Header */

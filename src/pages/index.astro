@@ -12,5 +12,7 @@ import Footer from "../components/navigation/Footer.astro";
   <Projects />
   <Contact />
   <HoverButtons backHref="#hero" configHref="#config" />
-  <Footer />
+  
+  <!-- Durch slot="footer" wandert der Footer aus dem main-content heraus -->
+  <Footer slot="footer" />
 </HomeLayout>

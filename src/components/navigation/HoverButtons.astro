@@ -147,26 +147,32 @@ const { backHref, configHref } = Astro.props;
 
 <script>
     function initStickyButtonsObserver() {
+        // Hero-Abschnitt und Back-Button im DOM selektieren
         const hero = document.querySelector('#hero');
         const backBtn = document.querySelector('#sticky-back-btn');
 
         if (!backBtn) return;
 
         if (hero) {
+            // IntersectionObserver mit dynamischer 50 % Schwelle initialisieren
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
+                    // Button ist sichtbar, sobald weniger als 50 % des Heros im Viewport sind
+                    const isLessThenHalfVisible = !entry.isIntersecting || entry.intersectionRatio < 0.5;
+                    
                     backBtn.setAttribute(
                         'data-visible',
-                        (!entry.isIntersecting).toString()
+                        isLessThenHalfVisible.toString()
                     );
                 });
             }, {
-                threshold: 0,
-                rootMargin: "-600px 0px 0px 0px" 
+                // Löst aus, sobald die Sichtbarkeit die 50 %-Marke über- oder unterschreitet
+                threshold: 0.5
             });
 
             observer.observe(hero);
         } else {
+            // Fallback für Seiten ohne Hero-Sektion
             backBtn.setAttribute('data-visible', 'true');
         }
     }

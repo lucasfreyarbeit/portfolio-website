@@ -14,6 +14,7 @@
 html {
     height: 100%;
     scroll-behavior: smooth;
+    font-size: 100%;
 }
 
 body {
@@ -29,14 +30,16 @@ body {
     overflow-x: hidden;
 }
 
-/* Zentrale Breitenbegrenzung zur Skalierungssicherung auf Ultra-Wide-Monitoren */
+/* 3. Globaler Seiten-Rahmen und Layout-Container */
 .site-wrapper {
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
     width: 100%;
-    max-width: var(--site-max-width, 1440px);
+    max-width: var(--site-max-width, 3440px);
     margin: 0 auto;
+    /* Keinerlei Padding auf Wrapper-Ebene, damit der Footer randlos bleibt */
+    padding: 0; 
 }
 
 .main-content {
@@ -44,29 +47,30 @@ body {
     flex-direction: column;
     flex-grow: 1;
     width: 100%;
-    padding-top: var(--page-padding);
+    /* Der Hauptinhalt erhält das globale Padding */
+    padding: var(--page-padding, 1.5rem); 
 }
 
-/* 3. Fluides Grid-System und Container-Steuerung */
+/* 4. Fluides Grid-System */
 .row {
     display: flex;
     align-items: stretch;
     width: 100%;
     margin: 0 auto;
-    padding: 0 calc(var(--page-padding) + 0.25rem);
+    padding: 0; 
 }
 
 .col-full {
     display: flex;
     flex: 1;
     flex-direction: column;
-    padding: 1.5rem;
+    padding: var(--page-padding, 1.5rem);
 }
 
 /* Feste Spaltenbreite im Verhältnis für die Bild-Sektion */
 .col-image {
     flex: 0 0 clamp(280px, 25vw, 360px);
-    padding: 1.5rem;
+    padding: var(--page-padding, 1.5rem);
 }
 
 .col-text {
@@ -74,10 +78,10 @@ body {
     flex: 1;
     min-width: 0;
     flex-direction: column;
-    padding: 1.5rem;
+    padding: var(--page-padding, 1.5rem);
 }
 
-/* 4. Rahmen-Hilfsklassen */
+/* 5. Rahmen-Hilfsklassen */
 .border-top-solid {
     border-top: var(--border-width-solid) solid var(--border-color);
 }
@@ -98,7 +102,7 @@ body {
     border-right: var(--border-width-dashed) dashed var(--border-color);
 }
 
-/* 5. Medien-Basiseinstellungen */
+/* 6. Medien-Basiseinstellungen */
 img,
 video,
 svg,
@@ -114,7 +118,7 @@ object {
     max-width: 100%;
 }
 
-/* 6. Typografie */
+/* 7. Typografie */
 h1,
 h2,
 h3,
@@ -144,7 +148,7 @@ a {
     text-decoration: none;
 }
 
-/* 7. Hilfsklassen */
+/* 8. Hilfsklassen */
 .text-editorial-italic {
     font-family: var(--font-editorial);
     font-style: italic;
@@ -158,10 +162,41 @@ a {
     color: var(--accent-blue-highlight);
 }
 
-/* 8. Responsive Breakpoints */
+/* 9. Scrollbar-Konfiguration (Komplett unsichtbar) */
+::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+html,
+body,
+* {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+}
+
+/* 10. Responsive Breakpoints & Scaling */
+@media (min-width: 1920px) {
+    html {
+        font-size: 106.25%;
+    }
+}
+
+@media (min-width: 2560px) {
+    html {
+        font-size: 112.5%;
+    }
+}
+
 @media (max-width: 768px) {
+    .site-wrapper {
+        padding: 1rem; /* Leicht reduzierter Außenabstand auf Mobile */
+    }
+
     .row {
         flex-direction: column;
+        padding: 0;
     }
 
     .col-image,
@@ -174,34 +209,5 @@ a {
     .border-right-dashed {
         border-right: none;
         border-bottom: var(--border-width-solid) solid var(--border-color);
-    }
-}
-
-/* 9. Scrollbar-Konfiguration */
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-    display: none;
-}
-
-html,
-body {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-/* Globale fluide Root-Skalierung für hochauflösende Bildschirme */
-html {
-    font-size: 100%; 
-}
-
-@media (min-width: 1920px) {
-    html {
-        font-size: 106.25%; /* 17px Basis */
-    }
-}
-
-@media (min-width: 2560px) {
-    html {
-        font-size: 112.5%; /* 18px Basis */
     }
 }

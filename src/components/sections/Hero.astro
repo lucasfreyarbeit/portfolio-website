@@ -49,13 +49,12 @@ const toolCategories: readonly ToolCategory[] = [
         ],
     },
 ];
-
 ---
 
 <section id="hero">
     <div class="row">
         <!-- Linke Spalte: Portrait- und Metadaten-Sektion -->
-        <div class="column-left border-left-solid border-right-dashed">
+        <div class="column-left border-right-dashed">
             <div class="portrait-wrapper">
                 <FadeIn client:load delay={0} immediate>
                     <ImageBox
@@ -99,7 +98,7 @@ const toolCategories: readonly ToolCategory[] = [
         </div>
 
         <!-- Rechte Spalte: Inhalts- und Navigationsbereich -->
-        <div class="column-right border-right-solid">
+        <div class="column-right">
             <!-- Branding-Bereich -->
             <div class="branding-block">
                 <FadeIn client:load delay={100} immediate>
@@ -115,6 +114,7 @@ const toolCategories: readonly ToolCategory[] = [
                     </h2>
                 </FadeIn>
             </div>
+
             <div class="main-content">
                 <FadeIn client:load delay={300} immediate>
                     <section class="content-section">
@@ -170,6 +170,7 @@ const toolCategories: readonly ToolCategory[] = [
                         </p>
                     </FadeIn>
                 </div>
+
                 <!-- Aktions-Schaltflächen -->
                 <nav class="action-area" aria-label="Aktionsmenü">
                     <FadeIn client:load delay={500} immediate>
@@ -203,7 +204,7 @@ const toolCategories: readonly ToolCategory[] = [
 
     #hero {
         width: 100%;
-        padding-top: 2.5rem;
+        padding-top: 0rem;
         min-height: 100dvh;
         display: flex;
     }
@@ -213,13 +214,13 @@ const toolCategories: readonly ToolCategory[] = [
         align-items: stretch;
         width: 100%;
         margin: 0 auto;
-        padding: 0 1rem;
+        padding: 0;
     }
 
     .column-left,
     .column-right {
-        padding: 2rem;
-        border-top: 3px solid var(--border-color);
+        padding: 1.5rem;
+        border-top: 0px solid var(--border-color);
         border-bottom: 0px;
     }
 
@@ -339,12 +340,14 @@ const toolCategories: readonly ToolCategory[] = [
     }
 
     .content-section {
-        margin-bottom: 2.25rem;
+        margin-bottom: 2rem;
     }
 
+    /* Gezieltes Entzerren über der Toolstack-Überschrift */
     .toolstack-section {
-        margin-top: auto;
+        margin-top: 0;
         margin-bottom: 0;
+        padding-top: 2.5rem; /* <-- Bringt ausreichend Luft nach der "Über mich"-Sektion */
     }
 
     .section-title {
@@ -410,13 +413,15 @@ const toolCategories: readonly ToolCategory[] = [
         margin-right: 100%;
     }
 
+    /* Fußnote exakt an die Trennlinie nach unten schieben */
     .toolstack-note-container {
-        margin-top: auto;
+        margin-top: auto; 
+        padding-top: 1.5rem;
+        padding-bottom: 0.75rem;
     }
 
     .toolstack-note {
-        margin-top: 25%;
-        margin-bottom: -8dvh;
+        margin: 0; 
         font-size: var(--step-small);
         font-style: italic;
         line-height: 1.4;
@@ -429,18 +434,11 @@ const toolCategories: readonly ToolCategory[] = [
         flex-wrap: wrap;
         gap: 1rem;
         width: 100%;
-        margin-top: auto;
         padding-top: 1.5rem;
         border-top: 2px dashed var(--border-color);
     }
 
     /* Hilfsklassen für Rasterlinien */
-    .border-left-solid {
-        border-left: 3px solid var(--border-color);
-    }
-    .border-right-solid {
-        border-right: 3px solid var(--border-color);
-    }
     .border-right-dashed {
         border-right: 2px dashed var(--border-color);
     }
@@ -455,21 +453,22 @@ const toolCategories: readonly ToolCategory[] = [
     @media (max-width: 768px) {
         #hero {
             height: auto;
-            padding-top: 2rem;
+            padding-top: 0;
         }
 
         .row {
             flex-direction: column;
+            padding: 0;
         }
 
         .column-left {
             padding-bottom: 1rem;
-            border-right: 3px solid var(--border-color);
-            border-bottom: none;
+            border-right: none;
+            border-bottom: 2px dashed var(--border-color);
         }
 
         .column-right {
-            border-top: 2px dashed var(--border-color);
+            border-top: none;
         }
 
         .logo-wrapper {

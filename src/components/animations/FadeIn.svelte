@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
 
     export let delay = 0;
-    export let immediate = false; 
+    export let immediate = false;
     let className = "";
     export { className as class };
 
@@ -10,64 +10,96 @@
     let container;
 
     onMount(() => {
-        // Fall 1: Hero-Elemente direkt beim Laden animieren
-        if (immediate) {
-            const timer = setTimeout(() => {
-                isVisible = true;
-            }, delay);
+        let timer;
 
+        const startAnimation = () => {
+            if (delay > 0) {
+                timer = setTimeout(() => {
+                    isVisible = true;
+                }, delay);
+            } else {
+                isVisible = true;
+            }
+        };
+
+        if (immediate) {
+            startAnimation();
             return () => clearTimeout(timer);
         }
 
-        // Fall 2: Normale Elemente beim Scrollen animieren
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    isVisible = true;
-                    observer.unobserve(entry.target);
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const entry = entries[0];
+                if (entry && entry.isIntersecting) {
+                    startAnimation();
+                    if (container) observer.unobserve(container);
                 }
-            });
-        }, {
-            root: null,
-            rootMargin: "0px 0px -5% 0px",
-            threshold: 0
-        });
+            },
+            {
+                root: null,
+                rootMargin: "0px 0px -50px 0px",
+                threshold: 0.01,
+            }
+        );
 
-        if (container) {
-            observer.observe(container);
-        }
+        if (container) observer.observe(container);
 
         return () => {
-            if (container) {
-                observer.unobserve(container);
-            }
+            clearTimeout(timer);
+            if (container) observer.unobserve(container);
         };
     });
 </script>
 
 <div
     bind:this={container}
-    class={`scroll-reveal ${className}`}
-    class:is-active={isVisible}
-    style={`transition-delay: ${immediate ? '0ms' : `${delay}ms`};`}
+    class={`terminal-snap-container ${className}`}
+    class:is-visible={isVisible}
 >
     <slot />
 </div>
 
 <style>
-    .scroll-reveal {
+    .terminal-snap-container {
         opacity: 0;
-        transform: translateY(30px);
+        visibility: hidden;
 
-        transition:
-            opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-            transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-
-        will-change: opacity, transform;
+        /* Hardware-Layer isolieren (Compositor-Only) */
+        transform: translate3d(-4px, 6px, 0);
+        will-change: transform, opacity;
     }
 
-    .scroll-reveal.is-active {
+    .terminal-snap-container.is-visible {
         opacity: 1;
-        transform: translateY(0);
+        visibility: visible;
+        
+        /* Reine Compositor-Animation ohne Layout-Shift */
+        animation: render-snap 0.3s cubic-bezier(0.05, 0.85, 0.1, 1) forwards;
+    }
+
+    @keyframes render-snap {
+        0% {
+            opacity: 0;
+            transform: translate3d(-4px, 6px, 0);
+        }
+        /* Snap-Over-Effect rein über Integer/Subpixel-Translates (kein Scale-Blur) */
+        50% {
+            opacity: 1;
+            transform: translate3d(0, -1px, 0);
+        }
+        100% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .terminal-snap-container {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+            animation: none !important;
+            will-change: auto !important;
+        }
     }
 </style>
