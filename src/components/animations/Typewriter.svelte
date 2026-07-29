@@ -1,32 +1,27 @@
 <script>
-    import { onMount } from "svelte";
+    /** Props-Deklaration über das $props-Rune (Svelte 5) */
+    let {
+        text = "",
+        speed = 100,
+        delay = 0,
+        cursor = true,
+        cursorChar = "_",
+        hideCursorOnDone = false,
+        class: className = ""
+    } = $props();
 
-    /** @type {string} Der finale Text */
-    export let text = "";
+    // Reaktiver Zustand mittels $state-Rune
+    let displayText = $state("");
+    let isDone = $state(false);
+    let isStarted = $state(false);
 
-    /** @type {number} Millisekunden pro Zeichen (Standard: zackige 35ms) */
-    export let speed = 100;
+    // Effekthandling und Lebenszyklussteuerung über $effect
+    $effect(() => {
+        // Zustand bei Parameteränderungen zurücksetzen
+        displayText = "";
+        isDone = false;
+        isStarted = false;
 
-    /** @type {number} Start-Verzögerung in ms */
-    export let delay = 0;
-
-    /** @type {boolean} Ob der Blink-Cursor gezeigt werden soll */
-    export let cursor = true;
-
-    /** @type {string} Terminal-Style Cursor (z.B. "_", "█", "|") */
-    export let cursorChar = "_";
-
-    /** @type {boolean} Cursor nach Fertigstellung ausblenden */
-    export let hideCursorOnDone = false;
-
-    let className = "";
-    export { className as class };
-
-    let displayText = "";
-    let isDone = false;
-    let isStarted = false;
-
-    onMount(() => {
         // Barrierefreiheit: Bei reduzierter Bewegung sofort den gesamten Text anzeigen
         const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (prefersReducedMotion) {
@@ -43,7 +38,7 @@
         const startTimer = setTimeout(() => {
             isStarted = true;
 
-            // GPU-/VSync-synchronisierte Render-Loop
+            // VSync-synchronisierte Render-Loop
             function step(time) {
                 if (!lastTime) lastTime = time;
                 const delta = time - lastTime;
@@ -64,14 +59,16 @@
             animationFrameId = requestAnimationFrame(step);
         }, delay);
 
+        // Bereinigung laufender Timer und Animation-Frames bei Unmount oder Re-Run
         return () => {
             clearTimeout(startTimer);
-            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
         };
     });
 </script>
 
-<!-- Screenreader lesen über aria-label direkt den vollständigen Text -->
 <span 
     class={`typewriter-wrapper ${className}`} 
     aria-label={text}
@@ -94,20 +91,14 @@
     }
 
     .terminal-cursor {
-    display: inline-block;
-    font-weight: bold;
-    margin-left: -4px;
-    
-    /* Zwingt den Cursor auf die vertikale Mitte/Linie der Buchstaben */
-    vertical-align: baseline; 
-    
-    /* Falls 'vertical-align' alleine noch minimal abweicht: */
-    transform: translate3d(0, -0.1em, 0); 
-    
-    will-change: visibility;
-}
+        display: inline-block;
+        font-weight: bold;
+        margin-left: -4px;
+        vertical-align: baseline; 
+        transform: translate3d(0, -0.1em, 0); 
+        will-change: visibility;
+    }
 
-    /* Knackiges 0/1-Blinken ohne Zwischen-Fade (Instant Snap) */
     .terminal-cursor.blinking {
         animation: cursor-snap 0.8s steps(1, start) infinite;
     }

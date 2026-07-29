@@ -1,18 +1,8 @@
 ---
-import HomeLayout from "../layouts/HomeLayout.astro";
-import Hero from "../components/sections/Hero.astro";
-import Projects from "../components/sections/Projects.astro";
-import Contact from "../components/sections/Contact.astro";
-import HoverButtons from "../components/navigation/HoverButtons.astro";
+import Layout from "../layouts/Layout.astro";
 import Footer from "../components/navigation/Footer.astro";
 ---
 
-<HomeLayout title="LUCAS FREY">
-  <Hero />
-  <Projects />
-  <Contact />
-  <HoverButtons backHref="#hero" configHref="#config" />
-  
-  <!-- Durch slot="footer" wandert der Footer aus dem main-content heraus -->
+<Layout title="LUCAS FREY">
   <Footer slot="footer" />
-</HomeLayout>
+</Layout>

@@ -1,0 +1,58 @@
+---
+import "../styles/global.css";
+
+interface Props {
+    title?: string;
+}
+
+const { title = "LUCAS FREY" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="de" data-theme="light" data-font="default">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+
+    <script is:inline>
+        /* 
+         * Synchrones Auslesen und Setzen des Themes vor dem ersten Paint.
+         * Verhindert FOUC (Flash of Unstyled Content).
+         */
+        const theme = (() => {
+            if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+                return localStorage.getItem("theme");
+            }
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                return "dark";
+            }
+            return "light";
+        })();
+
+        document.documentElement.setAttribute("data-theme", theme);
+        window.localStorage.setItem("theme", theme);
+    </script>
+</head>
+<body>
+
+    <div class="site-wrapper">
+        <main class="main-content">
+            <slot /> <!-- Hier landen Hero, Projects, Contact etc. -->
+        </main>
+
+        <!-- Footer sitzt außerhalb von main-content -> Geht von Rand zu Rand! -->
+        <slot name="footer" /> 
+    </div>
+
+    <script>
+        /* 
+         * Aktiviert CSS-Transitions erst nach dem initialen Render-Zyklus.
+         * Verhindert unerwünschtes Einblenden (Fading) der Farben beim ersten Seitenaufruf.
+         */
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("theme-loaded");
+        });
+    </script>
+</body>
+</html>

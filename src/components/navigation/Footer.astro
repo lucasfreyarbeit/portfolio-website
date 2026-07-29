@@ -1,6 +1,5 @@
 ---
 import Logo from "../ui/Logo.astro";
-import Divider from "../ui/Divider.astro";
 ---
 
 <footer class="footer" id="footer">
@@ -12,7 +11,7 @@ import Divider from "../ui/Divider.astro";
                 <div class="footer-logo-wrapper">
                     <Logo variant="white" />
                 </div>
-                <!-- Integrierte Open-Source Box perfekt unter dem Logo -->
+                <!-- Open-Source-Hinweis -->
                 <div class="footer-oss-box">
                     <p class="oss-text">
                         Diese Website ist Open Source. <br />
@@ -21,14 +20,14 @@ import Divider from "../ui/Divider.astro";
                 </div>
             </section>
 
-            <section class="footer-links">
-                <nav class="link-column">
+            <section class="footer-links" aria-label="Footer Navigation">
+                <nav class="link-column" aria-label="Projekte">
                     <span class="column-title">Projekte</span>
                     <a href="https://github.com/lucasfreyarbeit">GitHub</a>
                     <a href="https://lucasfreyarbeit.itch.io/">Itch.io</a>
                 </nav>
 
-                <nav class="link-column">
+                <nav class="link-column" aria-label="Social Media">
                     <span class="column-title">Socials</span>
                     <a href="https://discord.com/users/1394404456971374701">Discord</a>
                     <a href="https://dev.to/lucasfrey">Dev.to</a>
@@ -36,17 +35,16 @@ import Divider from "../ui/Divider.astro";
             </section>
         </div>
 
-        <!-- Direktes Kindelement nimmt die volle Breite von .footer-container ein -->
-        <Divider variant="footer" />
+        <!-- Integrierter Divider -->
+        <div class="footer-divider"></div>
 
         <!-- Untere Sektion: Meta-Links und Copyright -->
         <div class="footer-bottom">
             <p class="copyright">© 2026 Lucas Frey. Alle Rechte vorbehalten.</p>
             
-            <!-- Anker für Back-To-Top Komponente -->
             <div id="footer-backup-slot"></div>
 
-            <nav class="footer-bottom-right">
+            <nav class="footer-bottom-right" aria-label="Rechtliche Hinweise">
                 <a href="/info/impressum">Impressum</a>
                 <a href="/info/datenschutz">Datenschutz</a>
                 <a href="/info/barrierefreiheit">Barrierefreiheit</a>
@@ -63,14 +61,15 @@ import Divider from "../ui/Divider.astro";
 
     /* Layout & Basiskonfiguration */
     .footer {
+        /* Zuweisung der Standardschriftart für den gesamten Footer */
+        font-family: var(--font-normal, sans-serif);
         width: 100vw; 
         position: relative;
         left: 50%;
         transform: translateX(-50%);
-        
         margin-top: auto;
-        padding: 5rem 0rem 0rem 0rem; 
-        background: #292929;
+        padding: 5rem 0 0 0; 
+        background: var(--footer-color);
         color: #e3e3e3;
         filter: none !important;
     }
@@ -81,7 +80,7 @@ import Divider from "../ui/Divider.astro";
         gap: 1rem; 
         width: 100%; 
         margin: 0 auto; 
-        padding: 0rem 1.5rem; 
+        padding: 0 1.5rem; 
     }
 
     .footer-top {
@@ -108,7 +107,6 @@ import Divider from "../ui/Divider.astro";
         transform-origin: left center;
     }
 
-    /* Styling für die Open-Source Box */
     .footer-oss-box {
         width: 100%;
     }
@@ -117,7 +115,7 @@ import Divider from "../ui/Divider.astro";
         margin: 0;
         font-size: 1rem;
         line-height: 1.4;
-        color: #a3a3a3; /* Gleiche Textfarbe wie Copyright/Meta-Links */
+        color: #a3a3a3; 
     }
 
     .oss-link {
@@ -156,18 +154,27 @@ import Divider from "../ui/Divider.astro";
     }
 
     .footer a:hover {
-        color: var(--accent-blue-highlight) !important;
+        color: var(--accent-blue-highlight, #3b82f6) !important;
         font-weight: 700;
     }
 
-    /* Footer-Bottom & Absolute Zentrierung des Slots */
+    /* Integrierter Divider */
+    .footer-divider {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: rgb(26, 26, 26);
+        margin: 1rem 0 0 0;
+    }
+
+    /* Footer-Bottom */
     .footer-bottom {
         position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
         min-height: 2.5rem;
-        padding: 0.5rem 0 0rem 0; 
+        padding: 0.5rem 0 0 0; 
         font-size: 0.85rem;
         margin-bottom: 0;
     }
@@ -200,7 +207,7 @@ import Divider from "../ui/Divider.astro";
     /* Responsive Anpassungen (Mobile Viewport) */
     @media (max-width: 768px) {
         .footer {
-            padding: 4rem 0rem 0rem 0rem;
+            padding: 4rem 0 0 0;
         }
         
         .footer-container {
