@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Footer from "../components/navigation/Footer.astro";
 
 interface Props {
     title?: string;
@@ -16,10 +17,7 @@ const { title = "LUCAS FREY" } = Astro.props;
     <title>{title}</title>
 
     <script is:inline>
-        /* 
-         * Synchrones Auslesen und Setzen des Themes vor dem ersten Paint.
-         * Verhindert FOUC (Flash of Unstyled Content).
-         */
+        /* liest theme vor dem ersten paint aus (verhindert fouc) */
         const theme = (() => {
             if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
                 return localStorage.getItem("theme");
@@ -38,21 +36,13 @@ const { title = "LUCAS FREY" } = Astro.props;
 
     <div class="site-wrapper">
         <main class="main-content">
-            <slot /> <!-- Hier landen Hero, Projects, Contact etc. -->
+            <slot /> 
         </main>
-
-        <!-- Footer sitzt außerhalb von main-content -> Geht von Rand zu Rand! -->
-        <slot name="footer" /> 
+        <Footer /> 
     </div>
 
     <script>
-        /* 
-         * Aktiviert CSS-Transitions erst nach dem initialen Render-Zyklus.
-         * Verhindert unerwünschtes Einblenden (Fading) der Farben beim ersten Seitenaufruf.
-         */
-        window.addEventListener("DOMContentLoaded", () => {
-            document.body.classList.add("theme-loaded");
-        });
+        document.body.classList.add("theme-loaded");
     </script>
 </body>
 </html>

@@ -23,14 +23,14 @@ import Logo from "../ui/Logo.astro";
             <section class="footer-links" aria-label="Footer Navigation">
                 <nav class="link-column" aria-label="Projekte">
                     <span class="column-title">Projekte</span>
-                    <a href="https://github.com/lucasfreyarbeit">GitHub</a>
-                    <a href="https://lucasfreyarbeit.itch.io/">Itch.io</a>
+                    <a href="https://github.com/lucasfreyarbeit" class="link-text">GitHub</a>
+                    <a href="https://lucasfreyarbeit.itch.io/"class="link-text">Itch.io</a>
                 </nav>
 
                 <nav class="link-column" aria-label="Social Media">
                     <span class="column-title">Socials</span>
-                    <a href="https://discord.com/users/1394404456971374701">Discord</a>
-                    <a href="https://dev.to/lucasfrey">Dev.to</a>
+                    <a href="https://discord.com/users/1394404456971374701"class="link-text">Discord</a>
+                    <a href="https://dev.to/lucasfrey"class="link-text">Dev.to</a>
                 </nav>
             </section>
         </div>
@@ -98,11 +98,11 @@ import Logo from "../ui/Logo.astro";
         flex-direction: column;
         align-items: flex-start;
         gap: 1.75rem; 
-        max-width: 320px;
+        max-width: 500px;
     }
 
     .footer-logo-wrapper {
-        transform: scale(2.5);
+        transform: scale(3.5);
         margin-bottom: 1rem; 
         transform-origin: left center;
     }
@@ -113,8 +113,8 @@ import Logo from "../ui/Logo.astro";
 
     .oss-text {
         margin: 0;
-        font-size: 1rem;
-        line-height: 1.4;
+        font-size: 1.5rem;
+        line-height: 1.5;
         color: #a3a3a3; 
     }
 
@@ -127,7 +127,7 @@ import Logo from "../ui/Logo.astro";
     .footer-links {
         text-align: center;
         display: flex;
-        gap: 3rem;
+        gap: 5rem;
     }
 
     .link-column {
@@ -136,10 +136,14 @@ import Logo from "../ui/Logo.astro";
         gap: 0.5rem;
     }
 
+    .link-text {
+        font-size: 1.5rem;
+    }
+
     .column-title {
         margin-bottom: 0.25rem;
         font-family: var(--font-heading, monospace);
-        font-size: 0.85rem;
+        font-size: 1.5rem;
         font-weight: bold;
         letter-spacing: 0.05em;
         text-transform: uppercase;
@@ -150,12 +154,13 @@ import Logo from "../ui/Logo.astro";
     .footer a {
         color: inherit;
         text-decoration: none;
-        transition: color 0.15s ease, font-weight 0.15s ease;
+        transition: color 0.25s ease, font-weight 0.25s ease, text-shadow 0.25s ease;
     }
 
     .footer a:hover {
-        color: var(--accent-blue-highlight, #3b82f6) !important;
+        color: var(--footer-hover-color) !important;
         font-weight: 700;
+        text-shadow: 0 0 10px var(--footer-hover-color);
     }
 
     /* Integrierter Divider */
@@ -175,7 +180,7 @@ import Logo from "../ui/Logo.astro";
         justify-content: space-between;
         min-height: 2.5rem;
         padding: 0.5rem 0 0 0; 
-        font-size: 0.85rem;
+        font-size: 1.25rem;
         margin-bottom: 0;
     }
 
@@ -183,6 +188,7 @@ import Logo from "../ui/Logo.astro";
         margin: 0;
         padding-bottom: 0.75rem; 
         color: #a3a3a3;
+        font-size: 1.25rem;
     }
 
     #footer-backup-slot {

@@ -93,7 +93,7 @@
     .terminal-cursor {
         display: inline-block;
         font-weight: bold;
-        margin-left: -4px;
+        margin-left: -10px;
         vertical-align: baseline; 
         transform: translate3d(0, -0.1em, 0); 
         will-change: visibility;
