@@ -1,6 +1,6 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": ["src", "src/**/*", "."] ,
+  "include": [".astro/types.d.ts", "src/**/*"],
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {
     "jsx": "preserve",

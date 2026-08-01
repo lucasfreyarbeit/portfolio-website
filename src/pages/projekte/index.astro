@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+/* Abrufen aller Einträge aus der Content Collection "projects" */
+const projects = await getCollection('projects');
+
+/* Sortierung: "featured"-Projekte priorisieren, danach alphabetisch nach Titel */
+const sortedProjects = projects.sort((a, b) => {
+  if (a.data.featured && !b.data.featured) return -1;
+  if (!a.data.featured && b.data.featured) return 1;
+  return a.data.title.localeCompare(b.data.title);
+});
+---
+
+<Layout title="Projekte">
+  <main class="projects-container">
+    <header class="page-header">
+      <h1>Projekte</h1>
+      <p>Eine Übersicht aller Entwicklungen und Open-Source-Arbeiten.</p>
+    </header>
+
+    <div class="projects-grid">
+      {sortedProjects.map((project) => (
+        <article class="project-card">
+          <a href={`/projekte/${project.id}`} class="card-link">
+            {project.data.featured && (
+              <span class="badge-featured">Featured</span>
+            )}
+            <h2>{project.data.title}</h2>
+            {project.data.description && <p>{project.data.description}</p>}
+          </a>
+        </article>
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .projects-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .page-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .badge-featured {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    background-color: var(--badge-bg, #0070f3);
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+</style>

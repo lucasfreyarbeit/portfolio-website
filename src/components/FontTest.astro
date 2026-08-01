@@ -1,0 +1,93 @@
+---
+// Komponente zur visuellen Überprüfung aller eingebundenen Schriftarten
+---
+
+<section class="font-test-container">
+    <h2>TYPOGRAFIE & FONT TEST</h2>
+
+    <!-- 1. Inter Test (Variable Font) -->
+    <div class="test-card">
+        <h3>Inter (Variable Font)</h3>
+        <p class="inter-thin">Inter Thin (100) — The quick brown fox jumps over the lazy dog.</p>
+        <p class="inter-light">Inter Light (300) — The quick brown fox jumps over the lazy dog.</p>
+        <p class="inter-regular">Inter Regular (400) — The quick brown fox jumps over the lazy dog.</p>
+        <p class="inter-medium">Inter Medium (500) — The quick brown fox jumps over the lazy dog.</p>
+        <p class="inter-bold">Inter Bold (700) — The quick brown fox jumps over the lazy dog.</p>
+        <p class="inter-black">Inter Black (900) — The quick brown fox jumps over the lazy dog.</p>
+        <p class="inter-italic">Inter Italic (400 Italic) — The quick brown fox jumps over the lazy dog.</p>
+        <p class="inter-bold-italic">Inter Bold Italic (700 Italic) — The quick brown fox jumps over the lazy dog.</p>
+    </div>
+
+    <!-- 2. JetBrains Mono Test (Variable Font) -->
+    <div class="test-card">
+        <h3>JetBrains Mono (Variable Font)</h3>
+        <p class="mono-light">JetBrains Mono Light (300) — const fn = () => "Hello World";</p>
+        <p class="mono-regular">JetBrains Mono Regular (400) — const fn = () => "Hello World";</p>
+        <p class="mono-semibold">JetBrains Mono Semibold (600) — const fn = () => "Hello World";</p>
+        <p class="mono-bold">JetBrains Mono Bold (700) — const fn = () => "Hello World";</p>
+        <p class="mono-extrabold">JetBrains Mono ExtraBold (800) — const fn = () => "Hello World";</p>
+    </div>
+
+    <!-- 3. OpenDyslexic Test (Statisch) -->
+    <div class="test-card">
+        <h3>OpenDyslexic</h3>
+        <p class="dyslexic-regular">OpenDyslexic Regular (400) — Barrierefreier Text für bessere Lesbarkeit.</p>
+        <p class="dyslexic-bold">OpenDyslexic Bold (700) — Barrierefreier Text für bessere Lesbarkeit.</p>
+    </div>
+
+    <!-- 4. Globale Headings Test -->
+    <div class="test-card">
+        <h3>HTML Headings (Gesteuert durch global.css)</h3>
+        <h1>H1 Heading (2.5rem - JetBrains Mono Bold)</h1>
+        <h2>H2 Heading (2.0rem - JetBrains Mono Bold)</h2>
+        <h3>H3 Heading (1.75rem - JetBrains Mono Semibold)</h3>
+        <h4>H4 Heading (1.5rem - JetBrains Mono Semibold)</h4>
+        <h5>H5 Heading (1.25rem - JetBrains Mono Medium)</h5>
+        <h6>H6 Heading (1.0rem - JetBrains Mono Medium)</h6>
+    </div>
+</section>
+
+<style>
+    .font-test-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 2rem;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .test-card {
+        border: 1px solid var(--border-color);
+        padding: 1.5rem;
+        border-radius: 8px;
+        background-color: var(--bg-color);
+    }
+
+    .test-card h3 {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Inter Spezifisch */
+    .inter-thin        { font-family: var(--font-normal); font-weight: 100; }
+    .inter-light       { font-family: var(--font-normal); font-weight: 300; }
+    .inter-regular     { font-family: var(--font-normal); font-weight: 400; }
+    .inter-medium      { font-family: var(--font-normal); font-weight: 500; }
+    .inter-bold        { font-family: var(--font-normal); font-weight: 700; }
+    .inter-black       { font-family: var(--font-normal); font-weight: 900; }
+    .inter-italic      { font-family: var(--font-normal); font-weight: 400; font-style: italic; }
+    .inter-bold-italic { font-family: var(--font-normal); font-weight: 700; font-style: italic; }
+
+    /* JetBrains Mono Spezifisch */
+    .mono-light     { font-family: var(--font-heading); font-weight: 300; }
+    .mono-regular   { font-family: var(--font-heading); font-weight: 400; }
+    .mono-semibold  { font-family: var(--font-heading); font-weight: 600; }
+    .mono-bold      { font-family: var(--font-heading); font-weight: 700; }
+    .mono-extrabold { font-family: var(--font-heading); font-weight: 800; }
+
+    /* OpenDyslexic Spezifisch */
+    .dyslexic-regular { font-family: var(--font-dyslexic); font-weight: 400; }
+    .dyslexic-bold    { font-family: var(--font-dyslexic); font-weight: 700; }
+</style>

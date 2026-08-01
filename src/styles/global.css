@@ -1,3 +1,5 @@
+/* Import der Schriftarten und Variablen */
+@import "./fonts.css";
 @import "./variables.css";
 
 /* Basis-Reset & HTML-Setup */

@@ -1,0 +1,53 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+/* Generierung aller statischen Pfade aus der Collection */
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  
+  return projects.map((entry: CollectionEntry<'projects'>) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+/* Typisierung der Komponenten-Props */
+type Props = {
+  entry: CollectionEntry<'projects'>;
+};
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout title={entry.data.title}>
+  <article class="project-detail">
+    <h1>{entry.data.title}</h1>
+    {entry.data.description && <p class="description">{entry.data.description}</p>}
+    <hr />
+    
+    <div class="content-body">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .project-detail {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  .description {
+    color: var(--text-color-muted);
+    font-size: var(--fs-h5);
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2rem 0;
+  }
+</style>

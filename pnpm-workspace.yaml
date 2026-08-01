@@ -1,2 +1,4 @@
 allowBuilds:
   esbuild: true
+patchedDependencies:
+  '@vercel/speed-insights': patches/@vercel__speed-insights.patch
