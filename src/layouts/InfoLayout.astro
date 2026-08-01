@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import BackButton from "../components/navigation/BackButton.astro";
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
     title?: string;
@@ -31,6 +32,7 @@ const { title = "LUCAS FREY" } = Astro.props;
         </div>
 
     </main>
+    <SpeedInsights />
 
 </body>
 </html>
