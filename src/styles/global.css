@@ -1,10 +1,10 @@
 :root {
-    /* typografie (fonts) */
+    /* Typografie (fonts) */
     --font-heading: "JetBrains Mono", monospace;
     --font-normal: "Inter", sans-serif;
     --font-serif: "Source Serif 4", serif;
 
-    /* typografie (sizes - rem skaliert sauber mit browser-zoom) */
+    /* Typografie (sizes) */
     --fs-h1: 2.5rem;
     --fs-h2: 2rem;
     --fs-h3: 1.75rem;
@@ -14,29 +14,40 @@
     --fs-body: 1rem;
     --fs-small: 0.875rem;
 
-    /* typografie (weights) */
+    /* Typografie (weights) */
     --fw-bold: 700;
     --fw-semibold: 600;
     --fw-medium: 500;
     --fw-normal: 400;
     --fw-light: 300;
-    
-    /* ausnahmen */
+
+    /* Ausnahmen */
     --footer-color: rgb(0, 0, 0);
     --footer-text-color: rgb(220, 220, 220);
     --footer-hover-color: rgb(199, 199, 199);
 
-    /* light mode */
+    /* Light Theme (Standard / Fallback) */
     --bg-color: rgb(220, 220, 220);
     --text-color: rgb(50, 50, 50);
     --text-color-muted: rgb(100, 100, 100);
     --title-color: rgb(20, 20, 20);
     --border-color: rgb(200, 200, 200);
-    
+    --hover-color: rgb(100, 100, 100);
 }
-     
+
+/* Automatisches System Dark Theme ODER Manuell */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg-color: rgb(20, 20, 20);
+        --text-color: rgb(220, 220, 220);
+        --text-color-muted: rgb(160, 160, 160);
+        --title-color: rgb(250, 250, 250);
+        --border-color: rgb(80, 80, 80);
+        --hover-color: rgb(190, 190, 190);
+    }
+}
+
 :root[data-theme="dark"] {
-    /* dark mode */
     --bg-color: rgb(20, 20, 20);
     --text-color: rgb(220, 220, 220);
     --text-color-muted: rgb(160, 160, 160);
@@ -45,7 +56,7 @@
     --hover-color: rgb(190, 190, 190);
 }
 
-/* basis-setup & reset */
+/* Basis-Setup & Reset */
 html, body {
     margin: 0;
     padding: 0;
@@ -56,12 +67,11 @@ body {
     font-family: var(--font-normal);
     font-size: var(--fs-body);
     font-weight: var(--fw-normal);
-    line-height: 1.6; /* erhöht lesbarkeit von fließtext */
+    line-height: 1.6;
     background-color: var(--bg-color);
     color: var(--text-color);
 }
 
-/* fliesstext-elemente */
 p {
     font-size: var(--fs-body);
     font-weight: var(--fw-normal);
@@ -74,12 +84,10 @@ small, .text-small {
     font-weight: var(--fw-light);
 }
 
-/* verhindert farb-flash (fouc) beim initialen laden */
 body.theme-loaded {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* sticky-footer layout via css flexbox */
 .site-wrapper {
     display: flex;
     flex-direction: column;
@@ -91,7 +99,6 @@ body.theme-loaded {
     flex: 1 0 auto;
 }
 
-/* typografie (ueberschriften) */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     color: var(--title-color);
