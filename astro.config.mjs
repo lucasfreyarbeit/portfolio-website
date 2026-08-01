@@ -7,7 +7,7 @@ export default defineConfig({
 
   integrations: [svelte()],
 
-  output: "server",
+  output: "static",
   adapter: vercel({
     webAnalytics: {
       enabled: true
