@@ -1,63 +1,111 @@
-/* Import der Schriftarten und Variablen */
+/* Initialisierung von Tailwind CSS v4 */
+@import "tailwindcss";
 @import "./fonts.css";
 @import "./variables.css";
 
+/* 
+ * Mapping der lokalen CSS-Variablen in das Tailwind-Theme.
+ * Generiert automatisch Utility-Klassen (z. B. bg-bg-color, text-title-color).
+ */
+@theme {
+  --color-bg-color: var(--bg-color);
+  --color-text-color: var(--text-color);
+  --color-text-color-muted: var(--text-color-muted);
+  --color-title-color: var(--title-color);
+  --color-border-color: var(--border-color);
+  --color-hover-color: var(--hover-color);
+  --color-footer-color: var(--footer-color);
+  --color-footer-text-color: var(--footer-text-color);
+  --color-footer-hover-color: var(--footer-hover-color);
+
+  --font-heading: var(--font-heading);
+  --font-normal: var(--font-normal);
+  --font-dyslexic: var(--font-dyslexic);
+}
+
 /* Basis-Reset & HTML-Setup */
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 body {
-    font-family: var(--font-normal);
-    font-size: var(--fs-body);
-    font-weight: var(--fw-normal);
-    line-height: 1.6;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+  font-family: var(--font-normal);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-normal);
+  line-height: 1.6;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 p {
-    font-size: var(--fs-body);
-    font-weight: var(--fw-normal);
-    margin-top: 0;
-    margin-bottom: 1rem;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-normal);
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
-small, .text-small {
-    font-size: var(--fs-small);
-    font-weight: var(--fw-light);
+small,
+.text-small {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-light);
 }
 
 body.theme-loaded {
-    transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 /* Layout-Strukturen */
 .site-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .main-content {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 /* Typografie-Zuweisungen */
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    color: var(--title-color);
-    line-height: 1.2;
-    margin-top: 0;
-    margin-bottom: 1rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--title-color);
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
-h1 { font-size: var(--fs-h1); font-weight: var(--fw-bold); }
-h2 { font-size: var(--fs-h2); font-weight: var(--fw-bold); }
-h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); }
-h4 { font-size: var(--fs-h4); font-weight: var(--fw-semibold); }
-h5 { font-size: var(--fs-h5); font-weight: var(--fw-medium); }
-h6 { font-size: var(--fs-h6); font-weight: var(--fw-medium); }
+h1 {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+}
+h2 {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+}
+h3 {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+}
+h4 {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+}
+h5 {
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-medium);
+}
+h6 {
+  font-size: var(--fs-h6);
+  font-weight: var(--fw-medium);
+}
