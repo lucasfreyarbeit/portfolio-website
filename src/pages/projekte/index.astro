@@ -1,9 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
 
 /* Abrufen aller Einträge aus der Content Collection "projects" */
-const projects = await getCollection('projects');
+const projects = await getCollection("projects");
 
 /* Sortierung: "featured"-Projekte priorisieren, danach alphabetisch nach Titel */
 const sortedProjects = projects.sort((a, b) => {
@@ -17,21 +17,23 @@ const sortedProjects = projects.sort((a, b) => {
   <main class="projects-container">
     <header class="page-header">
       <h1>Projekte</h1>
-      <p>Eine Übersicht aller Entwicklungen und Open-Source-Arbeiten.</p>
+      <p>Eine Übersicht all meiner Projekte.</p>
     </header>
 
     <div class="projects-grid">
-      {sortedProjects.map((project) => (
-        <article class="project-card">
-          <a href={`/projekte/${project.id}`} class="card-link">
-            {project.data.featured && (
-              <span class="badge-featured">Featured</span>
-            )}
-            <h2>{project.data.title}</h2>
-            {project.data.description && <p>{project.data.description}</p>}
-          </a>
-        </article>
-      ))}
+      {
+        sortedProjects.map((project) => (
+          <article class="project-card">
+            <a href={`/projekte/${project.id}`} class="card-link">
+              {project.data.featured && (
+                <span class="badge-featured">Featured</span>
+              )}
+              <h2>{project.data.title}</h2>
+              {project.data.description && <p>{project.data.description}</p>}
+            </a>
+          </article>
+        ))
+      }
     </div>
   </main>
 </Layout>
@@ -57,11 +59,14 @@ const sortedProjects = projects.sort((a, b) => {
     border: 1px solid var(--border-color, #e2e8f0);
     border-radius: 8px;
     padding: 1.5rem;
-    transition: transform 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease;
   }
 
   .project-card:hover {
-    transform: translateY(-2px);
+    transform: scale(1.025);
+    border: 2px solid var(--border-hover-color, #ffffff);
   }
 
   .card-link {

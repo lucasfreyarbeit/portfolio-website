@@ -1,0 +1,364 @@
+---
+// BrandKitTest.astro
+// Visuelle Überprüfung des "Material 3 Expressive" Design Systems & Northern Industrial Theme.
+// Integriert Inter (Sans), Instrument Serif (Serif / Editorial) und JetBrains Mono (Specs/Tags).
+---
+
+<section class="mx-auto flex max-w-5xl flex-col gap-16 p-8 font-sans">
+  <div class="border-border-subtle/40 flex flex-col gap-3 border-b pb-4">
+    <div
+      class="text-accent-primary flex items-center gap-2 font-mono text-xs font-bold tracking-widest uppercase"
+    >
+      <span>[SYS.01]</span>
+      <span>// Design System Playground</span>
+    </div>
+
+    <h1
+      class="text-text-primary text-5xl leading-none font-black tracking-tight md:text-6xl"
+    >
+      Material <em class="text-accent-primary font-serif font-normal italic"
+        >Expressive</em
+      >
+    </h1>
+
+    <p class="text-text-muted mt-2 max-w-xl text-lg leading-relaxed">
+      Testing the interplay of our Northern Industrial palette mapped onto
+      fluid, rounded components and multi-layered typography.
+    </p>
+  </div>
+
+  <div class="flex flex-col gap-6">
+    <div class="flex items-center justify-between">
+      <h2
+        class="text-text-primary flex items-center gap-3 text-2xl font-bold tracking-tight"
+      >
+        <span class="text-accent-primary font-mono text-base font-semibold"
+          >01 //</span
+        >
+        Tonal Palette
+      </h2>
+      <span class="text-text-muted font-mono text-xs">COLOR_TOKENS.CSS</span>
+    </div>
+
+    <div class="grid grid-cols-2 gap-6 md:grid-cols-4">
+      <div class="flex flex-col gap-3">
+        <div
+          class="bg-bg-base border-border-subtle flex h-32 w-full items-end rounded-3xl border p-4 shadow-sm"
+        >
+          <span class="text-text-muted font-mono text-xs">#101211</span>
+        </div>
+        <div class="px-2">
+          <span class="text-text-primary block font-bold">bg-base</span>
+          <span class="text-text-muted text-sm">Background Canvas</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <div
+          class="bg-bg-surface border-border-subtle/50 flex h-32 w-full items-end rounded-3xl border p-4 shadow-md"
+        >
+          <span class="text-text-muted font-mono text-xs">#171A18</span>
+        </div>
+        <div class="px-2">
+          <span class="text-text-primary block font-bold">bg-surface</span>
+          <span class="text-text-muted text-sm">Elevated Cards</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <div
+          class="bg-accent-primary shadow-accent-primary/20 flex h-32 w-full items-end rounded-3xl p-4 shadow-lg"
+        >
+          <span
+            class="font-mono text-xs text-[#E8E9E6]/80 dark:text-[#FFFFFF]/80"
+            >#4E735B</span
+          >
+        </div>
+        <div class="px-2">
+          <span class="text-text-primary block font-bold">accent-primary</span>
+          <span class="text-text-muted text-sm">Primary Actions</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <div
+          class="bg-accent-secondary shadow-accent-secondary/10 flex h-32 w-full items-end rounded-3xl p-4 shadow-md"
+        >
+          <span
+            class="font-mono text-xs text-[#E8E9E6]/80 dark:text-[#FFFFFF]/80"
+            >#8C6E53</span
+          >
+        </div>
+        <div class="px-2">
+          <span class="text-text-primary block font-bold">accent-secondary</span
+          >
+          <span class="text-text-muted text-sm">Warm Highlights</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-6">
+    <div class="flex items-center justify-between">
+      <h2
+        class="text-text-primary flex items-center gap-3 text-2xl font-bold tracking-tight"
+      >
+        <span class="text-accent-primary font-mono text-base font-semibold"
+          >02 //</span
+        >
+        Typography System
+      </h2>
+      <span class="text-text-muted font-mono text-xs"
+        >INTER + INSTRUMENT + JETBRAINS</span
+      >
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div
+        class="bg-bg-surface border-border-subtle/20 flex flex-col gap-3 rounded-3xl border p-6 shadow-sm"
+      >
+        <div
+          class="border-border-subtle/30 mb-1 flex items-center justify-between border-b pb-3"
+        >
+          <span
+            class="text-accent-primary font-mono text-xs font-bold tracking-wider uppercase"
+            >Sans-Serif</span
+          >
+          <span class="text-text-muted font-mono text-xs">Inter</span>
+        </div>
+        <p class="text-lg font-light">Light — The quick brown fox.</p>
+        <p class="text-lg font-normal">Regular — The quick brown fox.</p>
+        <p class="text-lg font-medium">Medium — The quick brown fox.</p>
+        <p class="text-lg font-bold">Bold — The quick brown fox.</p>
+        <p class="text-lg font-black">Black — The quick brown fox.</p>
+      </div>
+
+      <div
+        class="bg-bg-surface border-border-subtle/20 flex flex-col gap-3 rounded-3xl border p-6 shadow-sm"
+      >
+        <div
+          class="border-border-subtle/30 mb-1 flex items-center justify-between border-b pb-3"
+        >
+          <span
+            class="text-accent-secondary font-mono text-xs font-bold tracking-wider uppercase"
+            >Editorial Accents</span
+          >
+          <span class="text-text-muted font-mono text-xs">Instrument Serif</span
+          >
+        </div>
+        <p class="font-serif text-2xl italic">Regular Italic Accent</p>
+        <p class="font-serif text-3xl">Editorial Headline</p>
+        <p class="text-text-muted mt-2 text-sm leading-relaxed">
+          Nutze <code
+            class="bg-bg-base text-text-primary rounded px-1.5 py-0.5 font-mono text-xs"
+            >.font-serif</code
+          > oder <code
+            class="bg-bg-base text-text-primary rounded px-1.5 py-0.5 font-mono text-xs"
+            >em</code
+          > Tags für organische, elegante Hervorhebungen in Headlines.
+        </p>
+      </div>
+
+      <div
+        class="bg-bg-surface border-border-subtle/20 flex flex-col gap-3 rounded-3xl border p-6 shadow-sm"
+      >
+        <div
+          class="border-border-subtle/30 mb-1 flex items-center justify-between border-b pb-3"
+        >
+          <span
+            class="text-accent-primary font-mono text-xs font-bold tracking-wider uppercase"
+            >Monospace / Specs</span
+          >
+          <span class="text-text-muted font-mono text-xs">JetBrains Mono</span>
+        </div>
+        <div class="flex flex-col gap-2 font-mono text-sm">
+          <p class="text-text-primary">SCALE: 100% [OK]</p>
+          <p class="text-text-muted">BUILD: v4.0.2-RELEASE</p>
+          <p class="text-accent-primary">STATUS: ACCESSIBLE</p>
+          <div
+            class="bg-bg-base border-border-subtle/40 text-text-muted mt-2 rounded-xl border p-3 text-xs"
+          >
+            <code>const theme = 'industrial-nordic';</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-6">
+    <h2
+      class="text-text-primary flex items-center gap-3 text-2xl font-bold tracking-tight"
+    >
+      <span class="text-accent-primary font-mono text-base font-semibold"
+        >03 //</span
+      >
+      Fluid Controls
+    </h2>
+
+    <div
+      class="bg-bg-surface border-border-subtle/20 rounded-4xl border p-8 shadow-sm"
+    >
+      <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
+        <div class="flex flex-col gap-6">
+          <h3
+            class="text-accent-primary font-mono text-xs font-bold tracking-wider uppercase"
+          >
+            Buttons & Technical Chips
+          </h3>
+
+          <div class="flex flex-wrap gap-4">
+            <button
+              class="bg-accent-primary hover:bg-accent-primary/90 flex items-center gap-2 rounded-full px-8 py-4 text-base font-bold text-[#E8E9E6] transition-all hover:shadow-lg active:scale-95 dark:text-[#FFFFFF]"
+            >
+              Primary Action
+            </button>
+
+            <button
+              class="bg-accent-secondary/10 text-accent-secondary hover:bg-accent-secondary/20 flex items-center gap-2 rounded-full px-8 py-4 text-base font-bold transition-colors active:scale-95"
+            >
+              Secondary
+            </button>
+          </div>
+
+          <div class="mt-2 flex flex-wrap gap-3 font-mono text-xs">
+            <span
+              class="bg-bg-base border-border-subtle text-text-primary rounded-lg border px-3 py-1.5 font-medium shadow-sm"
+            >
+              Svelte // 5.0
+            </span>
+            <span
+              class="bg-bg-base border-border-subtle text-text-primary rounded-lg border px-3 py-1.5 font-medium shadow-sm"
+            >
+              Astro // 4.x
+            </span>
+            <span
+              class="bg-accent-primary/10 text-accent-primary border-accent-primary/20 rounded-lg border px-3 py-1.5 font-bold"
+            >
+              A11y 100/100
+            </span>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-6">
+          <h3
+            class="text-accent-primary font-mono text-xs font-bold tracking-wider uppercase"
+          >
+            Inputs & Form Elements
+          </h3>
+
+          <div class="flex flex-col gap-5">
+            <div class="flex flex-col gap-2">
+              <label
+                class="text-text-primary ml-4 flex justify-between text-sm font-bold"
+                for="m3-email"
+              >
+                <span>Email Address</span>
+                <span class="text-text-muted font-mono text-xs font-normal"
+                  >REQUIRED</span
+                >
+              </label>
+              <input
+                type="email"
+                id="m3-email"
+                placeholder="hello@example.com"
+                class="bg-bg-base focus:border-accent-primary focus:ring-accent-primary/20 text-text-primary placeholder:text-text-muted/60 w-full rounded-2xl border-2 border-transparent px-6 py-4 text-base transition-all outline-none focus:ring-4"
+              />
+            </div>
+
+            <div class="ml-2 flex items-center gap-4">
+              <input
+                type="checkbox"
+                id="m3-check"
+                class="text-accent-primary bg-bg-base border-border-subtle h-6 w-6 rounded-md transition-all focus:ring-2 focus:ring-offset-2"
+              />
+              <label
+                for="m3-check"
+                class="text-text-primary text-sm font-medium"
+              >
+                Accept privacy policy & GDPR guidelines
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-6">
+    <h2
+      class="text-text-primary flex items-center gap-3 text-2xl font-bold tracking-tight"
+    >
+      <span class="text-accent-primary font-mono text-base font-semibold"
+        >04 //</span
+      >
+      Expressive Cards
+    </h2>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <article
+        class="bg-bg-surface border-border-subtle/30 group relative flex flex-col justify-between gap-6 rounded-[2.5rem] border p-8 transition-all hover:-translate-y-1 hover:shadow-xl"
+      >
+        <header class="flex items-center justify-between">
+          <span
+            class="bg-accent-secondary/15 text-accent-secondary rounded-full px-4 py-1.5 font-mono text-xs font-bold tracking-wider uppercase"
+          >
+            Featured Case
+          </span>
+          <span class="text-text-muted font-mono text-xs">2026 // EXP.01</span>
+        </header>
+
+        <div>
+          <h3 class="text-text-primary text-3xl font-black tracking-tight">
+            Interactive <em
+              class="text-accent-primary font-serif font-normal italic"
+              >State Machine</em
+            >
+          </h3>
+          <p class="text-text-muted mt-3 text-base leading-relaxed">
+            A highly optimized visualizer for tracking finite states within
+            complex front-end architectures.
+          </p>
+        </div>
+
+        <div class="pt-2">
+          <a
+            href="#"
+            class="bg-accent-primary hover:bg-accent-primary/90 inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-bold text-[#E8E9E6] transition-all active:scale-95 dark:text-[#FFFFFF]"
+          >
+            View Case Study
+          </a>
+        </div>
+      </article>
+
+      <article
+        class="bg-accent-primary flex flex-col justify-between rounded-[2.5rem] p-8 text-[#E8E9E6] shadow-lg dark:text-[#FFFFFF]"
+      >
+        <div class="flex items-center justify-between">
+          <span
+            class="font-mono text-xs font-bold tracking-wider text-[#E8E9E6]/70 uppercase dark:text-[#FFFFFF]/70"
+          >
+            PERFORMANCE_SCORE
+          </span>
+          <span class="rounded bg-white/10 px-2 py-0.5 font-mono text-xs"
+            >LIGHTHOUSE</span
+          >
+        </div>
+
+        <div class="my-6 flex items-baseline gap-2">
+          <span class="text-7xl font-black tracking-tighter">100</span>
+          <span class="font-mono text-2xl font-medium opacity-80">/100</span>
+        </div>
+
+        <div class="h-2.5 w-full overflow-hidden rounded-full bg-black/20">
+          <div class="h-full w-full rounded-full bg-white"></div>
+        </div>
+
+        <p class="mt-6 text-base leading-relaxed font-medium">
+          Engineered for flawless accessibility (<em
+            class="font-serif font-normal italic">WCAG AAA</em
+          >) and maximum Lighthouse metrics.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>

@@ -1,59 +1,66 @@
-/* Design-Tokens: Typografie, Abstände und Farbschemata */
+/* ==========================================================================
+   Design Tokens: Typografie, Farbschemata & Responsive Scale
+   ========================================================================== */
+
 :root {
-    /* Typografie - Schriftarten */
-    --font-heading: "JetBrains Mono", monospace;
-    --font-normal: "Inter", sans-serif;
-    --font-dyslexic: "OpenDyslexic", sans-serif;
+  /* Typografie - Schriftarten */
+  --font-sans:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-dyslexic: "OpenDyslexic", sans-serif;
 
-    /* Typografie - Schriftgrößen */
-    --fs-h1: 2.5rem;
-    --fs-h2: 2rem;
-    --fs-h3: 1.75rem;
-    --fs-h4: 1.5rem;
-    --fs-h5: 1.25rem;
-    --fs-h6: 1rem;
-    --fs-body: 1rem;
-    --fs-small: 0.875rem;
+  /* Typografie - Schriftgrößen (laut Type Scale Grid) */
+  --fs-hero: 3.5rem; /* 56px */
+  --fs-h1: 2.5rem; /* 40px */
+  --fs-h2: 2rem; /* 32px */
+  --fs-h3: 1.5rem; /* 24px */
+  --fs-h4: 1.25rem; /* 20px */
+  --fs-h5: 1.125rem; /* 18px */
+  --fs-h6: 1rem; /* 16px */
+  --fs-body: 1rem; /* 16px */
+  --fs-small: 0.875rem; /* 14px */
+  --fs-micro: 0.75rem; /* 12px */
 
-    /* Typografie - Schriftstärken */
-    --fw-bold: 700;
-    --fw-semibold: 600;
-    --fw-medium: 500;
-    --fw-normal: 400;
-    --fw-light: 300;
+  /* Typografie - Schriftstärken */
+  --fw-black: 900;
+  --fw-extrabold: 800;
+  --fw-bold: 700;
+  --fw-semibold: 600;
+  --fw-medium: 500;
+  --fw-normal: 400;
+  --fw-light: 300;
 
-    /* Spezifische Komponenten-Tokens */
-    --footer-color: rgb(0, 0, 0);
-    --footer-text-color: rgb(220, 220, 220);
-    --footer-hover-color: rgb(199, 199, 199);
-
-    /* Farbschema: Light (Standard-Fallback) */
-    --bg-color: rgb(220, 220, 220);
-    --text-color: rgb(50, 50, 50);
-    --text-color-muted: rgb(100, 100, 100);
-    --title-color: rgb(20, 20, 20);
-    --border-color: rgb(200, 200, 200);
-    --hover-color: rgb(100, 100, 100);
+  /* Farbschema: Light Theme (Technical Paper & Boreal Canvas) */
+  --bg-base: #f5f6f4;
+  --bg-surface: #ffffff;
+  --border-subtle: #d6dcd8;
+  --text-primary: #131614;
+  --text-muted: #606964;
+  --accent-primary: #32523e;
+  --accent-secondary: #70533c;
 }
 
-/* Farbschema: Dark (Automatisches System-Theme) */
+/* Farbschema: Dark Theme (Automatisches System-Theme) */
 @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-        --bg-color: rgb(20, 20, 20);
-        --text-color: rgb(220, 220, 220);
-        --text-color-muted: rgb(160, 160, 160);
-        --title-color: rgb(250, 250, 250);
-        --border-color: rgb(80, 80, 80);
-        --hover-color: rgb(190, 190, 190);
-    }
+  :root:not([data-theme="light"]) {
+    --bg-base: #0d0f0e;
+    --bg-surface: #171a18;
+    --border-subtle: #2a302d;
+    --text-primary: #e8e9e6;
+    --text-muted: #86918a;
+    --accent-primary: #4e735b;
+    --accent-secondary: #8c6e53;
+  }
 }
 
-/* Farbschema: Dark (Manuelle Überschreibung via HTML-Attribut) */
+/* Farbschema: Dark Theme (Manuelle Überschreibung via HTML-Attribut) */
 :root[data-theme="dark"] {
-    --bg-color: rgb(20, 20, 20);
-    --text-color: rgb(220, 220, 220);
-    --text-color-muted: rgb(160, 160, 160);
-    --title-color: rgb(250, 250, 250);
-    --border-color: rgb(80, 80, 80);
-    --hover-color: rgb(190, 190, 190);
+  --bg-base: #0d0f0e;
+  --bg-surface: #171a18;
+  --border-subtle: #2a302d;
+  --text-primary: #e8e9e6;
+  --text-muted: #86918a;
+  --accent-primary: #4e735b;
+  --accent-secondary: #8c6e53;
 }

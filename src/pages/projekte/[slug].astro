@@ -1,12 +1,12 @@
 ---
-import { getCollection, render, type CollectionEntry } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
 
 /* Generierung aller statischen Pfade aus der Collection */
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
-  
-  return projects.map((entry: CollectionEntry<'projects'>) => ({
+  const projects = await getCollection("projects");
+
+  return projects.map((entry: CollectionEntry<"projects">) => ({
     params: { slug: entry.id },
     props: { entry },
   }));
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
 /* Typisierung der Komponenten-Props */
 type Props = {
-  entry: CollectionEntry<'projects'>;
+  entry: CollectionEntry<"projects">;
 };
 
 const { entry } = Astro.props;
@@ -24,9 +24,13 @@ const { Content } = await render(entry);
 <Layout title={entry.data.title}>
   <article class="project-detail">
     <h1>{entry.data.title}</h1>
-    {entry.data.description && <p class="description">{entry.data.description}</p>}
+    {
+      entry.data.description && (
+        <p class="description">{entry.data.description}</p>
+      )
+    }
     <hr />
-    
+
     <div class="content-body">
       <Content />
     </div>

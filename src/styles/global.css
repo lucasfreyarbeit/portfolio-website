@@ -1,25 +1,27 @@
+/* ==========================================================================
+   Global CSS & Tailwind v4 Theme Configuration
+   ========================================================================== */
+
 /* Initialisierung von Tailwind CSS v4 */
 @import "tailwindcss";
 @import "./fonts.css";
 @import "./variables.css";
 
-/* 
- * Mapping der lokalen CSS-Variablen in das Tailwind-Theme.
- * Generiert automatisch Utility-Klassen (z. B. bg-bg-color, text-title-color).
+/* Mapping der lokalen CSS-Variablen in das Tailwind v4 Theme.
+ * Generiert Utility-Klassen wie font-sans, font-serif, font-mono, bg-bg-base etc.
  */
 @theme {
-  --color-bg-color: var(--bg-color);
-  --color-text-color: var(--text-color);
-  --color-text-color-muted: var(--text-color-muted);
-  --color-title-color: var(--title-color);
-  --color-border-color: var(--border-color);
-  --color-hover-color: var(--hover-color);
-  --color-footer-color: var(--footer-color);
-  --color-footer-text-color: var(--footer-text-color);
-  --color-footer-hover-color: var(--footer-hover-color);
+  --color-bg-base: var(--bg-base);
+  --color-bg-surface: var(--bg-surface);
+  --color-border-subtle: var(--border-subtle);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
 
-  --font-heading: var(--font-heading);
-  --font-normal: var(--font-normal);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
   --font-dyslexic: var(--font-dyslexic);
 }
 
@@ -28,16 +30,38 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 body {
-  font-family: var(--font-normal);
+  font-family: var(--font-sans);
   font-size: var(--fs-body);
   font-weight: var(--fw-normal);
   line-height: 1.6;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+}
+
+/* Smooth Theme Switching Transitions (Hintergründe, Text & Ränder) */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+div,
+section,
+button,
+input {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 p {
@@ -49,14 +73,17 @@ p {
 
 small,
 .text-small {
+  font-family: var(--font-mono);
   font-size: var(--fs-small);
-  font-weight: var(--fw-light);
+  font-weight: var(--fw-medium);
+  color: var(--text-muted);
 }
 
-body.theme-loaded {
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
+.text-micro {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-normal);
+  color: var(--text-muted);
 }
 
 /* Layout-Strukturen */
@@ -71,27 +98,38 @@ body.theme-loaded {
   flex: 1 0 auto;
 }
 
-/* Typografie-Zuweisungen */
+/* Typografie-Zuweisungen für Inter */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-heading);
-  color: var(--title-color);
+  font-family: var(--font-sans);
+  color: var(--text-primary);
   line-height: 1.2;
   margin-top: 0;
   margin-bottom: 1rem;
 }
 
+/* Display Hero Title */
+.display-hero {
+  font-family: var(--font-sans);
+  font-size: var(--fs-hero);
+  font-weight: var(--fw-black);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
 h1 {
   font-size: var(--fs-h1);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-extrabold);
+  letter-spacing: -0.015em;
 }
 h2 {
   font-size: var(--fs-h2);
   font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
 }
 h3 {
   font-size: var(--fs-h3);
@@ -108,4 +146,53 @@ h5 {
 h6 {
   font-size: var(--fs-h6);
   font-weight: var(--fw-medium);
+}
+
+/* Utility-Klassen & Code / Monospace Elements */
+code,
+pre,
+kbd,
+samp,
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Editorial Serif Accents (Instrument Serif) */
+.font-serif,
+em.editorial {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: var(--fw-normal);
+  color: var(--accent-secondary);
+}
+
+/* Accessibility Focus Ring (A11y Metrics) */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Scrollbar dynamisch an das Theme gekoppelt */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Für Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-subtle) var(--bg-base);
 }

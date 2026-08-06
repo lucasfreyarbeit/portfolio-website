@@ -36,7 +36,9 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@eslint/js": "^10.0.1",
     "eslint": "^10.8.0",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^3.0.1",
     "eslint-plugin-svelte": "^3.22.0",
     "globals": "^17.8.0",
@@ -44,6 +46,8 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-svelte": "^4.1.1",
     "prettier-plugin-tailwindcss": "^0.8.1",
+    "svelte-eslint-parser": "^1.8.0",
     "typescript-eslint": "^8.65.0"
-  }
+  },
+  "packageManager": "pnpm@11.18.0+sha512.33d83c77da82f49fba836925c6f1b841181ec3132b670639bd012f7075f5c7cf634c5f870147c19aae7478fac01df09d8892e880454896edd23ee9b33757563c"
 }

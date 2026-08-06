@@ -3,14 +3,16 @@
    ========================================================================== */
 
 @font-face {
-  font-family: 'JetBrains Mono';
+  font-family: "JetBrains Mono";
   font-style: normal;
   font-weight: 100 800;
   font-display: swap;
-  src: url('../assets/fonts/jetbrains-mono/JetBrainsMono[wght].woff2') format('woff2-variations'),
-       url('../assets/fonts/jetbrains-mono/JetBrainsMono[wght].woff2') format('woff2');
+  src:
+    url("../assets/fonts/jetbrains-mono/JetBrainsMono[wght].woff2")
+      format("woff2-variations"),
+    url("../assets/fonts/jetbrains-mono/JetBrainsMono[wght].woff2")
+      format("woff2");
 }
-
 
 /* ==========================================================================
    Inter (Variable Font: Gewichtsbereich 100 - 900)
@@ -18,43 +20,71 @@
 
 /* Normal / Upright */
 @font-face {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url('../assets/fonts/inter/InterVariable.woff2') format('woff2-variations'),
-       url('../assets/fonts/inter/InterVariable.woff2') format('woff2');
+  src:
+    url("../assets/fonts/inter/InterVariable.woff2") format("woff2-variations"),
+    url("../assets/fonts/inter/InterVariable.woff2") format("woff2");
 }
 
 /* Kursiv / Italic */
 @font-face {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
-  src: url('../assets/fonts/inter/InterVariable-Italic.woff2') format('woff2-variations'),
-       url('../assets/fonts/inter/InterVariable-Italic.woff2') format('woff2');
+  src:
+    url("../assets/fonts/inter/InterVariable-Italic.woff2")
+      format("woff2-variations"),
+    url("../assets/fonts/inter/InterVariable-Italic.woff2") format("woff2");
 }
 
-
 /* ==========================================================================
-   OpenDyslexic (Statische Schnittschnitte)
+   Instrument Serif (Statische Schriftart: Regular & Italic 400)
    ========================================================================== */
 
 /* Regular (400) */
 @font-face {
-  font-family: 'OpenDyslexic';
+  font-family: "Instrument Serif";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../assets/fonts/opendyslexic/OpenDyslexic-Regular.woff2') format('woff2');
+  src: url("../assets/fonts/instrument-serif/InstrumentSerif-Regular.woff2")
+    format("woff2");
+}
+
+/* Kursiv / Italic (400) */
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/instrument-serif/InstrumentSerif-Italic.woff2")
+    format("woff2");
+}
+
+/* ==========================================================================
+   OpenDyslexic (Statische Schriftart: Gewichtsbereich 400 - 700)
+   ========================================================================== */
+
+/* Regular (400) */
+@font-face {
+  font-family: "OpenDyslexic";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/opendyslexic/OpenDyslexic-Regular.woff2")
+    format("woff2");
 }
 
 /* Bold (700) */
 @font-face {
-  font-family: 'OpenDyslexic';
+  font-family: "OpenDyslexic";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('../assets/fonts/opendyslexic/OpenDyslexic-Bold.woff2') format('woff2');
+  src: url("../assets/fonts/opendyslexic/OpenDyslexic-Bold.woff2")
+    format("woff2");
 }
